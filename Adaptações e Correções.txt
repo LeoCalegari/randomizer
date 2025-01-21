@@ -1,0 +1,8 @@
+Correções
+. Nenhuma no momento
+
+Adaptações
+. Diminuir opacidade do fundo ao expandir imagem
+. Adicionar um local para deixar os links úteis de cada obra, a fim de pegar mais referências e preencher
+. Bloquear scrollar ao expandir a imagem
+. Permitir dar zoom na referencia ao expandir imagem
