@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Obra = require('../models/database_schema.js');
+const Obra = require('../models/models.js');
+const mongoose = require('mongoose');
 
 // Pega todas obras
 router.get('/obras', async (req, res) => {
@@ -12,13 +13,11 @@ router.get('/obras', async (req, res) => {
   }
 });
 
-// Pega obra por nome
-router.get('/obras/:nome', async (req, res) => {
+// Pega obra por ID - (Faz a mesma coisa, e melhor doque "Pegar todos os personagens")
+router.get('/obras/:id', async (req, res) => {
   try {
-    const obra = await Obra.findOne({ nome: req.params.nome });
-    if (!obra) {
-      return res.status(404).json({ message: 'Obra não encontrada' });
-    }
+    const obra = await Obra.findById(req.params.id);
+    if (!obra) return res.status(404).json({ message: 'Obra não encontrada' });
     res.json(obra);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -27,11 +26,7 @@ router.get('/obras/:nome', async (req, res) => {
 
 // Adiciona nova obra
 router.post('/obras', async (req, res) => {
-  const obra = new Obra({
-    nome: req.body.nome,
-    personagens: req.body.personagens
-  });
-
+  const obra = new Obra(req.body);
   try {
     const novaObra = await obra.save();
     res.status(201).json(novaObra);
@@ -40,17 +35,11 @@ router.post('/obras', async (req, res) => {
   }
 });
 
-// Atualiza a obra
-router.put('/obras/:nome', async (req, res) => {
+// WIP - Atualiza a obra
+router.put('/obras/:id', async (req, res) => {
   try {
-    const obra = await Obra.findOneAndUpdate(
-      { nome: req.params.nome },
-      req.body,
-      { new: true }
-    );
-    if (!obra) {
-      return res.status(404).json({ message: 'Obra não encontrada' });
-    }
+    const obra = await Obra.updateOne({ _id: req.params.id }, req.body);
+    if (!obra.matchedCount) return res.status(404).json({ message: 'Obra não encontrada' });
     res.json(obra);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -58,71 +47,79 @@ router.put('/obras/:nome', async (req, res) => {
 });
 
 // Deleta a obra
-router.delete('/obras/:nome', async (req, res) => {
+router.delete('/obras/:id', async (req, res) => {
   try {
-    const obra = await Obra.findOneAndDelete({ nome: req.params.nome });
-    if (!obra) {
-      return res.status(404).json({ message: 'Obra não encontrada' });
-    }
+    const obra = await Obra.deleteOne({ _id: req.params.id });
+    if (!obra.deletedCount) return res.status(404).json({ message: 'Obra não encontrada' });
     res.json({ message: 'Obra deletada com sucesso' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-module.exports = router;
-
-// Pega todos personagens da obra
-router.get('/obras/:nome/personagens', async (req, res) => {
+// Por enquanto nao utilizavel - Pega todos personagens da obra
+/*router.get('/obras/:id/personagens', async (req, res) => {
   try {
-    const obra = await Obra.findOne({ nome: req.params.nome });
+    const obra = await Obra.findById(req.params.id);
     if (!obra) return res.status(404).json({ message: 'Obra não encontrada' });
     res.json(obra.personagens);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-});
+});*/
 
 // Adiciona personagem a obra
-router.post('/obras/:nome/personagens', async (req, res) => {
+router.post('/obras/:id/personagens', async (req, res) => {
   try {
-    const obra = await Obra.findOne({ nome: req.params.nome });
-    if (!obra) return res.status(404).json({ message: 'Obra não encontrada' });
+    let charactersData = req.body;
+    // Se não for um array, transforma em array para unificar o tratamento
+    if (!Array.isArray(charactersData)) {
+      charactersData = [charactersData];
+    }
     
-    obra.personagens.push(req.body);
-    const updatedObra = await obra.save();
-    res.status(201).json(updatedObra.personagens[updatedObra.personagens.length - 1]);
+    const result = await Obra.updateOne(
+      { _id: req.params.id },
+      { $push: { characters: { $each: charactersData } } }
+    );
+    
+    if (!result.matchedCount)
+      return res.status(404).json({ message: 'Obra não encontrada' });
+      
+    res.status(201).json({ added: charactersData });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
 
-// Atualiza personagem na obra
-router.put('/obras/:nomeObra/personagens/:nomePersonagem', async (req, res) => {
+// WIP Atualiza personagem na obra
+router.put('/obras/:obraId/personagens/:personagemId', async (req, res) => {
   try {
-    const obra = await Obra.findOne({ nome: req.params.nomeObra });
-    if (!obra) return res.status(404).json({ message: 'Obra não encontrada' });
-
-    const personagemIndex = obra.personagens.findIndex(p => p.nome === req.params.nomePersonagem);
-    if (personagemIndex === -1) return res.status(404).json({ message: 'Personagem não encontrado' });
-
-    obra.personagens[personagemIndex] = { ...obra.personagens[personagemIndex], ...req.body };
-    const updatedObra = await obra.save();
-    res.json(updatedObra.personagens[personagemIndex]);
+    const obra = await Obra.updateOne(
+      { _id: req.params.obraId, 'personagens._id': req.params.personagemId },
+      { $set: { 'personagens.$': req.body } }
+    );
+    if (!obra.matchedCount) return res.status(404).json({ message: 'Personagem não encontrado' });
+    res.json(req.body);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
 
 // Deleta personagem na obra
-router.delete('/obras/:nomeObra/personagens/:nomePersonagem', async (req, res) => {
+router.delete('/obras/:obraId/personagens/:personagemId', async (req, res) => {
   try {
-    const obra = await Obra.findOne({ nome: req.params.nomeObra });
-    if (!obra) return res.status(404).json({ message: 'Obra não encontrada' });
+    const obraId = new mongoose.Types.ObjectId(req.params.obraId);
+    const personagemId = new  mongoose.Types.ObjectId(req.params.personagemId);
 
-    obra.personagens = obra.personagens.filter(p => p.nome !== req.params.nomePersonagem);
-    await obra.save();
-    res.json({ message: 'Personagem removido com sucesso' });
+    const obra = await Obra.updateOne(
+      { _id: obraId },
+      { $pull: { characters: { _id: personagemId } } }
+    );
+
+    if (!obra.matchedCount) return res.status(404).json({ message: 'Obra não encontrada!' });
+    if (!obra.modifiedCount) return res.status(404).json({ message: 'Personagem não encontrado na obra!' });
+
+    res.json({ message: 'Personagem removido com sucesso!' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

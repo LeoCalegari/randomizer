@@ -1,28 +1,26 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
+const { mongoUri } = require('./config_db.js');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+    const conn = await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 5000, // Timeout depois de 5s invés de 30s
-      heartbeatFrequencyMS: 1000 // Checa a conexão a cada segundo
+      serverSelectionTimeoutMS: 5000,
+      heartbeatFrequencyMS: 1000
     });
 
-    console.log(`MongoDB conectado: ${conn.connection.host}`);
-    
-    // Cuida de erros de conexão depois da conexão inicial
-    mongoose.connection.on('error', err => {
+    console.log(`MongoDB connected: ${conn.connection.host}`);
+
+    mongoose.connection.on('error', (err) => {
       console.error('MongoDB error:', err);
     });
 
     mongoose.connection.on('disconnected', () => {
-      console.log('MongoDB desconectado');
+      console.log('MongoDB disconnected');
     });
-
   } catch (error) {
-    console.error('Erro de conexão com MongoDB:', error);
+    console.error('Error connecting to MongoDB:', error);
     process.exit(1);
   }
 };
