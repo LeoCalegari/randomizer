@@ -15,7 +15,7 @@ O Randomizer App é uma aplicação simples que randomiza entre vários personag
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/randomizer-app.git
+    git clone [https://github.com/LeoCalegari/randomizer-app.git](https://github.com/LeoCalegari/randomizer)
     ```
 
 2. Navegue até o diretório do projeto:
@@ -32,9 +32,8 @@ O Randomizer App é uma aplicação simples que randomiza entre vários personag
 
 4. Inicie a aplicação:
 
-    ```bash
-    npm start
-    ```
+    Só abrir o index.html
+
 
 ## Licença
 
