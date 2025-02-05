@@ -344,6 +344,63 @@
         <div class="card-box card-box-black">
             <div class="row">
                 <div class="col-md-12 font-30">
+                    <i class="fa fa-plus"></i>
+                    <span>Cadastro - Obra</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label for="cadastroObraNome">Nome</label>
+                    <input id="cadastroObraNome" name="cadastroObraNome" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pull-right">
+                    <button class="btn btn-lg w-lg btn-purple waves-effect waves-light hover-expand-sm" onclick="cadastrarObra();">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-box card-box-black">
+            <div class="row">
+                <div class="col-md-12 font-30">
+                    <i class="fa fa-plus"></i>
+                    <span>Cadastro - Personagem</span>
+                </div>
+            </div>
+            <div class="row m-t-5">
+                <div class="form-group col-md-12">
+                    <label for="cadastroPersonagemObra">Obra</label>
+                    <select id="cadastroPersonagemObra" name="cadastroPersonagemObra" class="form-control select2">
+                        <option value="0">Selecione uma obra...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-7">
+                    <label for="cadastroPersonagemNome">Nome</label>
+                    <input id="cadastroPersonagemNome" name="cadastroPersonagemNome" class="form-control"/>
+                </div>
+                <div class="col-md-3">
+                    <label for="cadastroPersonagemReferencias">Referencias</label>
+                    <input id="cadastroPersonagemReferencias" name="cadastroPersonagemReferencias" class="form-control" value="0"/>
+                </div>
+                <div class="col-md-2">
+                    <label for="cadastroPersonagemSexo">Sexo</label>
+                    <select id="cadastroPersonagemSexo" name="cadastroPersonagemSexo" class="form-control select2" data-minimum-results-for-search="-1">
+                        <option value="F">Feminino</option>
+                        <option value="M">Masculino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pull-right">
+                    <button class="btn btn-lg w-lg btn-purple waves-effect waves-light hover-expand-sm" onclick="cadastrarPersonagem();">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-box card-box-black">
+            <div class="row">
+                <div class="col-md-12 font-30">
                     <i class="fa fa-filter"></i>
                     <span>Filtros</span>
                 </div>
@@ -581,15 +638,20 @@
                 });
             });
 
-            // Agora preenche o select de obras
+            // Agora preenche os selects de obras
             let filtroObra = document.getElementById("filtroObra");
-            filtroObra.innerHTML = '<option value="0">Todas</option>'; // Reset inicial
+            filtroObra.innerHTML = "<option value=\"0\">Todas</option>"; // Reset inicial
+
+            let cadastroObra = document.getElementById("cadastroObra");
+            cadastroObra.innerHTML = "<option value=\"0\">Selecione uma obra...</option>"; // Reset inicial
 
             obraList.forEach(function (obraTemp) {
                 let opcaoObra = document.createElement('option');
                 opcaoObra.value = obraTemp;
                 opcaoObra.text = obraTemp;
+
                 filtroObra.add(opcaoObra);
+                cadastroObra.add(opcaoObra);
             });
 
             // Mostra lista de personagens
@@ -667,6 +729,37 @@
 
     async function ciclaImagens(ms) {
 
+    }
+
+    async function cadastrarObra() {
+        let nome = document.getElementById("cadastroObraNome").value;
+
+        // Verificações
+        if(nome === ""){
+            alert("preenche o nome ai cabaço");
+        // Cadastra
+        }else{
+
+        }
+    }
+
+    async function cadastrarPersonagem() {
+        let obra = document.getElementById("cadastroPersonagemObra").value;
+        let nome = document.getElementById("cadastroPersonagemNome").value;
+        let referencias = document.getElementById("cadastroPersonagemReferencias").value;
+        let sexo = document.getElementById("cadastroPersonagemSexo").value;
+
+        // Verificações
+        if(obra === "0"){
+            alert("seleciona a obra ai puta vaca");
+        }else if(nome === ""){
+            alert("preenche o nome ai puta vaca");
+        }else if(referencias === ""){
+            alert("preenche as referencias ai puta vaca");
+        // Cadastra
+        }else{
+
+        }
     }
 
     async function randomizar() {
