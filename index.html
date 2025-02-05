@@ -1,419 +1,435 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="eve">
 
-        <!-- App icon -->
-        <link rel="icon" href="assets/images/icone.png" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="eve">
 
-        <!-- App Title -->
-        <title>Randomizer</title>
+    <!-- App icon -->
+    <link rel="icon" href="assets/images/icone.png" />
 
-        <!-- Plugins css-->
-        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
-        
-        <link href="assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet"/>
-        <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" />
-        <link href="assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"/>
+    <!-- App Title -->
+    <title>Randomizer</title>
 
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/core.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/components.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/pages.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/menu.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css"/>  
+    <!-- Plugins css-->
+    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 
-        <style>
-            /* Elementos */
-            html {
-                background-image: url("assets/images/background.png");
-                background-color: black !important;
-                background-repeat: no-repeat;
-                background-size: 100% !important;
-            }
+    <link href="assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" />
+    <link href="assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
 
-            hr {
-                display: block !important;
-                height: 1px !important;
-                border: 0 !important;
-                border-top: 1px solid white !important;
-                margin: 1em 0 !important;
-                padding: 0 !important;
-            }
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
-            body {
-                background-color: #404040 !important;
-                box-shadow: 0 0 8px 8px rgb(0 0 0 / 0.5);
-            }
+    <style>
+        /* Elementos */
+        html {
+            background-image: url("assets/images/background.png");
+            background-color: black !important;
+            background-repeat: no-repeat;
+            background-size: 100% !important;
+        }
 
-            #btnRandomizar:hover {
-                border: 1px solid white !important;
-            }
+        hr {
+            display: block !important;
+            height: 1px !important;
+            border: 0 !important;
+            border-top: 1px solid white !important;
+            margin: 1em 0 !important;
+            padding: 0 !important;
+        }
 
-            #bkgCardboxPersonagemImagem {
-                border-radius: 5px !important;
+        body {
+            background-color: #404040 !important;
+            box-shadow: 0 0 8px 8px rgb(0 0 0 / 0.5);
+        }
 
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+        #btnRandomizar:hover {
+            border: 1px solid white !important;
+        }
 
-                /* -webkit-transition: background 300ms ease-in-out 400ms;
+        #bkgCardboxPersonagemImagem {
+            border-radius: 5px !important;
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            /* -webkit-transition: background 300ms ease-in-out 400ms;
                 -moz-transition: background 300ms ease-in-out 400ms;
                 -o-transition: background 300ms ease-in-out 400ms;
                 transition: background 300ms ease-in-out 400ms; */
-                transition: background 0.3s linear;
+            transition: background 0.3s linear;
+        }
+
+        /* Classes */
+        .container-roleta {
+            padding: 20px !important;
+            height: 100% !important;
+            font-family: "PixelMix";
+        }
+
+        .loading-gif {
+            height: 500px !important;
+            width: auto !important;
+        }
+
+        .img-personagem {
+            height: 250px;
+            width: 250px;
+        }
+
+        .img-referencia {
+            height: 180px !important;
+        }
+
+        .modal-expand-image {
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            position: fixed !important;
+            overflow: hidden !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            z-index: 99999999999 !important;
+            transition: 0.25s ease-out !important;
+            overscroll-behavior: contain !important;
+        }
+
+        .modal-expand-image.open {
+            opacity: 1 !important;
+            pointer-events: all !important;
+        }
+
+        .full-image {
+            position: absolute !important;
+            height: 70% !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%);
+
+            background-color: white;
+        }
+
+        .personagem-retornado {
+            border-radius: 15px !important;
+            background-color: black;
+            padding: 20px !important;
+            box-shadow: 0 0 8px 8px rgb(0 0 0 / 0.5);
+        }
+
+        .m-t-15 {
+            margin-top: 15px !important;
+        }
+
+        .m-t-30 {
+            margin-top: 30px !important;
+        }
+
+        .m-t-45 {
+            margin-top: 45px !important;
+        }
+
+        .m-b-45 {
+            margin-bottom: 45px !important;
+        }
+
+        .text-bold {
+            font-weight: bold !important;
+        }
+
+        .font-15 {
+            font-size: 15px !important;
+        }
+
+        .font-20 {
+            font-size: 20px !important;
+        }
+
+        .font-30 {
+            font-size: 30px !important;
+        }
+
+        .min-height-550 {
+            min-height: 600px !important;
+        }
+
+        .card-box-black {
+            background-color: black !important;
+        }
+
+        .white-border {
+            border: 1px solid white !important;
+        }
+
+        .white-border-hover:hover {
+            border: 1px solid white !important;
+        }
+
+        .white-bkg {
+            background-color: white;
+        }
+
+        .hover-purple:hover {
+            color: #7266ba !important
+        }
+
+        .pull-right {
+            text-align: right !important;
+        }
+
+        .pull-left {
+            text-align: left !important;
+        }
+
+        .cursor-pointer {
+            cursor: pointer !important;
+        }
+
+        .hover-expand-sm:hover {
+            border: 1px solid white !important;
+            animation: expand-sm 0.5s !important;
+            animation-iteration-count: 1 !important;
+            animation-fill-mode: forwards !important;
+        }
+
+        .hover-expand-md:hover {
+            animation: expand-md 0.5s !important;
+            animation-iteration-count: 1 !important;
+            animation-fill-mode: forwards !important;
+        }
+
+        .minimize-sm {
+            animation: minimize-sm 0.3s !important;
+            animation-iteration-count: 1 !important;
+            animation-fill-mode: forwards !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            background-color: #404040 !important;
+            color: #444;
+            font-family: "PixelMix";
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            background-color: #404040 !important;
+            color: #fff;
+            font-family: "PixelMix";
+        }
+
+        .select2-container--default .select2-selection--single {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-search--dropdown {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-search__field {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-results {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-selection {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-choice {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-search {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-search input {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-results {
+            background-color: #404040 !important;
+            color: white !important;
+            font-family: "PixelMix";
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #7266ba !important;
+            color: white;
+            font-family: "PixelMix";
+        }
+
+        .select2-results__option[aria-selected=true] {
+            background-color: #7266ba !important;
+            color: white;
+            font-family: "PixelMix";
+        }
+
+        /* Fonte */
+        @font-face {
+            font-family: "PixelMix";
+            src: url("assets/fonts/Retro Gaming.ttf");
+        }
+
+        /* Animações */
+        @keyframes expand-sm {
+            0% {
+                transform: scale(1);
             }
 
-            /* Classes */
-            .container-roleta {
-                padding: 20px !important;
-                height: 100% !important;
-                font-family: "PixelMix";
+            100% {
+                transform: scale(1.045);
+            }
+        }
+
+        @keyframes expand-md {
+            0% {
+                transform: scale(1);
             }
 
-            .loading-gif {
-                height: 500px !important;
-                width: auto !important;
+            100% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes minimize-sm {
+            0% {
+                transform: scale(1.045);
             }
 
-            .img-personagem {
-                height: 250px;
-                width: 250px;
+            100% {
+                transform: scale(1);
             }
+        }
+    </style>
 
-            .img-referencia {
-                height: 180px !important;
-            }
-
-            .modal-expand-image {
-                background-color: rgba(0, 0, 0, 0.8) !important;
-                position: fixed !important;
-                overflow: hidden !important; 
-                top: 0 !important;
-                left: 0 !important;
-                width: 100% !important;
-                height: 100% !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-                z-index: 99999999999 !important;
-                transition: 0.25s ease-out !important;
-                overscroll-behavior: contain !important;
-            }
-
-            .modal-expand-image.open {
-                opacity: 1 !important;
-                pointer-events: all !important;
-            }
-
-            .full-image {
-                position: absolute !important;
-                height: 70% !important;
-                top: 50% !important;
-                left:  50% !important;
-                transform: translate(-50%, -50%);
-
-                background-color: white;
-            }
-
-            .personagem-retornado {
-                border-radius: 15px !important;
-                background-color: black;
-                padding: 20px !important;
-                box-shadow: 0 0 8px 8px rgb(0 0 0 / 0.5);
-            }
-
-            .m-t-15 {
-                margin-top: 15px !important;
-            }
-
-            .m-t-30 {
-                margin-top: 30px !important;
-            }
-
-            .m-t-45 {
-                margin-top: 45px !important;
-            }
-
-            .m-b-45 {
-                margin-bottom: 45px !important;
-            }
-
-            .text-bold {
-                font-weight: bold !important;
-            }
-
-            .font-15 {
-                font-size: 15px !important;
-            }
-
-            .font-20 {
-                font-size: 20px !important;
-            }
-
-            .font-30 {
-                font-size: 30px !important;
-            }
-
-            .min-height-550 {
-                min-height: 600px !important;
-            }
-
-            .card-box-black{
-                background-color: black !important;
-            }
-
-            .white-border {
-                border: 1px solid white !important;
-            }
-            
-            .white-border-hover:hover {
-                border: 1px solid white !important;
-            }
-
-            .white-bkg {
-                background-color: white;
-            }
-
-            .hover-purple:hover {
-                color: #7266ba !important
-            }
-
-            .pull-right {
-                text-align: right !important;
-            }
-            
-            .pull-left {
-                text-align: left !important;
-            }
-
-            .cursor-pointer {
-                cursor: pointer !important;
-            }
-
-            .hover-expand-sm:hover {
-                border: 1px solid white !important;
-                animation: expand-sm 0.5s !important;
-                animation-iteration-count: 1  !important;
-                animation-fill-mode: forwards !important;
-            }
-            
-            .hover-expand-md:hover {
-                animation: expand-md 0.5s !important;
-                animation-iteration-count: 1  !important;
-                animation-fill-mode: forwards !important;
-            }
-
-            .minimize-sm {
-                animation: minimize-sm 0.3s !important;
-                animation-iteration-count: 1  !important;
-                animation-fill-mode: forwards !important;
-            }
-
-            .select2-container--default .select2-selection--single .select2-selection__placeholder {
-                background-color: #404040 !important;
-                color: #444;
-				font-family: "PixelMix";
-            }
-
-            .select2-container--default .select2-selection--single .select2-selection__rendered {
-                background-color: #404040 !important;
-                color: #fff;
-				font-family: "PixelMix";
-            }
-
-            .select2-container--default .select2-selection--single {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-
-            .select2-search--dropdown {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-            .select2-search__field {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-
-            .select2-results { 
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-
-            .select2-selection {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-
-            .select2-choice {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-
-            .select2-search {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-
-            .select2-search input {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-            }
-
-            .select2-results {
-                background-color: #404040 !important;
-                color: white !important;
-				font-family: "PixelMix";
-             }
-
-            .select2-container--default .select2-results__option--highlighted[aria-selected] {
-                background-color: #7266ba !important;
-                color: white;
-				font-family: "PixelMix";
-            }
-
-            .select2-results__option[aria-selected=true] {
-                background-color: #7266ba !important;
-                color: white;
-				font-family: "PixelMix";
-            }
-
-            /* Fonte */
-            @font-face {
-                font-family: "PixelMix";
-                src: url("assets/fonts/Retro Gaming.ttf");
-            }
-
-            /* Animações */
-            @keyframes expand-sm {
-                0% {
-                    transform: scale(1);
-                } 
-                100%{
-                    transform: scale(1.045);
-                }
-            }
-            
-            @keyframes expand-md {
-                0% {
-                    transform: scale(1);
-                } 
-                100%{
-                    transform: scale(1.15);
-                }
-            }
-
-            @keyframes minimize-sm {
-                0% {
-                    transform: scale(1.045);
-                } 
-                100%{
-                    transform: scale(1);
-                }
-            }
-            
-        </style>
-
-    </head>
+</head>
 
 
-    <body>
-        <!--Modal - Expandir imagem -->
-        <div id="modalExpandirImagem" class="modal-expand-image">
-            <img id="fullImage" src="" class="full-image"/>
+<body>
+    <!--Modal - Expandir imagem -->
+    <div id="modalExpandirImagem" class="modal-expand-image">
+        <img id="fullImage" src="" class="full-image" />
+    </div>
+
+    <div class="container-roleta text-white">
+        <div class="card-box card-box-black">
+            <div class="row">
+                <div class="col-md-12 font-30">
+                    <i class="fa fa-filter"></i>
+                    <span>Filtros</span>
+                </div>
+            </div>
+            <div class="row m-t-5">
+                <div class="col-md-12 ">
+                    <label for="filtroObra">Obra</label>
+                    <select id="filtroObra" name="filtroObra" class="form-control select2 text-white">
+                        <option value="0">Todas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row m-t-10">
+                <div class="form-row col-md-2">
+                    <div class="text-white">
+                        <label for="filtroFeminino">Feminino</label><br>
+                        <input id="filtroFeminino" name="filtroFeminino" type="checkbox" data-plugin="switchery"
+                            data-secondary-color="#404040" data-color="#7266ba" checked>
+                    </div>
+                </div>
+                <div class="form-row col-md-2">
+                    <div class="text-white">
+                        <label for="filtroMasculino">Masculino</label><br>
+                        <input id="filtroMasculino" name="filtroMasculino" type="checkbox" data-plugin="switchery"
+                            data-secondary-color="#404040" data-color="#7266ba">
+                    </div>
+                </div>
+                <div class="form-row col-md-8 pull-right m-t-10">
+                    <button class="btn btn-lg w-lg btn-purple waves-effect waves-light hover-expand-sm"
+                        id="btnRandomizar" onclick="randomizar();" disabled>Randomizar <i id="iBtnRandomizar"
+                            class="fa fa-refresh m-l-5"></i></button>
+                </div>
+            </div>
         </div>
-        
-        <div class="container-roleta text-white">
-            <div class="card-box card-box-black">
-                <div class="row">
-                    <div class="col-md-12 font-30">
-                        <i class="fa fa-filter"></i>
-                        <span>Filtros</span>
-                    </div>
-                </div>
-                <div class="row m-t-5">
-                    <div class="col-md-12 ">
-                        <label for="filtroObra">Obra</label>
-                        <select id="filtroObra" name="filtroObra" class="form-control select2 text-white">
-                            <option value="0">Todas</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row m-t-10">
-                    <div class="form-row col-md-2">
-                        <div class="text-white">
-                            <label for="filtroFeminino">Feminino</label><br>
-                            <input id="filtroFeminino" name="filtroFeminino" type="checkbox" data-plugin="switchery" data-secondary-color="#404040" data-color="#7266ba" checked>
-                        </div>
-                    </div>
-                    <div class="form-row col-md-2">
-                        <div class="text-white">
-                            <label for="filtroMasculino">Masculino</label><br>
-                            <input id="filtroMasculino" name="filtroMasculino" type="checkbox" data-plugin="switchery" data-secondary-color="#404040" data-color="#7266ba">
-                        </div>
-                    </div>
-                    <div class="form-row col-md-8 pull-right m-t-10">
-                        <button class="btn btn-lg w-lg btn-purple waves-effect waves-light hover-expand-sm" id="btnRandomizar" onclick="randomizar();" disabled>Randomizar <i id="iBtnRandomizar" class="fa fa-refresh m-l-5"></i></button>
-                    </div>
+        <div class="card-box card-box-black" id="cardboxCarregandoDados">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img id="loadingGif" src="gif/loading.gif" class="loading-gif"
+                        onError="trataPersonagemSemImagem();" />
                 </div>
             </div>
-            <div class="card-box card-box-black" id="cardboxCarregandoDados">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <img id="loadingGif" src="gif/loading.gif" class="loading-gif" onError="trataPersonagemSemImagem();"/>
+        </div>
+        <div class="card-box card-box-black" id="cardboxPersonagemImagem" style="display: none;">
+            <div class="row min-height-550" id="bkgCardboxPersonagemImagem">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center personagem-retornado m-t-45 m-b-45" id="cardboxPersonagemRetornado"
+                    style="display: none !important;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i id="iCopiar"
+                                class="fa fa-3x fa-copy pull-right hover-expand-md hover-purple cursor-pointer"
+                                style="display: none !important;" onclick="copiaPersonagemAreaTransferencia(this);"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img class="img-personagem img-rounded cursor-pointer hover-expand-sm white-border-hover"
+                                src="img/personagens/semFoto.jpg" id="imgPersonagem"
+                                onError="trataPersonagemSemImagem();" style="display: none;"
+                                onclick="expandirImagem(this);" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 m-t-10">
+                            <span class="text-bold font-30" id="personagem" style="display: none;">- - - - - -</span>
+                            <br>
+                            <span class="text-muted" id="obra" style="display: none;">- - - - - -</span>
+                        </div>
+                    </div>
+                    <div class="row" id="divExibirInfoAdicional" style="display: none !important;">
+                        <div class="col-md-12 m-t-15 cursor-pointer hover-purple hover-expand-md"
+                            onclick="exibeInfoAdicional()">
+                            <i class="fa fa-chevron-down fa-3x" id="btnExibirInfoAdicional"></i>
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-3"></div>
             </div>
-            <div class="card-box card-box-black" id="cardboxPersonagemImagem" style="display: none;">
-                <div class="row min-height-550" id="bkgCardboxPersonagemImagem">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 text-center personagem-retornado m-t-45 m-b-45" id="cardboxPersonagemRetornado" style="display: none !important;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <i id="iCopiar" class="fa fa-3x fa-copy pull-right hover-expand-md hover-purple cursor-pointer" style="display: none !important;" onclick="copiaPersonagemAreaTransferencia(this);"></i>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img class="img-personagem img-rounded cursor-pointer hover-expand-sm white-border-hover" src="img/personagens/semFoto.jpg" id="imgPersonagem" onError="trataPersonagemSemImagem();" style="display: none;" onclick="expandirImagem(this);"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 m-t-10">
-                                <span class="text-bold font-30" id="personagem" style="display: none;">- - - - - -</span>
-                                <br>
-                                <span class="text-muted" id="obra" style="display: none;">- - - - - -</span>
-                            </div>
-                        </div>
-                        <div class="row" id="divExibirInfoAdicional" style="display: none !important;">
-                            <div class="col-md-12 m-t-15 cursor-pointer hover-purple hover-expand-md" onclick="exibeInfoAdicional()">
-                                <i class="fa fa-chevron-down fa-3x" id="btnExibirInfoAdicional"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Info adicional -->
-                        <div id="divInfoAdicional" class="row m-b-15" style="display: none !important;">
-                            <!-- <div class="col-md-12"><hr></div> -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Info adicional -->
+                    <div id="divInfoAdicional" class="row m-b-15" style="display: none !important;">
+                        <!-- <div class="col-md-12"><hr></div> -->
 
-                            <!-- COMENTADO TEMPORARIAMENTE -->
-                            <!-- <div class="pull-left">
+                        <!-- COMENTADO TEMPORARIAMENTE -->
+                        <!-- <div class="pull-left">
                                 <div class="col-md-12">
                                     <span class="font-20 text-bold">Sugestões</span>
                                 </div>
@@ -423,157 +439,203 @@
                                 </div>
                             </div>
                             <br></br> -->
-                            <div class="col-md-12 m-t-15 text-center">
-                                <span class="text-bold font-30">Referências</span>
-                            </div>
-                            <div class="col-md-12 m-t-10 text-center" id="divImagemReferencia"></div>
+                        <div class="col-md-12 m-t-15 text-center">
+                            <span class="text-bold font-30">Referências</span>
                         </div>
+                        <div class="col-md-12 m-t-10 text-center" id="divImagemReferencia"></div>
                     </div>
-                </div>
-            </div>
-            <div class="card-box card-box-black" id="cardboxListaPersonagem" style="display: none;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <span class="font-15 text-bold">Lista de personagens</span>
-                    </div>
-                </div>
-                <div class="row m-t-15">
-                    <div class="col-md-3" id="listaPersonagemColuna1Label"></div>
-                    <div class="col-md-3" id="listaPersonagemColuna2Label"></div>
-                    <div class="col-md-3" id="listaPersonagemColuna3Label"></div>
-                    <div class="col-md-3" id="listaPersonagemColuna4Label"></div>
                 </div>
             </div>
         </div>
+        <div class="card-box card-box-black" id="cardboxListaPersonagem" style="display: none;">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="font-15 text-bold">Lista de personagens</span>
+                </div>
+            </div>
+            <div class="row m-t-15">
+                <div class="col-md-3" id="listaPersonagemColuna1Label"></div>
+                <div class="col-md-3" id="listaPersonagemColuna2Label"></div>
+                <div class="col-md-3" id="listaPersonagemColuna3Label"></div>
+                <div class="col-md-3" id="listaPersonagemColuna4Label"></div>
+            </div>
+        </div>
+    </div>
 
-        <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/detect.js"></script>
-        <script src="assets/js/fastclick.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.blockUI.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/plugins/notifyjs/js/notify.js"></script>
-        <script src="assets/plugins/notifications/notify-metro.js"></script>
+    <!-- jQuery  -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/detect.js"></script>
+    <script src="assets/js/fastclick.js"></script>
+    <script src="assets/js/jquery.slimscroll.js"></script>
+    <script src="assets/js/jquery.blockUI.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/plugins/notifyjs/js/notify.js"></script>
+    <script src="assets/plugins/notifications/notify-metro.js"></script>
 
-        <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
-        <script src="assets/plugins/switchery/js/switchery.min.js"></script>
-        <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
-        <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
-        <script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+    <script src="assets/plugins/switchery/js/switchery.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+    <script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"
+        type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
 
-        <script type="text/javascript" src="assets/plugins/autocomplete/jquery.mockjax.js"></script>
-        <script type="text/javascript" src="assets/plugins/autocomplete/jquery.autocomplete.min.js"></script>
-        <script type="text/javascript" src="assets/plugins/autocomplete/countries.js"></script>
-        <script type="text/javascript" src="assets/pages/autocomplete.js"></script>
+    <script type="text/javascript" src="assets/plugins/autocomplete/jquery.mockjax.js"></script>
+    <script type="text/javascript" src="assets/plugins/autocomplete/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/autocomplete/countries.js"></script>
+    <script type="text/javascript" src="assets/pages/autocomplete.js"></script>
 
-        <script type="text/javascript" src="assets/pages/jquery.form-advanced.init.js"></script>
+    <script type="text/javascript" src="assets/pages/jquery.form-advanced.init.js"></script>
 
-        <!-- App core js -->
-        <script src="assets/js/jquery.core.js"></script>
-        <script src="assets/js/jquery.app.js"></script>
+    <!-- App core js -->
+    <script src="assets/js/jquery.core.js"></script>
+    <script src="assets/js/jquery.app.js"></script>
 
-        <!-- Database -->
-        <script src="database.js"></script>
-    </body>
-    
-    <script>
-        var ultimoPersonagemRetornado = "";
-        var randomizou = false;
+    <!-- Database -->
+    <!-- <script src="database.js"></script> -->
+</body>
 
-        $(document).ready(function() {
-            inicia();
-        })
+<script>
+    let obraList = [];
+    let personagemList = [];
 
-        // *********
-        // Animações
-        // *********
+    var ultimoPersonagemRetornado = "";
+    var randomizou = false;
 
-        // Faz o ícone no botão de randomizar girar
-        $('#btnRandomizar').hover(
-            function() {
-                let iBtnRandomizar = document.getElementById("iBtnRandomizar");
+    $(document).ready(function () {
+        inicia();
+    })
 
-                if(iBtnRandomizar.classList.contains("fa-spin")){
-                    iBtnRandomizar.classList.remove("fa-spin");
-                }else{
-                    iBtnRandomizar.classList.add("fa-spin");
-                }
+    // *********
+    // Animações
+    // *********
+
+    // Faz o ícone no botão de randomizar girar
+    $('#btnRandomizar').hover(
+        function () {
+            let iBtnRandomizar = document.getElementById("iBtnRandomizar");
+
+            if (iBtnRandomizar.classList.contains("fa-spin")) {
+                iBtnRandomizar.classList.remove("fa-spin");
+            } else {
+                iBtnRandomizar.classList.add("fa-spin");
             }
-        )
-        
-        // Faz os ítens com animação para expandir ter uma animação para minimizar
-        $('.hover-expand-sm').hover(
-            function() {                
-                if(this.classList.contains("minimize-sm")) this.classList.remove("minimize-sm");
-                
-                this.classList.add("minimize-sm");
-            }
-        )
-            
-        $('.hover-expand-md').hover(
-            function() {                
-                if(this.classList.contains("minimize-sm")) this.classList.remove("minimize-sm");
-                
-                this.classList.add("minimize-sm");
-            }
-        )
-		
-        // *******
-        // Funções
-        // *******
+        }
+    )
 
-        async function inicia() {
-            // Bloqueia o botão de randomizar
-            document.getElementById("btnRandomizar").disabled = true;
+    // Faz os ítens com animação para expandir ter uma animação para minimizar
+    $('.hover-expand-sm').hover(
+        function () {
+            if (this.classList.contains("minimize-sm")) this.classList.remove("minimize-sm");
 
-            // Exibe carregamento
-            document.getElementById("cardboxCarregandoDados").style.display = "";
+            this.classList.add("minimize-sm");
+        }
+    )
 
-            // Preenche database
-            await preencheDatabase();
-			
-            // Adiciona obras no filtro
+    $('.hover-expand-md').hover(
+        function () {
+            if (this.classList.contains("minimize-sm")) this.classList.remove("minimize-sm");
+
+            this.classList.add("minimize-sm");
+        }
+    )
+
+    // *******
+    // Funções
+    // *******
+
+    async function inicia() {
+        // Bloqueia o botão de randomizar
+        document.getElementById("btnRandomizar").disabled = true;
+
+        // Exibe carregamento
+        document.getElementById("cardboxCarregandoDados").style.display = "";
+
+        try {
+            // Primeiro fazemos a chamada à API e preenche os dados
+            const response = await fetch('http://localhost:3000/api/v1/obras');
+            if (!response.ok) throw new Error('Erro ao buscar dados da API');
+
+            const data = await response.json();
+
+            // Preenche as listas
+            obraList = data.map(obra => obra.title);
+            personagemList = [];
+
+            data.forEach(obra => {
+                obra.characters.forEach(character => {
+                    personagemList.push({
+                        nome: character.name,
+                        obra: obra.title,
+                        sexo: character.gender || '',
+                        variacaoList: character.variations || [],
+                        numeroReferencia: character.referenceNumber || 0
+                    });
+                });
+            });
+
+            // Agora preenche o select de obras
             let filtroObra = document.getElementById("filtroObra");
-			await obraList.forEach(function(obraTemp){
-				let opcaoObra = document.createElement('option');
-                opcaoObra.selected = false;
+            filtroObra.innerHTML = '<option value="0">Todas</option>'; // Reset inicial
+
+            obraList.forEach(function (obraTemp) {
+                let opcaoObra = document.createElement('option');
                 opcaoObra.value = obraTemp;
                 opcaoObra.text = obraTemp;
+                filtroObra.add(opcaoObra);
+            });
 
-                filtroObra.add(opcaoObra);  
-			});
-			
-			// Mostra lista de personagens
+            // Mostra lista de personagens
             let quantidadePorColuna = Math.round(personagemList.length / 4);
             let quantidadeAdicionada = 0;
             let colunaAtual = 1;
 
-			await personagemList.forEach(function(personagem){
-				let personagemHtml = "";
-                
-                personagemHtml =  "<div class=\"col-md-12 cursor-pointer hover-purple hover-expand-sm\" data1=\"" + personagem.nome +"\" data2=\"" + personagem.obra + "\" onclick=\"retornaPersonagem(this.getAttribute('data1'), this.getAttribute('data2'))\">"
-                                   + "<span>" + personagem.nome + "</span>"
-                                + "</div>";
-                
-                
-                $("#listaPersonagemColuna" + colunaAtual + "Label").append(personagemHtml);
+            // Verifica se os elementos existem antes de continuar
+            for (let i = 1; i <= 4; i++) {
+                const colunaElement = document.getElementById(`listaPersonagemColuna${i}Label`);
+                if (!colunaElement) {
+                    console.error(`Elemento listaPersonagemColuna${i}Label não encontrado`);
+                    continue; // Pula para a próxima iteração se o elemento não existir
+                }
+                colunaElement.innerHTML = ''; // Limpa apenas se o elemento existir
+            }
+
+            // Modificação na iteração dos personagens
+            personagemList.forEach(function (personagem) {
+                const colunaElement = document.getElementById(`listaPersonagemColuna${colunaAtual}Label`);
+                if (!colunaElement) {
+                    console.error(`Elemento listaPersonagemColuna${colunaAtual}Label não encontrado`);
+                    return; // Pula este personagem se a coluna não existir
+                }
+
+                let personagemHtml = `
+                <div class="col-md-12 cursor-pointer hover-purple hover-expand-sm" 
+                     data1="${personagem.nome}" 
+                     data2="${personagem.obra}" 
+                     onclick="retornaPersonagem(this.getAttribute('data1'), this.getAttribute('data2'))">
+                    <span>${personagem.nome}</span>
+                </div>`;
+
+                colunaElement.innerHTML += personagemHtml;
 
                 quantidadeAdicionada++;
-
-                if(quantidadeAdicionada >= quantidadePorColuna){
+                if (quantidadeAdicionada >= quantidadePorColuna) {
                     colunaAtual++;
                     quantidadeAdicionada = 0;
-                };
-			});
+                }
+
+                // Reset da coluna atual se passar de 4
+                if (colunaAtual > 4) {
+                    colunaAtual = 1;
+                }
+            });
 
             // Terminou de carregar
             document.getElementById("loadingGif").src = "";
@@ -586,212 +648,220 @@
 
             // Desbloqueia o botão de randomizar
             document.getElementById("btnRandomizar").disabled = false;
+
+        } catch (error) {
+            console.error('Erro ao carregar dados:', error);
+            // Adicione aqui tratamento de erro visual para o usuário
+            document.getElementById("cardboxCarregandoDados").innerHTML =
+                '<div class="alert alert-danger">Erro ao carregar dados. Por favor, verifique se o banco está online!</div>';
         }
-        
-        async function ciclaGifs(ms) {
-            setTimeout(() => {
-                if(randomizou === false) document.getElementById("bkgCardboxPersonagemImagem").style.backgroundImage = "URL('gif/init" + retornaIndexAleatorio(23) + ".gif')";
-                if(randomizou === false) ciclaGifs(5000);
-            }, ms);
-            
+    }
+
+    async function ciclaGifs(ms) {
+        setTimeout(() => {
+            if (randomizou === false) document.getElementById("bkgCardboxPersonagemImagem").style.backgroundImage = "URL('gif/init" + retornaIndexAleatorio(23) + ".gif')";
+            if (randomizou === false) ciclaGifs(5000);
+        }, ms);
+
+    }
+
+    async function ciclaImagens(ms) {
+
+    }
+
+    async function randomizar() {
+        randomizou = true;
+
+        // Remove classe que define altura mínima para rodar os GIFs
+        document.getElementById("bkgCardboxPersonagemImagem").classList.remove("min-height-550");
+
+        // Remove informações adicionais
+        btnExibirInfoAdicional.classList.remove("fa-chevron-up");
+        btnExibirInfoAdicional.classList.add("fa-chevron-down");
+
+        document.getElementById("divInfoAdicional").style.display = "none";
+
+        $("#divImagemReferencia").find("div").remove();
+
+        // Bloqueia o botão de randomizar
+        document.getElementById("btnRandomizar").disabled = true;
+
+        // Esconde o card
+        document.getElementById("cardboxPersonagemRetornado").style.display = "none";
+
+        // *****************
+        // Aplica os filtros
+        // *****************
+
+        let personagemListTemp = personagemList;
+
+        // Filtro de obra
+        let filtroObra = document.getElementById("filtroObra").value;
+        if (filtroObra != 0) {
+            personagemListTemp = personagemListTemp.filter((personagem) => personagem.obra === filtroObra);
         }
 
-        async function ciclaImagens(ms) {
-            
+        // Filtro de gênero
+        let filtroFeminino = document.getElementById("filtroFeminino").checked;
+        let filtroMasculino = document.getElementById("filtroMasculino").checked;
+        if (filtroFeminino && !filtroMasculino) {
+            personagemListTemp = personagemListTemp.filter((personagem) => personagem.sexo === "F");
+        } else if (!filtroFeminino && filtroMasculino) {
+            personagemListTemp = personagemListTemp.filter((personagem) => personagem.sexo === "M");
         }
-		
-		async function randomizar(){
-            randomizou = true;
 
-            // Remove classe que define altura mínima para rodar os GIFs
-            document.getElementById("bkgCardboxPersonagemImagem").classList.remove("min-height-550");
+        // ******************************
+        // Retorna o personagem aleatório
+        // ******************************
 
-            // Remove informações adicionais
-            btnExibirInfoAdicional.classList.remove("fa-chevron-up");
-            btnExibirInfoAdicional.classList.add("fa-chevron-down");
+        // Remove ultimo personagem retornado da lista
+        if (personagemListTemp.length > 1) personagemListTemp = personagemListTemp.filter((personagem) => personagem.nome !== ultimoPersonagemRetornado);
 
-            document.getElementById("divInfoAdicional").style.display = "none";
+        // Retorna um personagem aleatório
+        let personagemRetornado = retornaObjetoAleatorio(personagemListTemp);
+        ultimoPersonagemRetornado = personagemRetornado.nome;
 
-            $("#divImagemReferencia").find("div").remove();
+        // Adiciona borda branca em volta do card de personagem
+        document.getElementsByClassName("personagem-retornado")[0].classList.add("white-border");
 
-            // Bloqueia o botão de randomizar
-            document.getElementById("btnRandomizar").disabled = true;
-            
-            // Esconde o card
-            document.getElementById("cardboxPersonagemRetornado").style.display = "none";
+        // *******************************************************
+        // Preenche com os dados do personagem aleatório retornado
+        // *******************************************************
 
-            // *****************
-            // Aplica os filtros
-            // *****************
+        await preencheCardboxPersonagem(personagemRetornado);
 
-            let personagemListTemp = personagemList;
+        // Libera o botão para gerar novamente
+        setTimeout(() => {
+            document.getElementById("btnRandomizar").disabled = false;
+        }, 200);
+    }
 
-            // Filtro de obra
-            let filtroObra = document.getElementById("filtroObra").value;
-            if(filtroObra != 0){
-                personagemListTemp = personagemListTemp.filter((personagem) => personagem.obra === filtroObra);
+    async function preencheCardboxPersonagem(personagem) {
+        randomizou = true;
+
+        // Dados básicos
+        document.getElementById("imgPersonagem").src = "img/personagens/" + (personagem.obra).toLowerCase() + "/" + (personagem.nome).toLowerCase() + "/0.png";
+        document.getElementById("personagem").innerText = personagem.nome;
+        document.getElementById("obra").innerText = personagem.obra;
+
+
+        /*  COMENTADO TEMPORARIAMENTE
+        // Variação
+        let variacaoSelecionada = personagem.variacaoList.length > 0 ? retornaObjetoAleatorio(personagem.variacaoList): "- - - - - -";
+        document.getElementById("variacao").innerText = variacaoSelecionada;
+        */
+
+        // Imagens de referência
+        if (personagem.numeroReferencia != null && personagem.numeroReferencia > 0) {
+            let tamanhoCol = 12;
+            if (personagem.numeroReferencia == 2) {
+                tamanhoCol = 6
+            } else if (personagem.numeroReferencia > 2) {
+                tamanhoCol = 4
             }
 
-            // Filtro de gênero
-            let filtroFeminino = document.getElementById("filtroFeminino").checked;
-            let filtroMasculino = document.getElementById("filtroMasculino").checked;
-            if(filtroFeminino && !filtroMasculino){
-                personagemListTemp = personagemListTemp.filter((personagem) => personagem.sexo === "F");
-            }else if(!filtroFeminino && filtroMasculino){
-                personagemListTemp = personagemListTemp.filter((personagem) => personagem.sexo === "M");  
-            }
-
-            // ******************************
-            // Retorna o personagem aleatório
-            // ******************************
-
-            // Remove ultimo personagem retornado da lista
-            if(personagemListTemp.length > 1) personagemListTemp = personagemListTemp.filter((personagem) => personagem.nome !== ultimoPersonagemRetornado);
-            
-            // Retorna um personagem aleatório
-            let personagemRetornado = retornaObjetoAleatorio(personagemListTemp);
-            ultimoPersonagemRetornado = personagemRetornado.nome;
-
-            // Adiciona borda branca em volta do card de personagem
-            document.getElementsByClassName("personagem-retornado")[0].classList.add("white-border");
-
-            // *******************************************************
-            // Preenche com os dados do personagem aleatório retornado
-            // *******************************************************
-
-            await preencheCardboxPersonagem(personagemRetornado);
-            
-            // Libera o botão para gerar novamente
-            setTimeout(() => {
-                document.getElementById("btnRandomizar").disabled = false;
-            }, 200);
-		}
-
-        async function preencheCardboxPersonagem(personagem){
-            randomizou = true;
-
-            // Dados básicos
-            document.getElementById("imgPersonagem").src = "img/personagens/" + (personagem.obra).toLowerCase() + "/" + (personagem.nome).toLowerCase() + "/0.png";
-            document.getElementById("personagem").innerText = personagem.nome;
-            document.getElementById("obra").innerText = personagem.obra;
-
-
-            /*  COMENTADO TEMPORARIAMENTE
-            // Variação
-            let variacaoSelecionada = personagem.variacaoList.length > 0 ? retornaObjetoAleatorio(personagem.variacaoList): "- - - - - -";
-            document.getElementById("variacao").innerText = variacaoSelecionada;
-            */
-            
-            // Imagens de referência
-            if(personagem.numeroReferencia != null && personagem.numeroReferencia > 0){
-                let tamanhoCol = 12;
-                if(personagem.numeroReferencia == 2){
-                    tamanhoCol = 6
-                }else if(personagem.numeroReferencia > 2){
-                    tamanhoCol = 4
-                }
-
-                for(let i = 1; i <= personagem.numeroReferencia; i++){
-                    let imagemReferenciaHTML = "<div class=\"col-sm-" + tamanhoCol + " text-center\"><img class=\"img-referencia img-rounded hover-expand-sm cursor-pointer text-center m-t-10 white-border-hover white-bkg\" src=\"img/personagens/" + (personagem.obra).toLowerCase() + "/" + (personagem.nome).toLowerCase() + "/" + i + ".png\" onError=\"trataPersonagemSemImagem();\" onclick=\"expandirImagem(this);\"/></div>";
-
-                    $("#divImagemReferencia").append(imagemReferenciaHTML);
-                }
-            }else{
-                let imagemReferenciaHTML = "<div class=\"col-md-12 m-t-10\"><i>*Sem referências cadastradas*</i></div>";
+            for (let i = 1; i <= personagem.numeroReferencia; i++) {
+                let imagemReferenciaHTML = "<div class=\"col-sm-" + tamanhoCol + " text-center\"><img class=\"img-referencia img-rounded hover-expand-sm cursor-pointer text-center m-t-10 white-border-hover white-bkg\" src=\"img/personagens/" + (personagem.obra).toLowerCase() + "/" + (personagem.nome).toLowerCase() + "/" + i + ".png\" onError=\"trataPersonagemSemImagem();\" onclick=\"expandirImagem(this);\"/></div>";
 
                 $("#divImagemReferencia").append(imagemReferenciaHTML);
             }
+        } else {
+            let imagemReferenciaHTML = "<div class=\"col-md-12 m-t-10\"><i>*Sem referências cadastradas*</i></div>";
 
-            // Exibe os elementos
-            document.getElementById("imgPersonagem").style.display = "";
-            document.getElementById("personagem").style.display = "";
-            document.getElementById("obra").style.display = "";
-            document.getElementById("cardboxPersonagemImagem").style.display = "";
-            document.getElementById("divExibirInfoAdicional").style.display = "";
-            document.getElementById("iCopiar").style.display = "";
-
-            $("#cardboxPersonagemRetornado").fadeIn("1000");
-
-            // Altera o plano de fundo
-            document.getElementById("bkgCardboxPersonagemImagem").style.backgroundImage = "URL(\"img/obras/" + personagem.obra + "/0.png\")";
-        } 
-
-        function exibeInfoAdicional(exibir){
-            let btnExibirInfoAdicional = document.getElementById("btnExibirInfoAdicional");
-
-            // Exibir
-            if(btnExibirInfoAdicional.classList.contains("fa-chevron-down")){
-                btnExibirInfoAdicional.classList.remove("fa-chevron-down");
-                btnExibirInfoAdicional.classList.add("fa-chevron-up");
-
-                $("#divInfoAdicional").fadeIn("1000");
-            // Não exibir
-            }else{
-                btnExibirInfoAdicional.classList.remove("fa-chevron-up");
-                btnExibirInfoAdicional.classList.add("fa-chevron-down");
-
-                document.getElementById("divInfoAdicional").style.display = "none";
-            }
+            $("#divImagemReferencia").append(imagemReferenciaHTML);
         }
 
-        async function retornaPersonagem(nomePersonagem, obra){
-            let personagemListTemp = personagemList;
+        // Exibe os elementos
+        document.getElementById("imgPersonagem").style.display = "";
+        document.getElementById("personagem").style.display = "";
+        document.getElementById("obra").style.display = "";
+        document.getElementById("cardboxPersonagemImagem").style.display = "";
+        document.getElementById("divExibirInfoAdicional").style.display = "";
+        document.getElementById("iCopiar").style.display = "";
 
-            personagemListTemp = personagemListTemp.filter((personagem) => personagem.nome === nomePersonagem && personagem.obra === obra);
+        $("#cardboxPersonagemRetornado").fadeIn("1000");
 
-            // Adiciona borda branca em volta do card de personagem
-            document.getElementsByClassName("personagem-retornado")[0].classList.add("white-border");
+        // Altera o plano de fundo
+        document.getElementById("bkgCardboxPersonagemImagem").style.backgroundImage = "URL(\"img/obras/" + personagem.obra + "/0.png\")";
+    }
 
-            // Remove informações adicionais
+    function exibeInfoAdicional(exibir) {
+        let btnExibirInfoAdicional = document.getElementById("btnExibirInfoAdicional");
+
+        // Exibir
+        if (btnExibirInfoAdicional.classList.contains("fa-chevron-down")) {
+            btnExibirInfoAdicional.classList.remove("fa-chevron-down");
+            btnExibirInfoAdicional.classList.add("fa-chevron-up");
+
+            $("#divInfoAdicional").fadeIn("1000");
+            // Não exibir
+        } else {
             btnExibirInfoAdicional.classList.remove("fa-chevron-up");
             btnExibirInfoAdicional.classList.add("fa-chevron-down");
 
             document.getElementById("divInfoAdicional").style.display = "none";
-
-            $("#divImagemReferencia").find("div").remove();
-            
-            // Esconde o card
-            document.getElementById("cardboxPersonagemRetornado").style.display = "none";
-
-            // Preenche o cardbox do personagem com os dados
-            await preencheCardboxPersonagem(personagemListTemp[0]);
-
-            // Scrolla até o cardbox
-            document.getElementById("cardboxPersonagemRetornado").scrollIntoView();
-        } 
-
-        function retornaObjetoAleatorio(lista) {
-            return lista[Math.floor((Math.random() * lista.length))];
         }
+    }
 
-        function retornaIndexAleatorio(range){
-            return Math.floor((Math.random() * range));
-        }
+    async function retornaPersonagem(nomePersonagem, obra) {
+        let personagemListTemp = personagemList;
 
-        function trataPersonagemSemImagem(){
-            document.getElementById("imgPersonagem").src = "img/personagens/semFoto.jpg";
-        }
+        personagemListTemp = personagemListTemp.filter((personagem) => personagem.nome === nomePersonagem && personagem.obra === obra);
 
-        function copiaPersonagemAreaTransferencia(elem){
-            let nomePersonagem = document.getElementById("personagem").innerText;
-            let obra = document.getElementById("obra").innerText;
+        // Adiciona borda branca em volta do card de personagem
+        document.getElementsByClassName("personagem-retornado")[0].classList.add("white-border");
 
-            navigator.clipboard.writeText(nomePersonagem + " " + obra);
+        // Remove informações adicionais
+        btnExibirInfoAdicional.classList.remove("fa-chevron-up");
+        btnExibirInfoAdicional.classList.add("fa-chevron-down");
 
-            elem.style.display = "none";
-            $(elem).fadeIn("1000");
-        }
-        
-        var modalExpandirImagem = document.getElementById("modalExpandirImagem");
+        document.getElementById("divInfoAdicional").style.display = "none";
 
-        function expandirImagem(imgElement){
-            document.getElementById("fullImage").setAttribute("src", imgElement.src);
-        
-            modalExpandirImagem.classList.add("open");
-        }
-        
-        modalExpandirImagem.addEventListener("click", (e) => {
-            if(e.target.classList.contains("modal-expand-image")) modalExpandirImagem.classList.remove("open");
-        });
-    </script>
+        $("#divImagemReferencia").find("div").remove();
+
+        // Esconde o card
+        document.getElementById("cardboxPersonagemRetornado").style.display = "none";
+
+        // Preenche o cardbox do personagem com os dados
+        await preencheCardboxPersonagem(personagemListTemp[0]);
+
+        // Scrolla até o cardbox
+        document.getElementById("cardboxPersonagemRetornado").scrollIntoView();
+    }
+
+    function retornaObjetoAleatorio(lista) {
+        return lista[Math.floor((Math.random() * lista.length))];
+    }
+
+    function retornaIndexAleatorio(range) {
+        return Math.floor((Math.random() * range));
+    }
+
+    function trataPersonagemSemImagem() {
+        document.getElementById("imgPersonagem").src = "img/personagens/semFoto.jpg";
+    }
+
+    function copiaPersonagemAreaTransferencia(elem) {
+        let nomePersonagem = document.getElementById("personagem").innerText;
+        let obra = document.getElementById("obra").innerText;
+
+        navigator.clipboard.writeText(nomePersonagem + " " + obra);
+
+        elem.style.display = "none";
+        $(elem).fadeIn("1000");
+    }
+
+    var modalExpandirImagem = document.getElementById("modalExpandirImagem");
+
+    function expandirImagem(imgElement) {
+        document.getElementById("fullImage").setAttribute("src", imgElement.src);
+
+        modalExpandirImagem.classList.add("open");
+    }
+
+    modalExpandirImagem.addEventListener("click", (e) => {
+        if (e.target.classList.contains("modal-expand-image")) modalExpandirImagem.classList.remove("open");
+    });
+</script>
+
 </html>

@@ -3,8 +3,12 @@ const connectDB = require('./src/config/database');
 const apiRoutes = require('./src/routes/api');
 const path = require('path');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+
+//Habilitando CORS
+app.use(cors());
 
 // Conecta ao MongoDB
 connectDB();

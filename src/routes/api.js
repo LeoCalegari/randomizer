@@ -3,6 +3,57 @@ const router = express.Router();
 const Obra = require('../models/models.js');
 const mongoose = require('mongoose');
 
+// Bulk import de todos personagens e obras (cria todos personagens e obras - pra agilizar pro pai, mo preguica)
+router.post('/personagens/bulk-import', async (req, res) => {
+  try {
+    const importData = req.body;
+    const resultados = [];
+
+    for (const obraData of importData) {
+      // Encontra ou cria a obra
+      let obra = await Obra.findOne({ title: obraData.obraTitle });
+
+      if (!obra) {
+        obra = new Obra({ title: obraData.obraTitle });
+      }
+
+      // Filtra personagens para remover duplicatas
+      const existingCharacterNames = new Set(
+        obra.characters.map(c => c.name.toLowerCase())
+      );
+
+      const novosPersonagens = obraData.characters.filter(
+        character => !existingCharacterNames.has(character.name.toLowerCase())
+      );
+
+      // Adiciona novos personagens
+      obra.characters.push(...novosPersonagens);
+
+      // Salva a obra
+      await obra.save();
+
+      resultados.push({
+        obra: obraData.obraTitle,
+        totalPersonagens: obraData.characters.length,
+        personagensAdicionados: novosPersonagens.length,
+        personagensSkipped: obraData.characters.length - novosPersonagens.length
+      });
+    }
+
+    res.status(201).json({
+      message: 'Importação concluída',
+      resultados
+    });
+
+  } catch (error) {
+    console.error('Erro na importação em massa:', error);
+    res.status(500).json({
+      message: 'Erro na importação de personagens',
+      error: error.message
+    });
+  }
+});
+
 // Pega todas obras
 router.get('/obras', async (req, res) => {
   try {
@@ -13,7 +64,7 @@ router.get('/obras', async (req, res) => {
   }
 });
 
-// Pega obra por ID - (Faz a mesma coisa, e melhor doque "Pegar todos os personagens")
+// Pega obra por ID - (Faz a mesma coisa que "Pegar todos os personagens por obra")
 router.get('/obras/:id', async (req, res) => {
   try {
     const obra = await Obra.findById(req.params.id);
@@ -71,21 +122,37 @@ router.delete('/obras/:id', async (req, res) => {
 // Adiciona personagem a obra
 router.post('/obras/:id/personagens', async (req, res) => {
   try {
+    const obraId = req.params.id;
     let charactersData = req.body;
-    // Se não for um array, transforma em array para unificar o tratamento
+
+    // Se não for um array, transforma em array
     if (!Array.isArray(charactersData)) {
       charactersData = [charactersData];
     }
-    
-    const result = await Obra.updateOne(
-      { _id: req.params.id },
-      { $push: { characters: { $each: charactersData } } }
-    );
-    
-    if (!result.matchedCount)
+
+    // Encontra a obra
+    const obra = await Obra.findById(obraId);
+    if (!obra) {
       return res.status(404).json({ message: 'Obra não encontrada' });
-      
-    res.status(201).json({ added: charactersData });
+    }
+
+    // Filtra personagens para remover duplicatas
+    const existingCharacterNames = obra.characters.map(c => c.name);
+    const uniqueCharacters = charactersData.filter(
+      character => !existingCharacterNames.includes(character.name)
+    );
+
+    // Adiciona apenas personagens únicos
+    obra.characters.push(...uniqueCharacters);
+
+    // Salva a obra
+    await obra.save();
+
+    res.status(201).json({
+      added: uniqueCharacters,
+      total: uniqueCharacters.length,
+      skipped: charactersData.length - uniqueCharacters.length
+    });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -109,7 +176,7 @@ router.put('/obras/:obraId/personagens/:personagemId', async (req, res) => {
 router.delete('/obras/:obraId/personagens/:personagemId', async (req, res) => {
   try {
     const obraId = new mongoose.Types.ObjectId(req.params.obraId);
-    const personagemId = new  mongoose.Types.ObjectId(req.params.personagemId);
+    const personagemId = new mongoose.Types.ObjectId(req.params.personagemId);
 
     const obra = await Obra.updateOne(
       { _id: obraId },
