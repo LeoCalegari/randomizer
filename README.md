@@ -10,12 +10,31 @@ O Randomizer App é uma aplicação simples que randomiza entre vários personag
 - Exibição das obras relacionadas aos personagens
 - Interface simples e intuitiva
 
+## Configuração do MongoDB
+
+Este projeto utiliza o MongoDB como banco de dados. Certifique-se de ter o MongoDB instalado e em execução na sua máquina.
+
+1. Se você ainda não tem o MongoDB instalado, siga as instruções de instalação no [site oficial do MongoDB](https://www.mongodb.com/try/download/community).
+
+2. Após a instalação, inicie o servidor do MongoDB:
+
+    ```bash
+    mongod
+    ```
+
+3. Com o servidor do MongoDB em execução, você pode iniciar a aplicação:
+
+    ```bash
+    node app.js
+    ```
+
+
 ## Como Usar
 
 1. Clone o repositório:
 
     ```bash
-    git clone [https://github.com/LeoCalegari/randomizer-app.git](https://github.com/LeoCalegari/randomizer)
+    git clone https://github.com/LeoCalegari/randomizer
     ```
 
 2. Navegue até o diretório do projeto:
@@ -38,21 +57,3 @@ O Randomizer App é uma aplicação simples que randomiza entre vários personag
 ## Licença
 
 Este projeto está licenciado sob a Licença CSC (Cleide Sem Calcinha).
-
-## Configuração do MongoDB
-
-Este projeto utiliza o MongoDB como banco de dados. Certifique-se de ter o MongoDB instalado e em execução na sua máquina.
-
-1. Se você ainda não tem o MongoDB instalado, siga as instruções de instalação no [site oficial do MongoDB](https://www.mongodb.com/try/download/community).
-
-2. Após a instalação, inicie o servidor do MongoDB:
-
-    ```bash
-    mongod
-    ```
-
-3. Com o servidor do MongoDB em execução, você pode iniciar a aplicação:
-
-    ```bash
-    node app.js
-    ```
