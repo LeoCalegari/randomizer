@@ -543,7 +543,7 @@ async function preencheDatabase() {
     // await adicionaPersonagemList(personagemListTemp, "OBRA");
 
     await personagemList.sort(function(a, b) {
-        return a.nome.localeCompare(b.nome);
+        return a.nome.localeCompare(b.nome);;
     });  
 }
 
