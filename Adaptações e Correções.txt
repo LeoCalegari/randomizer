@@ -2,6 +2,8 @@ Correções
 . Nenhuma no momento
 
 Adaptações
+. Permitir buscar por personagem
+. Permitir ciclar entre as imagens como se fosse um carousel
 . Diminuir opacidade do fundo ao expandir imagem
 . Adicionar um local para deixar os links úteis de cada obra, a fim de pegar mais referências e preencher
 . Bloquear scrollar ao expandir a imagem

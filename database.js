@@ -40,6 +40,7 @@ async function preencheDatabase() {
     obraList.push("Cyberpunk 2077");
     obraList.push("Street Fighter");
     obraList.push("Cross Code");
+    obraList.push("Sousou no Frieren")
 
     await obraList.sort(function(a, b) {
         return a.localeCompare(b);
@@ -535,6 +536,13 @@ async function preencheDatabase() {
     personagemListTemp.push("Shizuka, F, [], 2");
 
     await adicionaPersonagemList(personagemListTemp, "Cross Code");
+
+    // Sousou no Frieren
+    personagemListTemp = [];
+    personagemListTemp.push("Frieren, F, [], 3");
+    personagemListTemp.push("Fern, F, [], 4");
+
+    await adicionaPersonagemList(personagemListTemp, "Sousou no Frieren");
     
     // Exemplo
     // personagemListTemp = [];
