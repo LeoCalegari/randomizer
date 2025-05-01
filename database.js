@@ -431,7 +431,7 @@ async function preencheDatabase() {
     personagemListTemp.push("Kai sa, F, [], 12");
     personagemListTemp.push("Karma, F, [], 18");
     personagemListTemp.push("Katarina, F, [], 24");
-    personagemListTemp.push("LeBlanc, F, [], 12");
+    personagemListTemp.push("LeBlanc, F, [], 15");
     personagemListTemp.push("Leona, F, [], 15");
     personagemListTemp.push("Lux, F, [], 15");
     personagemListTemp.push("Miss Fortune, F, [], 33");
@@ -543,7 +543,7 @@ async function preencheDatabase() {
     // await adicionaPersonagemList(personagemListTemp, "OBRA");
 
     await personagemList.sort(function(a, b) {
-        return a.nome.localeCompare(b.nome);;
+        return a.nome.localeCompare(b.nome);
     });  
 }
 
