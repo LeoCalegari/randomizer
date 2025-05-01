@@ -378,6 +378,12 @@
                 </div>
             </div>
             <div class="card-box card-box-black" id="cardboxPersonagemImagem" style="display: none;">
+                <div class="row">
+                    <div class="col-md-12 m-b-15">
+                        <label for="filtroNomePersonagem">Personagem</label>
+                        <input type="text" name="filtroNomePersonagem" id="filtroNomePersonagem" class="form-control" autocomplete="off">
+                    </div>
+                </div>
                 <div class="row min-height-550" id="bkgCardboxPersonagemImagem">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 text-center personagem-retornado m-t-45 m-b-45" id="cardboxPersonagemRetornado" style="display: none !important;">
@@ -557,6 +563,7 @@
             let quantidadeAdicionada = 0;
             let colunaAtual = 1;
 
+            let autocompletePersonagemList = [];
 			await personagemList.forEach(function(personagem){
 				let personagemHtml = "";
                 
@@ -573,6 +580,16 @@
                     colunaAtual++;
                     quantidadeAdicionada = 0;
                 };
+
+                // Adiciona o nome do personagem à lista de autocomplete que é usada na busca manual por personagem
+                let autocompleteData = new Object();
+                autocompleteData.obra = personagem.obra;
+
+                let autocompletePersonagem = new Object();
+                autocompletePersonagem.value = personagem.nome;
+                autocompletePersonagem.data = autocompleteData;
+
+                autocompletePersonagemList.push(autocompletePersonagem);
 			});
 
             // Terminou de carregar
@@ -586,6 +603,18 @@
 
             // Desbloqueia o botão de randomizar
             document.getElementById("btnRandomizar").disabled = false;
+
+            // Define o input autocomplete de busca manual de personagem
+            $('#filtroNomePersonagem').devbridgeAutocomplete({
+                lookup: autocompletePersonagemList,
+                minChars: 1,
+                onSelect: function (suggestion) {
+                    retornaPersonagem(suggestion.value, suggestion.data.obra);
+                },
+                showNoSuggestionNotice: true,
+                noSuggestionNotice: 'Não foi encontrado nenhum personagem...',
+                groupBy: 'obra'
+            });
         }
         
         async function ciclaGifs(ms) {
