@@ -291,6 +291,47 @@
 				font-family: "PixelMix";
             }
 
+            #filtroNomePersonagem {
+                background-color: #404040 !important;
+                color: #fff;
+				font-family: "PixelMix";
+            }
+
+            .autocomplete-suggestions {
+                background-color: #404040;
+                border: 1px solid #505050;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .autocomplete-group{
+                color: #fff !important;
+            }
+
+            .autocomplete-suggestions .autocomplete-suggestion{
+                color: #fff;
+                padding: 8px 10px;
+                cursor: pointer;
+            }
+
+            .autocomplete-suggestions .autocomplete-suggestion.autocomplete-selected {
+                background-color: #555555;
+                color: #fff; 
+                font-weight: bold;
+            }
+
+            .autocomplete-suggestions .autocomplete-suggestion strong {
+                color: #fff;
+                font-weight: bold;
+            }
+
+            .autocomplete-suggestions .autocomplete-group {
+                color: #fff !important;
+                background-color: #7266ba;
+                padding: 5px 10px;
+                font-weight: bold;
+                border-bottom: 1px solid #505050;
+                margin-top: 5px;
+            }
+
             /* Fonte */
             @font-face {
                 font-family: "PixelMix";
@@ -380,7 +421,6 @@
             <div class="card-box card-box-black" id="cardboxPersonagemImagem" style="display: none;">
                 <div class="row">
                     <div class="col-md-12 m-b-15">
-                        <label for="filtroNomePersonagem">Personagem</label>
                         <input type="text" name="filtroNomePersonagem" id="filtroNomePersonagem" class="form-control" autocomplete="off">
                     </div>
                 </div>
@@ -615,6 +655,9 @@
                 noSuggestionNotice: 'Não foi encontrado nenhum personagem...',
                 groupBy: 'obra'
             });
+
+            // Seleciona automaticamente o input de autocomplete
+            document.getElementById('filtroNomePersonagem').focus();
         }
         
         async function ciclaGifs(ms) {
