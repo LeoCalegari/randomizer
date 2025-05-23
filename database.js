@@ -359,6 +359,8 @@ async function preencheDatabase() {
     personagemListTemp.push("Pixie-Bob, F, [], 4");
     personagemListTemp.push("Nana Shimura, F, [], 1");
     personagemListTemp.push("Himiko Toga, F, [], 4");
+    personagemListTemp.push("Itsuka Kendo, F, [], 5");
+    personagemListTemp.push("Setsuna Tokage, F, [], 4");
 
     personagemListTemp.push("Izuku Midoriya, M, [], 9");
     personagemListTemp.push("Katsuki Bakugo, M, [], 5");
@@ -367,6 +369,7 @@ async function preencheDatabase() {
     personagemListTemp.push("Hawks, M, [], 4");
     personagemListTemp.push("Dabi, M, [], 5");
     personagemListTemp.push("Overhaul, M, [], 1");
+    personagemListTemp.push("Hitoshi Shinso, M, [], 3");
 
     await adicionaPersonagemList(personagemListTemp, "Boku no Hero Academia");
     
