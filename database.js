@@ -349,7 +349,7 @@ async function preencheDatabase() {
     personagemListTemp.push("Kyoka Jiro, F, [], 3");
     personagemListTemp.push("Momo Yaoyorozu, F, [], 6");
     personagemListTemp.push("Yui Kodai, F, [], 3");
-    personagemListTemp.push("Mei Hatsume, F, [], 0");
+    personagemListTemp.push("Mei Hatsume, F, [], 3");
     personagemListTemp.push("Nejire Hado, F, [], 6");
     personagemListTemp.push("Camie Utsushimi, F, [], 3");
     personagemListTemp.push("Saiko Intelli, F, [], 2");

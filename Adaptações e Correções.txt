@@ -11,6 +11,4 @@ Adaptações
 . Permitir dar zoom na referencia ao expandir imagem
 
 Personagens para adicionar
-. Ragdol
 . Mina de cabelode fogo ver lá
-. Imagens da hatsume
