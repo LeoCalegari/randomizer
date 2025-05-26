@@ -11,7 +11,6 @@ Adaptações
 . Permitir dar zoom na referencia ao expandir imagem
 
 Personagens para adicionar
-. Lady Nagant
 . Hagakure
 . Ragdol
 . Mina de cabelode fogo ver lá
