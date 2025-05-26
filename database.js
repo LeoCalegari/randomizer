@@ -361,6 +361,7 @@ async function preencheDatabase() {
     personagemListTemp.push("Himiko Toga, F, [], 4");
     personagemListTemp.push("Itsuka Kendo, F, [], 5");
     personagemListTemp.push("Setsuna Tokage, F, [], 4");
+    personagemListTemp.push("Kaina Tsutsumi, F, [], 5");
 
     personagemListTemp.push("Izuku Midoriya, M, [], 9");
     personagemListTemp.push("Katsuki Bakugo, M, [], 5");
