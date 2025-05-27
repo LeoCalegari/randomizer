@@ -2,13 +2,7 @@ Correções
 . Nenhuma no momento
 
 Adaptações
-. Adaptar imagens referência para manter um tamanho fixo, usar o que fiz no carousel do escalador, nas prévias do ladinho
-. Adaptar para novo modelo de zoom
-. Permitir ciclar entre as imagens como se fosse um carousel
-. Diminuir opacidade do fundo ao expandir imagem
 . Adicionar um local para deixar os links úteis de cada obra, a fim de pegar mais referências e preencher
-. Bloquear scrollar ao expandir a imagem
-. Permitir dar zoom na referencia ao expandir imagem
 
 Personagens para adicionar
 .

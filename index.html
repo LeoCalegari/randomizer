@@ -93,6 +93,54 @@
                 display: block;
             }
 
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            #expandedImage {
+                max-width: 90%;
+                min-height: 90vh;
+                object-fit: contain;
+                border-radius: 8px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+                transform: scale(0.8);
+                transition: transform 0.3s ease;
+                background-color: white !important;
+            }
+
+            .overlay.active #expandedImage {
+                transform: scale(1);
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                color: #fff;
+                font-size: 40px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 1001;
+                transition: color 0.2s ease;
+            }
+
             .modal-expand-image {
                 background-color: rgba(0, 0, 0, 0.8) !important;
                 position: fixed !important;
@@ -376,8 +424,9 @@
 
     <body>
         <!--Modal - Expandir imagem -->
-        <div id="modalExpandirImagem" class="modal-expand-image">
-            <img id="fullImage" src="" class="full-image"/>
+        <div id="imageOverlay" class="overlay">
+            <span class="close-btn hover-expand-md hover-purple" onclick="fecharImagem()">&times;</span>
+            <img id="expandedImage" src="">
         </div>
         
         <div class="container-roleta text-white">
@@ -857,16 +906,26 @@
             $(elem).fadeIn("1000");
         }
         
-        var modalExpandirImagem = document.getElementById("modalExpandirImagem");
+        async function expandirImagem(imgElement) {
+            let src = imgElement.src;
 
-        function expandirImagem(imgElement){
-            document.getElementById("fullImage").setAttribute("src", imgElement.src);
-        
-            modalExpandirImagem.classList.add("open");
+            document.getElementById('expandedImage').src = imgElement.src;
+            document.getElementById('imageOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-        
-        modalExpandirImagem.addEventListener("click", (e) => {
-            if(e.target.classList.contains("modal-expand-image")) modalExpandirImagem.classList.remove("open");
+
+        function fecharImagem() {
+            document.getElementById('imageOverlay').classList.remove('active'); // Remove a classe 'active' do overlay
+            document.body.style.overflow = ''; // Restaura o scroll da página
+            expandedImage.src = ''; // Limpa a src para economizar memória (opcional)
+        }
+
+        document.getElementById('imageOverlay').addEventListener('click', (event) => {
+            // Se o clique foi exatamente no overlay (não na imagem dentro dele)
+            if (event.target === imageOverlay) {
+                fecharImagem();
+            }
         });
+
     </script>
 </html>
