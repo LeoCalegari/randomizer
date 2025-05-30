@@ -2,6 +2,7 @@ Correções
 . A imagem principal da Leaf expande de um jeito estranho
 
 Adaptações
+. Trocar a fonte
 . Adicionar um local para deixar os links úteis de cada obra, a fim de pegar mais referências e preencher
 
 Personagens para adicionar
