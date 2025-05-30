@@ -84,8 +84,8 @@ body {
 }
 
 #expandedImage {
-    max-width: 90%;
-    min-height: 90vh;
+    height: 90% !important;
+    max-width: 90% !important;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);

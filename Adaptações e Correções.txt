@@ -1,5 +1,5 @@
 Correções
-. A imagem principal da Leaf expande de um jeito estranho
+. 
 
 Adaptações
 . Trocar a fonte
