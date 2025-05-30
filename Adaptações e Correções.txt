@@ -1,5 +1,5 @@
 Correções
-. Nenhuma no momento
+. A imagem principal da Leaf expande de um jeito estranho
 
 Adaptações
 . Adicionar um local para deixar os links úteis de cada obra, a fim de pegar mais referências e preencher
