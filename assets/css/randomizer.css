@@ -1,7 +1,4 @@
-/* ********* */
 /* Elementos */
-/* ********* */
-
 html {
     background-image: url("assets/images/background.png");
     background-color: black !important;
@@ -27,17 +24,21 @@ body {
     border: 1px solid white !important;
 }
 
-#cardboxPersonagemImagem {
-    min-height: 500px !important;
+#bkgCardboxPersonagemImagem {
+    border-radius: 5px !important;
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    /* -webkit-transition: background 300ms ease-in-out 400ms;
+    -moz-transition: background 300ms ease-in-out 400ms;
+    -o-transition: background 300ms ease-in-out 400ms;
+    transition: background 300ms ease-in-out 400ms; */
+    transition: background 0.3s linear;
 }
 
-/* ******* */
 /* Classes */
-/* ******* */
-
 .container-roleta {
     padding: 20px !important;
     height: 100% !important;
@@ -55,7 +56,58 @@ body {
 }
 
 .img-referencia {
-    height: 120px !important;
+    height: 275px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#expandedImage {
+    max-width: 90%;
+    min-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    background-color: white !important;
+}
+
+.overlay.active #expandedImage {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.2s ease;
 }
 
 .modal-expand-image {
@@ -84,6 +136,8 @@ body {
     top: 50% !important;
     left:  50% !important;
     transform: translate(-50%, -50%);
+
+    background-color: white;
 }
 
 .personagem-retornado {
@@ -99,6 +153,14 @@ body {
 
 .m-t-30 {
     margin-top: 30px !important;
+}
+
+.m-t-45 {
+    margin-top: 45px !important;
+}
+
+.m-b-45 {
+    margin-bottom: 45px !important;
 }
 
 .text-bold {
@@ -117,12 +179,24 @@ body {
     font-size: 30px !important;
 }
 
+.min-height-550 {
+    min-height: 600px !important;
+}
+
 .card-box-black{
     background-color: black !important;
 }
 
 .white-border {
     border: 1px solid white !important;
+}
+
+.white-border-hover:hover {
+    border: 1px solid white !important;
+}
+
+.white-bkg {
+    background-color: white;
 }
 
 .hover-purple:hover {
@@ -142,6 +216,7 @@ body {
 }
 
 .hover-expand-sm:hover {
+    border: 1px solid white !important;
     animation: expand-sm 0.5s !important;
     animation-iteration-count: 1  !important;
     animation-fill-mode: forwards !important;
@@ -157,10 +232,6 @@ body {
     animation: minimize-sm 0.3s !important;
     animation-iteration-count: 1  !important;
     animation-fill-mode: forwards !important;
-}
-
-.shake-sm:hover {
-    animation: shake 0.35s infinite;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__placeholder {
@@ -226,7 +297,7 @@ body {
     background-color: #404040 !important;
     color: white !important;
     font-family: "PixelMix";
- }
+    }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background-color: #7266ba !important;
@@ -240,10 +311,48 @@ body {
     font-family: "PixelMix";
 }
 
-/* ********* */
-/* Animações */
-/* ********* */
+#filtroNomePersonagem {
+    background-color: #404040 !important;
+    color: #fff;
+    font-family: "PixelMix";
+}
 
+.autocomplete-suggestions {
+    background-color: #404040;
+    border: 1px solid #505050;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.autocomplete-group{
+    color: #fff !important;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion{
+    color: #fff;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion.autocomplete-selected {
+    background-color: #555555;
+    color: #fff; 
+    font-weight: bold;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion strong {
+    color: #fff;
+    font-weight: bold;
+}
+
+.autocomplete-suggestions .autocomplete-group {
+    color: #fff !important;
+    background-color: #7266ba;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #505050;
+    margin-top: 5px;
+}
+
+/* Animações */
 @keyframes expand-sm {
     0% {
         transform: scale(1);
