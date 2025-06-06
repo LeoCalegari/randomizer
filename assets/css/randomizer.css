@@ -147,6 +147,12 @@ body {
     box-shadow: 0 0 8px 8px rgb(0 0 0 / 0.5);
 }
 
+.ul-title {
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    margin-bottom: 100px !important;
+}
+
 .m-t-15 {
     margin-top: 15px !important;
 }
@@ -200,7 +206,11 @@ body {
 }
 
 .hover-purple:hover {
-    color: #7266ba !important
+    color: #7266ba !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .pull-right {
@@ -213,6 +223,19 @@ body {
 
 .cursor-pointer {
     cursor: pointer !important;
+}
+
+.hover-expand-title:hover {
+    animation: expand-sm 0.15s !important;
+    animation-iteration-count: 1  !important;
+    animation-fill-mode: forwards !important;
+}
+
+.hover-expand-li:hover{
+    font-weight: 900 !important;
+    animation: expand-sm 0.15s !important;
+    animation-iteration-count: 1  !important;
+    animation-fill-mode: forwards !important;
 }
 
 .hover-expand-sm:hover {
@@ -358,7 +381,7 @@ body {
         transform: scale(1);
     } 
     100%{
-        transform: scale(1.045);
+        transform: scale(1.01);
     }
 }
 

@@ -61,29 +61,11 @@ async function inicia() {
     });
     
     // Mostra lista de personagens
-    let quantidadePorColuna = Math.round(personagemList.length / 4);
-    let quantidadeAdicionada = 0;
-    let colunaAtual = 1;
-
+    await preencheListaPersonagemHTML();
+    
+    // Preenche o autocomplete
     let autocompletePersonagemList = [];
     await personagemList.forEach(function(personagem){
-        let personagemHtml = "";
-        
-        personagemHtml =  "<div class=\"col-md-12 cursor-pointer hover-purple hover-expand-sm\" data1=\"" + personagem.nome +"\" data2=\"" + personagem.obra + "\" onclick=\"retornaPersonagem(this.getAttribute('data1'), this.getAttribute('data2'))\">"
-                            + "<span>" + personagem.nome + "</span>"
-                        + "</div>";
-        
-        
-        $("#listaPersonagemColuna" + colunaAtual + "Label").append(personagemHtml);
-
-        quantidadeAdicionada++;
-
-        if(quantidadeAdicionada >= quantidadePorColuna){
-            colunaAtual++;
-            quantidadeAdicionada = 0;
-        };
-
-        // Adiciona o nome do personagem à lista de autocomplete que é usada na busca manual por personagem
         let autocompleteData = new Object();
         autocompleteData.obra = personagem.obra;
 
@@ -250,6 +232,46 @@ async function preencheCardboxPersonagem(personagem){
     document.getElementById("bkgCardboxPersonagemImagem").style.backgroundImage = "URL(\"img/obras/" + personagem.obra + "/0.png\")";
 } 
 
+async function preencheListaPersonagemHTML() {
+    let totalRegistros = obraList.length + personagemList.length;
+    let registrosPorColuna = Math.round(totalRegistros / 3);
+    let registrosAdicionados = 0;
+    let colunaAtual = 1;
+
+    for(let index = 0; index < obraList.length; index++){
+        let obra = obraList[index];
+
+        if(registrosAdicionados > 0 && registrosAdicionados / registrosPorColuna >= 1){
+            colunaAtual++;
+            registrosAdicionados = 0;
+        }
+
+        let ULObraId = await tratarString(obra);
+        let ULObraHTML = 
+                `
+                    <span class="ul-title">${obra}</span>
+                    <ul class="ul-character" id="ul${ULObraId}"></ul>
+                `;
+
+        $("#listaPersonagemColuna" + colunaAtual + "Label").append(ULObraHTML);
+
+        let personagemListTemp = personagemList.filter((personagem) => personagem.obra === obra);
+        for(let index2 = 0; index2 < personagemListTemp.length; index2++){
+            console.log(index2);
+            let personagem = personagemListTemp[index2];
+
+            let LIPersonagemHTML = 
+                `
+                    <li class="li-character cursor-pointer hover-purple hover-expand-li" onclick="retornaPersonagem('${personagem.nome}', '${obra}')">${personagem.nome}</li>
+                `;
+        
+            $("#ul" + ULObraId).append(LIPersonagemHTML);
+
+            registrosAdicionados++;
+        }
+    }
+}
+
 function exibeInfoAdicional(exibir){
     let btnExibirInfoAdicional = document.getElementById("btnExibirInfoAdicional");
 
@@ -336,3 +358,12 @@ document.getElementById('imageOverlay').addEventListener('click', (event) => {
         fecharImagem();
     }
 });
+
+async function tratarString(string) {
+    string = string.replaceAll(" ", "");
+    string = string.replaceAll("'", "");
+    string = string.replaceAll(",", "");
+    string = string.replaceAll(".", "");
+
+    return string;
+}

@@ -37,6 +37,19 @@
                 font-family: "PixelMix";
                 src: url("assets/fonts/Retro Gaming.ttf");
             }
+
+            .ul-character {
+                list-style-type: "> ";
+                padding-left: 25px;
+            }
+            
+            li {
+                margin-bottom: 3px;
+            }
+
+            li:hover{
+                list-style-type: "- " !important;
+            }
         </style>
     </head>
 
@@ -150,15 +163,15 @@
             </div>
             <div class="card-box card-box-black" id="cardboxListaPersonagem" style="display: none;">
                 <div class="row">
-                    <div class="col-md-12">
-                        <span class="font-15 text-bold">Lista de personagens</span>
+                    <div class="col-md-12 font-30 m-b-15">
+                        <i class="fa fa-list m-r-5"></i>
+                        <span>Lista de personagens</span>
                     </div>
                 </div>
                 <div class="row m-t-15">
-                    <div class="col-md-3" id="listaPersonagemColuna1Label"></div>
-                    <div class="col-md-3" id="listaPersonagemColuna2Label"></div>
-                    <div class="col-md-3" id="listaPersonagemColuna3Label"></div>
-                    <div class="col-md-3" id="listaPersonagemColuna4Label"></div>
+                    <div class="col-md-4" id="listaPersonagemColuna1Label"></div>
+                    <div class="col-md-4" id="listaPersonagemColuna2Label"></div>
+                    <div class="col-md-4" id="listaPersonagemColuna3Label"></div>
                 </div>
             </div>
         </div>

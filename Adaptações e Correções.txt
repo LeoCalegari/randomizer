@@ -1,5 +1,6 @@
 Correções
-. 
+. Ao clicar na lista de personagem, dependendo do personagem não abre (Ex. Minthara)
+. Tem obra duplicada na lista de personagem
 
 Adaptações
 . Trocar a fonte
