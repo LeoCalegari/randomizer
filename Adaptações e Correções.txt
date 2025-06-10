@@ -3,6 +3,11 @@ Correções
 . Tem obra duplicada na lista de personagem
 
 Adaptações
+. Vincular cores principais e de fundo em uma variável CSS, para facilitar a troca
+. Melhorar filtro, fazendo só abrir as configurações se o usuáraio clicar
+. Trocar combo de masculino e femnino
+. Colocar um "brilho" ao  dar hover em um botão
+. Melhorar expansão ao  dar hover
 . Trocar a fonte
 . Adicionar um local para deixar os links úteis de cada obra, a fim de pegar mais referências e preencher
 
