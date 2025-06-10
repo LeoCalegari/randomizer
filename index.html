@@ -64,34 +64,31 @@
         <div class="container-roleta text-white">
             <div class="card-box card-box-black">
                 <div class="row">
-                    <div class="col-md-12 font-30">
+                    <div class="col-md-12 title" onclick="toggleFiltros();">
                         <i class="fa fa-filter"></i>
                         <span>Filtros</span>
                     </div>
                 </div>
-                <div class="row m-t-5">
-                    <div class="col-md-12 ">
-                        <label for="filtroObra">Obra</label>
-                        <select id="filtroObra" name="filtroObra" class="form-control select2 text-white">
-                            <option value="0">Todas</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row m-t-10">
-                    <div class="form-row col-md-2">
-                        <div class="text-white">
-                            <label for="filtroFeminino">Feminino</label><br>
-                            <input id="filtroFeminino" name="filtroFeminino" type="checkbox" data-plugin="switchery" data-secondary-color="#404040" data-color="#7266ba" checked>
+                <div class="display-none m-t-15" id="filtros">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="filtroObra">Obra</label>
+                            <select id="filtroObra" name="filtroObra" class="form-control select2 text-white">
+                                <option value="0">Todas</option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="form-row col-md-2">
-                        <div class="text-white">
-                            <label for="filtroMasculino">Masculino</label><br>
-                            <input id="filtroMasculino" name="filtroMasculino" type="checkbox" data-plugin="switchery" data-secondary-color="#404040" data-color="#7266ba">
+                         <div class="col-md-2 form-group">
+                            <div class="text-white">
+                                <label for="filtroFeminino">Feminino</label><br>
+                                <input id="filtroFeminino" name="filtroFeminino" type="checkbox" data-plugin="switchery" data-secondary-color="#404040" data-color="#7266ba" checked>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row col-md-8 pull-right m-t-10">
-                        <button class="btn btn-lg w-lg btn-purple waves-effect waves-light hover-expand-sm" id="btnRandomizar" onclick="randomizar();" disabled>Randomizar <i id="iBtnRandomizar" class="fa fa-refresh m-l-5"></i></button>
+                        <div class="col-md-2 form-group">
+                            <div class="text-white">
+                                <label for="filtroMasculino">Masculino</label><br>
+                                <input id="filtroMasculino" name="filtroMasculino" type="checkbox" data-plugin="switchery" data-secondary-color="#404040" data-color="#7266ba">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,8 +101,11 @@
             </div>
             <div class="card-box card-box-black" id="cardboxPersonagemImagem" style="display: none;">
                 <div class="row">
-                    <div class="col-md-12 m-b-15">
-                        <input type="text" name="filtroNomePersonagem" id="filtroNomePersonagem" class="form-control" autocomplete="off">
+                    <div class="col-md-9 m-b-15">
+                        <input type="text" name="filtroNomePersonagem" id="filtroNomePersonagem" class="form-control" autocomplete="off" placeholder="Pesquisar pelo personagem...">
+                    </div>
+                    <div class="col-md-3 m-b-15">
+                        <button class="btn btn-md w-md btn-block btn-purple waves-effect waves-light hover-expand-sm" id="btnRandomizar" onclick="randomizar();" disabled>Randomizar <i id="iBtnRandomizar" class="fa fa-refresh m-l-5"></i></button>
                     </div>
                 </div>
                 <div class="row min-height-550" id="bkgCardboxPersonagemImagem">
@@ -163,7 +163,7 @@
             </div>
             <div class="card-box card-box-black" id="cardboxListaPersonagem" style="display: none;">
                 <div class="row">
-                    <div class="col-md-12 font-30 m-b-15">
+                    <div class="col-md-12 title">
                         <i class="fa fa-list m-r-5"></i>
                         <span>Lista de personagens</span>
                     </div>

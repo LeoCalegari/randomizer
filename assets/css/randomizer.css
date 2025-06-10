@@ -31,14 +31,24 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
-    /* -webkit-transition: background 300ms ease-in-out 400ms;
-    -moz-transition: background 300ms ease-in-out 400ms;
-    -o-transition: background 300ms ease-in-out 400ms;
-    transition: background 300ms ease-in-out 400ms; */
     transition: background 0.3s linear;
 }
 
 /* Classes */
+.title {
+    font-size: 30px !important;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none !important;  
+    cursor: pointer !important;       
+}
+
+.title:hover {
+    color: #7266ba !important;
+}
+
 .container-roleta {
     padding: 20px !important;
     height: 100% !important;
@@ -151,6 +161,10 @@ body {
     font-size: 20px !important;
     font-weight: 900 !important;
     margin-bottom: 100px !important;
+}
+
+.display-none {
+    display: none !important;
 }
 
 .m-t-15 {

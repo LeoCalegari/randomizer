@@ -80,7 +80,7 @@ async function inicia() {
     document.getElementById("loadingGif").src = "";
     document.getElementById("cardboxCarregandoDados").style.display = "none";
 
-    ciclaGifs(0);
+    // ciclaGifs(0);
 
     $("#cardboxPersonagemImagem").fadeIn("1000");
     $("#cardboxListaPersonagem").fadeIn("1000");
@@ -257,7 +257,6 @@ async function preencheListaPersonagemHTML() {
 
         let personagemListTemp = personagemList.filter((personagem) => personagem.obra === obra);
         for(let index2 = 0; index2 < personagemListTemp.length; index2++){
-            console.log(index2);
             let personagem = personagemListTemp[index2];
 
             let LIPersonagemHTML = 
@@ -269,6 +268,18 @@ async function preencheListaPersonagemHTML() {
 
             registrosAdicionados++;
         }
+    }
+}
+
+function toggleFiltros(){
+    const filtros = document.getElementById("filtros");
+
+    if(filtros.classList.contains("display-none")){
+        $("#filtros").fadeIn("100");
+
+        filtros.classList.remove("display-none");
+    }else{
+        filtros.classList.add("display-none");
     }
 }
 
