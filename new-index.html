@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Randomizer</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* -- * Variables * -- */
+        :root {
+            --primary-color: black;
+            --secondary-color: grey;
+
+            --primary-bg: white;
+            --secondary-bg: grey;
+        }
+
+        /*  -- * Class * -- */
+
+        /* Display */
+        .display-none {
+            display: none !important;
+        }
+
+        /* Margin */
+        .mt-15 {
+            margin-top: 15px !important;
+        }
+
+        .mt-20 {
+            margin-top: 20px !important;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            background: var(--primary-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-dice"></i>Randomizer</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row mt-20">
+            <!-- Filters -->
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-12 d-grid">
+                        <button class="btn btn-md btn-primary">Randomize</button>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-15 toggle-filters">
+                    <span>Filters</span>
+                </div>
+                <div id="filters" class="display-none">
+                    <div class="col-md-12 form-group">
+                        <label for="filterSeries">Series</label>
+                        <select id="filterSeries" name="filterSeries" class="form-control">
+                            <option value="0">All</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input id="filterMasculine" name="filterMasculine" class="form-check-input" type="checkbox">
+                            <label class="form-check-label" for="filterMasculine">
+                                M
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input id="filterFeminine" name="filterFeminine" class="form-check-input" type="checkbox">
+                            <label class="form-check-label" for="filterFeminine">
+                                F
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Characters -->
+            <div class="col-md-6" style="background-color: green;">
+                CHARACTER
+            </div>
+
+            <!-- Character list -->
+            <div class="col-md-3" style="background-color: blue;">
+                CHARACTER LIST
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // --- * Query selector * ---
+
+        // Toggle filter
+        document.querySelector(".toggle-filters").addEventListener("click", function(){
+            const filters = document.getElementById("filters");
+
+            if(filters.classList.contains("display-none")){
+                filters.classList.remove("display-none");
+            }else{
+                filters.classList.add("display-none");
+            }
+        });
+    </script>
+</body>
+</html>
