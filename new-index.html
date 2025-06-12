@@ -50,6 +50,21 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        /* Character images */
+        .character-background-image {
+            background: url("img/obras/boku no hero academia/0.png") !important;
+            padding-top: 100px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .character-profile-image {
+            background: url("img/personagens/boku\ no\ hero\ academia/ragdoll/0.png");
+            width: 250px !important;
+            height: 250px !important;
+        }
     </style>
 </head>
 
@@ -66,12 +81,10 @@
         <div class="row mt-20">
             <!-- Filters -->
             <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12 d-grid">
-                        <button class="btn btn-md btn-primary">Randomize</button>
-                    </div>
+                <div class="col-md-12 d-grid">
+                    <button class="btn btn-md btn-primary">Randomize</button>
                 </div>
-
+                
                 <div class="col-md-12 mt-15 toggle-filters">
                     <span>Filters</span>
                 </div>
@@ -102,8 +115,32 @@
             </div>
 
             <!-- Characters -->
-            <div class="col-md-6" style="background-color: green;">
-                CHARACTER
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <input class="form-control"/>
+                </div>
+                <div class="col-md-12 character-background-image">
+                    <div class="character-profile-image"></div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <span>Personagem</span><br>
+                    <span>Obra</span><br>
+                </div>
+                <div class="col-md-12 text-center">
+                    <span>References</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="img/personagens/boku no hero academia/ragdoll/0.png">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="img/personagens/boku no hero academia/ragdoll/1.png">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="img/personagens/boku no hero academia/ragdoll/2.png">
+                    </div>
+                </div>
             </div>
 
             <!-- Character list -->
