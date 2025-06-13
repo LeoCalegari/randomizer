@@ -16,17 +16,42 @@
             --secondary-color: grey;
 
             --primary-bg: white;
-            --secondary-bg: grey;
+            --secondary-bg: rgb(228, 228, 228);
+
+            --border: 1px solid var(var(--primary-color));
+
+            --background-image-height: 200px;
+            --profile-image-size: 170px;
+            --profile-image-half-size: calc(var(--profile-image-size) / 2);
+        }
+
+        /* -- * Elements * -- */
+        body {
+            background-color: var(--primary-bg);
+        }
+
+        li {
+            margin-bottom: 3px;
+            list-style-type: "";
         }
 
         /*  -- * Class * -- */
 
-        /* Display */
+        /* General */
         .display-none {
             display: none !important;
         }
+        
+        .secondary-bg {
+            background-color: var(--secondary-bg) !important;
+        }
 
-        /* Margin */
+        .btn-primary-color {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            font-weight: 900 !important;
+        }
+
         .mt-15 {
             margin-top: 15px !important;
         }
@@ -35,9 +60,13 @@
             margin-top: 20px !important;
         }
 
+        .hover-primary-color:hover {
+            color: var(--primary-color) !important;
+        }
+
         /* Navbar */
         .navbar {
-            background: rgba(26, 26, 46, 0.95) !important;
+            background: var(--primary-bg) !important;
             backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--primary-color);
         }
@@ -51,26 +80,79 @@
             background-clip: text;
         }
 
+        /* Section */
+        .section {
+            padding-top: 20px !important;
+            cursor: default !important;
+        }
+
+        .section.middle-section {
+            padding-top: initial !important;
+        }
+
+        .middle-section {
+            position: relative;
+        }
+
         /* Character images */
         .character-background-image {
-            background: url("img/obras/boku no hero academia/0.png") !important;
-            padding-top: 100px !important;
-            display: flex;
+            background: rgb(83, 0, 0) !important;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            /* Allows the profile image to be positioned inside */
+            position: relative;
+            height: var(--background-image-height);
+
+            /* This negative margin pull up the content bellow, creating space */
+            /* margin-bottom: calc(-1 * var(--profile-image-half-size)); */
+            
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            
+            /* Removes the flex properties since the profile image is positioned as absolute */
+            /* Makes sure that it behaves as a normal block */
+            display: block;
+
+            opacity: 30% !important;
+        }
+
+        .character-profile-image {
+            background: rgb(0, 83, 66) !important;
+
+            /* Makes it absolute in relation to it's parent (.character-background-image) */
+            position: absolute;
+            bottom: calc(-1 * var(--profile-image-half-size));
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            width: var(--profile-image-size);
+            height: var(--profile-image-size);
+            overflow: hidden;
+            
+
+            /* Flexbox here to centralize the image inside IMG of this DIV */
+            display: flex; 
             justify-content: center;
             align-items: center;
         }
 
-        .character-profile-image {
-            background: url("img/personagens/boku\ no\ hero\ academia/ragdoll/0.png");
-            width: 250px !important;
-            height: 250px !important;
+        .character-profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .character-name {
+            margin-top: calc(var(--profile-image-half-size) + 15px); 
         }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-dice"></i>Randomizer</a>
         </div>
@@ -78,33 +160,31 @@
 
     <!-- Content -->
     <div class="container">
-        <div class="row mt-20">
+        <div class="row secondary-bg">
             <!-- Filters -->
-            <div class="col-md-3">
+            <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
-                    <button class="btn btn-md btn-primary">Randomize</button>
+                    <button class="btn btn-md btn-primary-color">Randomize</button>
                 </div>
                 
-                <div class="col-md-12 mt-15 toggle-filters">
-                    <span>Filters</span>
+                <div class="col-md-12 mt-15 toggle-filters hover-primary-color">
+                    <span><strong>Filters</strong></span>
                 </div>
-                <div id="filters" class="display-none">
+                <div id="filters" class="display-none mt-15">
                     <div class="col-md-12 form-group">
                         <label for="filterSeries">Series</label>
                         <select id="filterSeries" name="filterSeries" class="form-control">
                             <option value="0">All</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12 form-group">
                         <div class="form-check">
                             <input id="filterMasculine" name="filterMasculine" class="form-check-input" type="checkbox">
                             <label class="form-check-label" for="filterMasculine">
                                 M
                             </label>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-check">
+                         <div class="form-check">
                             <input id="filterFeminine" name="filterFeminine" class="form-check-input" type="checkbox">
                             <label class="form-check-label" for="filterFeminine">
                                 F
@@ -115,14 +195,11 @@
             </div>
 
             <!-- Characters -->
-            <div class="col-md-6">
-                <div class="col-md-12">
-                    <input class="form-control"/>
-                </div>
-                <div class="col-md-12 character-background-image">
+            <div class="col-md-6 section middle-section">
+                <div class="col-md-12 character-background-image" style="height: 200px !important;">
                     <div class="character-profile-image"></div>
                 </div>
-                <div class="col-md-12 text-center">
+                <div class="col-md-12 character-name text-center">
                     <span>Character</span><br>
                     <span>Series</span><br>
                 </div>
@@ -131,22 +208,19 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
-                        <img src="img/personagens/boku no hero academia/ragdoll/0.png">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="img/personagens/boku no hero academia/ragdoll/1.png">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="img/personagens/boku no hero academia/ragdoll/2.png">
-                    </div>
+                    <div class="col-md-4">1</div>
+                    <div class="col-md-4">2</div>
+                    <div class="col-md-4">3</div>
                 </div>
             </div>
 
             <!-- Character list -->
             <div class="col-md-3">
                 <div class="col-md-12">
-                    <span>Series</span>
+                    <input class="form-control"/>
+                </div>
+                <div class="col-md-12">
+                    <span><strong>Series</strong></span>
                     <ul>
                         <li>Character</li>
                     </ul>
