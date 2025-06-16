@@ -12,17 +12,19 @@
     <style>
         /* -- * Variables * -- */
         :root {
-            --primary-color: black;
-            --secondary-color: grey;
+            --primary-color: rgb(112, 0, 0);
+            --secondary-color: rgb(55, 0, 0);
 
             --primary-bg: white;
-            --secondary-bg: rgb(228, 228, 228);
+            --secondary-bg: rgb(197, 197, 197);
 
             --border: 1px solid var(var(--primary-color));
 
             --background-image-height: 200px;
             --profile-image-size: 170px;
             --profile-image-half-size: calc(var(--profile-image-size) / 2);
+
+            --default-radius: 8px !important;
         }
 
         /* -- * Elements * -- */
@@ -45,11 +47,52 @@
         .secondary-bg {
             background-color: var(--secondary-bg) !important;
         }
+        
+        .button {
+            padding: 20px 0px !important;
+            border: none;
+            border-radius: var(--default-radius);
+            cursor: default !important;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.3px !important;
+            
+            position: relative;
+            overflow: hidden; 
+            z-index: 1; 
 
-        .btn-primary-color {
-            background-color: var(--primary-color) !important;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            
+            width: 80%;
+            height: 100%;
+            
+            background: linear-gradient(to right,
+                                        transparent 0%,
+                                        rgba(255, 255, 255, 0.5) 50%, 
+                                        transparent 100%);
+            
+            transform: skewX(-20deg); 
+            
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; 
+            opacity: 0; 
+            z-index: 2; 
+        }
+
+        .button:hover::before {
+            transform: translateX(240%) skewX(-20deg); 
+            opacity: 1; 
+        }
+
+        .button-primary {
             color: white !important;
-            font-weight: 900 !important;
+            background-color: var(--primary-color);
         }
 
         .mt-15 {
@@ -164,7 +207,7 @@
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
-                    <button class="btn btn-md btn-primary-color">Randomize</button>
+                    <button class="button button-primary">Randomize</button>
                 </div>
                 
                 <div class="col-md-12 mt-15 toggle-filters hover-primary-color">
