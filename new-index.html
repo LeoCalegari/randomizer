@@ -16,7 +16,7 @@
             --secondary-color: rgb(55, 0, 0);
 
             --primary-bg: white;
-            --secondary-bg: rgb(197, 197, 197);
+            --secondary-bg: rgb(232, 232, 232);
 
             --border: 1px solid var(var(--primary-color));
 
@@ -46,6 +46,11 @@
         
         .secondary-bg {
             background-color: var(--secondary-bg) !important;
+        }
+
+        .x-shadow {
+            box-shadow: 
+            -4px 0px 10px rgba(0, 0, 0, 0.2), 4px 0px 10px rgba(0, 0, 0, 0.2); 
         }
         
         .button {
@@ -117,7 +122,7 @@
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
-            background: var(--primary-bg);
+            background: var(--primary-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -202,8 +207,8 @@
     </nav>
 
     <!-- Content -->
-    <div class="container">
-        <div class="row secondary-bg">
+    <div class="container x-shadow">
+        <div class="row secondary-bg ">
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
