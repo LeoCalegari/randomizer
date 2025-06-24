@@ -148,6 +148,8 @@
         .section {
             padding-top: 20px !important;
             cursor: default !important;
+
+            height: 100vh !important;
         }
 
         .section.middle-section {
@@ -164,6 +166,22 @@
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center !important;
+            font-size: 30px !important;
+            color: var(--primary-color) !important;
+            padding-top: 25vh !important;
+        }
+
+        .loading-section {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            transition: background 0.3s linear;
         }
 
         /* Character images */
@@ -219,10 +237,6 @@
         .character-name {
             margin-top: calc(var(--profile-image-half-size) + 15px); 
         }
-
-        .shiny-effect {
-            
-        }        
     </style>
 </head>
 
@@ -236,7 +250,7 @@
 
     <!-- Content -->
     <div class="container x-shadow">
-        <div class="row secondary-bg ">
+        <div class="row secondary-bg">
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
@@ -270,9 +284,18 @@
                 </div>
             </div>
 
+            <!-- Loading -->
+            <div class="col-md-6 section middle-section loading-section" id="loadingSection">
+                <div class="loading" id="loadingElement">
+                    <i class="fas fa-circle-notch"></i>
+                    <br>
+                    <span>LOADING...</span>
+                </div>
+            </div>
+
             <!-- Characters -->
-            <div class="col-md-6 section middle-section">
-                <div class="col-md-12 character-background-image" style="height: 200px !important;">
+            <div class="col-md-6 section middle-section display-none">
+                <div class="col-md-12 character-background-image">
                     <div class="character-profile-image"></div>
                 </div>
                 <div class="col-md-12 character-name text-center">
@@ -307,7 +330,52 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
+
+    <!-- jQuery  -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/detect.js"></script>
+    <script src="assets/js/fastclick.js"></script>
+    <script src="assets/js/jquery.slimscroll.js"></script>
+    <script src="assets/js/jquery.blockUI.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/plugins/notifyjs/js/notify.js"></script>
+    <script src="assets/plugins/notifications/notify-metro.js"></script>
+
+    <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+    <script src="assets/plugins/switchery/js/switchery.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+    <script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="assets/plugins/autocomplete/jquery.mockjax.js"></script>
+    <script type="text/javascript" src="assets/plugins/autocomplete/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/autocomplete/countries.js"></script>
+    <script type="text/javascript" src="assets/pages/autocomplete.js"></script>
+
+    <script type="text/javascript" src="assets/pages/jquery.form-advanced.init.js"></script>
+
+    <!-- App core js -->
+    <script src="assets/js/jquery.core.js"></script>
+    <script src="assets/js/jquery.app.js"></script>
+
+    <!-- Database -->
+    <script src="database.js"></script>
+
+    <script src="assets/js/randomizer.js" type="text/javascript"></script>
+
     <script>
+        $(document).ready(function() {
+            init();
+        })
+
         // --- * Query selector * ---
 
         // Toggle filter

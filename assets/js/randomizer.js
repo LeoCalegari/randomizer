@@ -1,6 +1,26 @@
-async function init(params) {
+var randomized = false;
+
+async function init() {
     // Fills out the database
     await fillDatabase();
+
+    // Removes loading animation
+    $("#loadingElement").remove();
+
+    // Cicles the gifs after loading
+    cicleGifs(0);
+}
+
+function cicleGifs(ms){
+    setTimeout(() => {
+        console.log("test");
+        if(randomized === false) document.getElementById("loadingSection").style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
+        if(randomized === false) cicleGifs(5000);
+    }, ms);
+}
+
+function returnRandomIndex(range){
+    return Math.floor((Math.random() * range));
 }
 
 // --------------------------------------------------------------------------------------------------------

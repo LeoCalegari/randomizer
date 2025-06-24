@@ -45,7 +45,7 @@ async function fillDatabase() {
     seriesList.push("Cross Code");
     seriesList.push("Sousou no Frieren")
 
-    await seriesList.sort(function(a, b) {
+    seriesList.sort(function(a, b) {
         return a.localeCompare(b);
     });
 
@@ -553,14 +553,8 @@ async function fillDatabase() {
     tempCharacterList.push("Fern, F, [], 4");
 
     await addToCharacterList(tempCharacterList, "Sousou no Frieren");
-    
-    // Exemplo
-    // tempCharacterList = [];
-    // tempCharacterList.push("NOME, SEXO, [VARIACAO], NUMERO_REFERENCIA");
 
-    // await addToCharacterList(tempCharacterList, "OBRA");
-
-    await characterList.sort(function(a, b) {
+    characterList.sort(function(a, b) {
         return a.name.localeCompare(b.nome);
     });  
 }
