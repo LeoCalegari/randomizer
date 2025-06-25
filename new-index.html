@@ -237,6 +237,12 @@
         .character-name {
             margin-top: calc(var(--profile-image-half-size) + 15px); 
         }
+
+        /* Character list */
+        .character-list {
+            overflow: auto !important;
+            height: 85vh !important;
+        }
     </style>
 </head>
 
@@ -314,16 +320,11 @@
             </div>
 
             <!-- Character list -->
-            <div class="col-md-3">
+            <div class="col-md-3 section character-list-section">
                 <div class="col-md-12">
                     <input class="form-control"/>
                 </div>
-                <div class="col-md-12">
-                    <span><strong>Series</strong></span>
-                    <ul>
-                        <li>Character</li>
-                    </ul>
-                </div>
+                <div class="col-md-12 character-list" id="characterList"></div>
             </div>
         </div>
     </div>

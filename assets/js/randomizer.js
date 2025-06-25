@@ -4,11 +4,41 @@ async function init() {
     // Fills out the database
     await fillDatabase();
 
+    // Inserts the characters in the list
+    await fillListOfCharacter();
+
     // Removes loading animation
     $("#loadingElement").remove();
 
     // Cicles the gifs after loading
-    cicleGifs(0);
+    // cicleGifs(0);
+}
+
+async function randomize() {
+    
+}
+
+async function fillListOfCharacter() {
+    // --- * Series * ---
+    for(let index = 0; index < seriesList.length; index++){
+        const series = seriesList[index];
+
+        const HTML = `<div>
+                        <span class="character-list-title">${series}</span>
+                        <ul id="characterList${await ajustString(series)}"></ul>
+                    </div>`;
+        
+        $("#characterList").append(HTML);
+    }
+
+    // --- * Characters * ---
+    for(let index = 0; index < characterList.length; index++){
+        const character = characterList[index];
+
+        const HTML = `<li>${character.name}</li>`;
+
+        $("#characterList" + await ajustString(character.series)).append(HTML);
+    }
 }
 
 function cicleGifs(ms){
@@ -21,6 +51,13 @@ function cicleGifs(ms){
 
 function returnRandomIndex(range){
     return Math.floor((Math.random() * range));
+}
+
+async function ajustString(string) {
+    string = string.replaceAll(" ", "");
+    string = string.replaceAll("'", "");
+
+    return string;
 }
 
 // --------------------------------------------------------------------------------------------------------
