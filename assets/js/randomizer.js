@@ -15,7 +15,59 @@ async function init() {
 }
 
 async function randomize() {
-    
+    // Sets randomized to stop cicling gifs
+    randomized = true;
+
+    // Returns random character
+    let tempCharacterList = characterList;
+
+    let randomizedCharacter = await returnRandomObjectFromList(tempCharacterList);
+
+    // Fills section with data
+    await fillCharacterSectionWithData(randomizedCharacter);
+
+    // Hide loading section
+    document.getElementById("loadingSection").classList.add("display-none");
+
+    // Show character section
+    document.getElementById("characterSection").classList.remove("display-none");
+}
+
+async function fillCharacterSectionWithData(character) {
+    // --- * Background and profile pictures * ---
+    $("#characterBackgroundImage").css("background-image", "url('img/obras/" + character.series + "/0.png')");
+
+    const profileImageHTML = `<img src="img/personagens/${character.series}/${character.name}/0.png"/>`;
+
+    $("#characterProfileImage").find("img").remove();
+    $("#characterProfileImage").append(profileImageHTML);
+
+
+    // --- * Name and Series * ---
+    document.getElementById("characterName").innerText = character.name;
+    document.getElementById("characterSeries").innerText = character.series;
+
+    // --- * References * ---
+    $("#characterReferences").find("div").remove();
+
+    let colSize = 3;
+    if(character.numberOfReferences < 3){
+        if(character.numberOfReferences === 2){
+            colSize = 6
+        }else{
+            colSize = 12
+        }
+    }
+
+    for(let index = 1; index <= character.numberOfReferences; index++){
+        const refereceHTML = `
+                                <div class="col-md-${colSize}">
+                                    <img src="img/personagens/${character.series}/${character.name}/${index}.png"/>
+                                </div>
+                             `;
+
+        $("#characterReferences").append(refereceHTML);
+    }
 }
 
 async function fillListOfCharacter() {
@@ -23,10 +75,12 @@ async function fillListOfCharacter() {
     for(let index = 0; index < seriesList.length; index++){
         const series = seriesList[index];
 
-        const HTML = `<div>
-                        <span class="character-list-title">${series}</span>
-                        <ul id="characterList${await ajustString(series)}"></ul>
-                    </div>`;
+        const HTML = `
+                        <div>
+                            <span class="character-list-title">${series}</span>
+                            <ul id="characterList${await ajustString(series)}"></ul>
+                        </div>
+                     `;
         
         $("#characterList").append(HTML);
     }
@@ -43,10 +97,13 @@ async function fillListOfCharacter() {
 
 function cicleGifs(ms){
     setTimeout(() => {
-        console.log("test");
         if(randomized === false) document.getElementById("loadingSection").style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
         if(randomized === false) cicleGifs(5000);
     }, ms);
+}
+
+function returnRandomObjectFromList(list) {
+    return list[Math.floor((Math.random() * list.length))];
 }
 
 function returnRandomIndex(range){

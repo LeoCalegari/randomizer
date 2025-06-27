@@ -186,7 +186,6 @@
 
         /* Character images */
         .character-background-image {
-            background: rgb(83, 0, 0) !important;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -204,13 +203,9 @@
             /* Removes the flex properties since the profile image is positioned as absolute */
             /* Makes sure that it behaves as a normal block */
             display: block;
-
-            opacity: 30% !important;
         }
 
         .character-profile-image {
-            background: rgb(0, 83, 66) !important;
-
             /* Makes it absolute in relation to it's parent (.character-background-image) */
             position: absolute;
             bottom: calc(-1 * var(--profile-image-half-size));
@@ -260,7 +255,7 @@
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
-                    <button class="button button-primary">Randomize</button>
+                    <button class="button button-primary" onclick="randomize();">Randomize</button>
                 </div>
                 
                 <div class="col-md-12 mt-15 toggle-filters hover-primary-color">
@@ -300,23 +295,19 @@
             </div>
 
             <!-- Characters -->
-            <div class="col-md-6 section middle-section display-none">
-                <div class="col-md-12 character-background-image">
-                    <div class="character-profile-image"></div>
+            <div class="col-md-6 section middle-section display-none" id="characterSection">
+                <div class="col-md-12 character-background-image" id="characterBackgroundImage">
+                    <div class="character-profile-image" id="characterProfileImage"></div>
                 </div>
                 <div class="col-md-12 character-name text-center">
-                    <span>Character</span><br>
-                    <span>Series</span><br>
+                    <span id="characterName"></span><br>
+                    <span id="characterSeries">Series</span><br>
                 </div>
                 <div class="col-md-12 text-center">
                     <span>References</span>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4">1</div>
-                    <div class="col-md-4">2</div>
-                    <div class="col-md-4">3</div>
-                </div>
+                <div class="row" id="characterReferences"></div>
             </div>
 
             <!-- Character list -->
