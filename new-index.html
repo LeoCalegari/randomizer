@@ -25,6 +25,10 @@
             --profile-image-half-size: calc(var(--profile-image-size) / 2);
 
             --default-radius: 8px !important;
+
+            --disabled-opacity: opacity(50%) !important;
+
+            --expand-animation: expand 0.7s 1 forwards !important; 
         }
 
         /* -- * Elements * -- */
@@ -64,7 +68,6 @@
             cursor: default !important;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1.3px !important;
             
             position: relative;
             overflow: hidden; 
@@ -73,30 +76,10 @@
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            
-            width: 80%;
-            height: 100%;
-            
-            background: linear-gradient(to right,
-                                        transparent 0%,
-                                        rgba(255, 255, 255, 0.5) 50%, 
-                                        transparent 100%);
-            
-            transform: skewX(-20deg); 
-            
-            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; 
-            opacity: 0; 
-            z-index: 2; 
-        }
+        .button.disabled {
+            filter: var(--disabled-opacity);
 
-        .button:hover::before {
-            transform: translateX(240%) skewX(-20deg); 
-            opacity: 1; 
+            cursor: not-allowed !important;
         }
 
         .button-primary {
@@ -238,6 +221,90 @@
             overflow: auto !important;
             height: 85vh !important;
         }
+
+        /* Utility */
+        .expand-on-hover:hover {
+            animation: var(--expand-animation);
+        }
+
+        .shine-effect-on-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            
+            width: 80%;
+            height: 100%;
+            
+            background: linear-gradient(to right,
+                                        transparent 0%,
+                                        rgba(255, 255, 255, 0.5) 50%, 
+                                        transparent 100%);
+            
+            transform: skewX(-20deg); 
+            
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; 
+            opacity: 0; 
+            z-index: 2; 
+        }
+
+        .shine-effect-on-hover:hover::before {
+            transform: translateX(240%) skewX(-20deg); 
+            opacity: 1; 
+        }
+
+        .infinite-shine-effect {
+            position: relative;
+            overflow: hidden; 
+        }
+
+        .infinite-shine-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            
+            width: 80%; 
+            height: 100%;
+            
+            background: linear-gradient(to right,
+                                        transparent 0%,
+                                        rgba(255, 255, 255, 0.5) 50%,
+                                        transparent 100%);
+            
+            transform: skewX(-20deg);
+            
+            z-index: 2;
+            
+            animation: shine 2s linear infinite; /* Name, duration, type and repetition */
+        }
+
+        /* --- * Animations * --- */
+        @keyframes expand {
+            0% {
+                transform: scale(1);
+            } 
+            100%{
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(0) skewX(-20deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(300%) skewX(-20deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -255,7 +322,7 @@
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
-                    <button class="button button-primary" onclick="randomize();">Randomize</button>
+                    <button class="button button-primary disabled infinite-shine-effect" onclick="randomize();" disabled>Randomize</button>
                 </div>
                 
                 <div class="col-md-12 mt-15 toggle-filters hover-primary-color">

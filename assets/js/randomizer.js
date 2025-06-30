@@ -10,6 +10,9 @@ async function init() {
     // Removes loading animation
     $("#loadingElement").remove();
 
+    // Ajusts disabled buttons
+    await ajustButtonsAfterLoading();
+
     // Cicles the gifs after loading
     // cicleGifs(0);
 }
@@ -108,6 +111,20 @@ function returnRandomObjectFromList(list) {
 
 function returnRandomIndex(range){
     return Math.floor((Math.random() * range));
+}
+
+async function ajustButtonsAfterLoading() {
+    const buttonList = document.querySelectorAll(".button");
+
+    buttonList.forEach(button => {
+        button.classList.add("expand-on-hover");
+        button.classList.add("shine-effect-on-hover");
+
+        button.classList.remove("infinite-shine-effect");
+        button.classList.remove("disabled");
+
+        button.disabled = false;
+    });
 }
 
 async function ajustString(string) {

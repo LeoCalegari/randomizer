@@ -17,8 +17,6 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Fazer função que randomiza os personagens
-. Bloquear botão de randomizar até o fim do carregamento.
 . Baixar bootstrap e ícones para funcionar sem internet.
 . Criar inputs personalizados
     - Filtros
