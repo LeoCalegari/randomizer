@@ -4,6 +4,9 @@ async function init() {
     // Fills out the database
     await fillDatabase();
 
+    // Inserts the series in the filter select
+    await fillSeriesFilter();
+
     // Inserts the characters in the list
     await fillListOfCharacter();
 
@@ -71,6 +74,18 @@ async function fillCharacterSectionWithData(character) {
 
         $("#characterReferences").append(refereceHTML);
     }
+}
+
+async function fillSeriesFilter() {
+    await seriesList.forEach(series => {
+        const seriesHTML = `<option value="${ajustString(series)}">${series}</option>`;
+
+        $("#filterSeries").append(seriesHTML);
+    });
+
+    $("#filterSeries").select2({
+        theme: 'bootstrap-5'
+    });
 }
 
 async function fillListOfCharacter() {

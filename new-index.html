@@ -8,6 +8,19 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <!-- Or for RTL support -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
     
     <style>
         /* -- * Variables * -- */
@@ -103,8 +116,8 @@
             margin-left: 5px !important;
         }
 
-        .bt-primary {
-            border-top: 1px solid var(--primary-color);
+        .mr-5 {
+            margin-right: 5px !important;
         }
 
         .hover-primary-color:hover {
@@ -144,7 +157,7 @@
         }
 
         /* Filters */
-        .toggle-filters {
+        .toggle-settings {
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
@@ -223,6 +236,17 @@
         }
 
         /* Utility */
+        .active {
+            color: var(--primary-color) !important;
+        }
+
+        .spacer {
+            background-color: var(--primary-color) !important;
+            height: 3px !important;
+            border-radius: 3px !important;
+            width: 100%;
+        }
+
         .expand-on-hover:hover {
             animation: var(--expand-animation);
         }
@@ -279,6 +303,8 @@
             animation: shine 2s linear infinite; /* Name, duration, type and repetition */
         }
 
+        /* --- * Custom elements * --- */
+
         /* --- * Animations * --- */
         @keyframes expand {
             0% {
@@ -324,14 +350,14 @@
                 <div class="col-md-12 d-grid">
                     <button class="button button-primary disabled infinite-shine-effect" onclick="randomize();" disabled>Randomize</button>
                 </div>
-                
-                <div class="col-md-12 mt-15 toggle-filters hover-primary-color">
-                    <span class="font-700">Filters<i class="fas fa-chevron-down ml-5"></i></span>
+                <div class="col-md-12 mt-15 toggle-settings hover-primary-color">
+                    <span class="font-700"><i class="fas fa-cog mr-5"></i>Settings</span>
                 </div>
-                <div id="filters" class="display-none mt-10 bt-primary">
+                <div id="settings" class="display-none mt-10">
+                    <div class="col-md-12 spacer infinite-shine-effect"></div>
                     <div class="col-md-12 form-group">
                         <label for="filterSeries">Series</label>
-                        <select id="filterSeries" name="filterSeries" class="form-control">
+                        <select id="filterSeries" name="filterSeries" class="form-select" style="width: 100% !important;">
                             <option value="0">All</option>
                         </select>
                     </div>
@@ -438,19 +464,17 @@
         // --- * Query selector * ---
 
         // Toggle filter
-        document.querySelector(".toggle-filters").addEventListener("click", function(){
-            const filters = document.getElementById("filters");
+        document.querySelector(".toggle-settings").addEventListener("click", function(){
+            const settings = document.getElementById("settings");
 
-            if(filters.classList.contains("display-none")){
-                filters.classList.remove("display-none");
+            if(settings.classList.contains("display-none")){
+                settings.classList.remove("display-none");
 
-                this.querySelector(".fas").classList.remove("fa-chevron-down"); 
-                this.querySelector(".fas").classList.add("fa-chevron-up"); 
+                this.classList.add("active");
             }else{
-                filters.classList.add("display-none");
+                settings.classList.add("display-none");
 
-                this.querySelector(".fas").classList.remove("fa-chevron-up"); 
-                this.querySelector(".fas").classList.add("fa-chevron-down"); 
+                this.classList.remove("active");
             }
         });
     </script>
