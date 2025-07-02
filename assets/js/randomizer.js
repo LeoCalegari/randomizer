@@ -20,13 +20,35 @@ async function init() {
     // cicleGifs(0);
 }
 
+async function filterCharacterList() {
+    let tempCharacterList = characterList;
+
+    // ----- * Series * -----
+    let series = $('#filterSeries').find(':selected')[0].innerText;
+
+    if(series !== "All"){
+        tempCharacterList = tempCharacterList.filter(character => character.series === series);
+    }
+
+    // ----- * Gender * -----
+    let male = document.getElementById("filterMale").checked;
+    let female = document.getElementById("filterFemale").checked;
+
+    if(male && !female){
+        tempCharacterList = tempCharacterList.filter(character => character.gender === "M");
+    }else if(female && !male){
+        tempCharacterList = tempCharacterList.filter(character => character.gender === "F");
+    }
+
+    return tempCharacterList;
+}
+
 async function randomize() {
     // Sets randomized to stop cicling gifs
     randomized = true;
 
     // Returns random character
-    let tempCharacterList = characterList;
-
+    let tempCharacterList = await filterCharacterList();
     let randomizedCharacter = await returnRandomObjectFromList(tempCharacterList);
 
     // Fills section with data
