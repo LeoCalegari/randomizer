@@ -31,7 +31,7 @@
             --primary-bg: white;
             --secondary-bg: rgb(232, 232, 232);
 
-            --border: 1px solid var(var(--primary-color));
+            --border: 2px solid var(var(--primary-color)) !important;
 
             --background-image-height: 200px;
             --profile-image-size: 170px;
@@ -201,17 +201,44 @@
             display: block;
         }
 
+        .character-background-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            
+            height: 30%;
+            
+            background: linear-gradient(to top, 
+                                        var(--secondary-bg) 0%,
+                                        transparent 100%      
+                                    );
+            
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .character-profile-image {
+            background-color: var(--primary-bg);
+
             /* Makes it absolute in relation to it's parent (.character-background-image) */
             position: absolute;
             bottom: calc(-1 * var(--profile-image-half-size));
             left: 50%;
             transform: translateX(-50%);
+
             z-index: 20;
+
             width: var(--profile-image-size);
             height: var(--profile-image-size);
+
             overflow: hidden;
             
+            border-radius: var(--default-radius);
+            border: 2px solid var(--primary-color);
+
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 1.0) !important;
 
             /* Flexbox here to centralize the image inside IMG of this DIV */
             display: flex; 
@@ -390,7 +417,7 @@
             <!-- Characters -->
             <div class="col-md-6 section middle-section display-none" id="characterSection">
                 <div class="col-md-12 character-background-image" id="characterBackgroundImage">
-                    <div class="character-profile-image" id="characterProfileImage"></div>
+                    <div class="character-profile-image shine-effect-on-hover" id="characterProfileImage"></div>
                 </div>
                 <div class="col-md-12 character-name text-center">
                     <span id="characterName"></span><br>
