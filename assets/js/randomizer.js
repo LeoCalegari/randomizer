@@ -110,10 +110,8 @@ async function fillListOfCharacter() {
         const series = seriesList[index];
 
         const HTML = `
-                        <div>
-                            <span class="character-list-title">${series}</span>
-                            <ul id="characterList${await ajustString(series)}"></ul>
-                        </div>
+                        <span class="character-list-title">${series}</span>
+                        <div class="mb-10" id="characterList${await ajustString(series)}"></div>
                      `;
         
         $("#characterList").append(HTML);
@@ -123,7 +121,11 @@ async function fillListOfCharacter() {
     for(let index = 0; index < characterList.length; index++){
         const character = characterList[index];
 
-        const HTML = `<li>${character.name}</li>`;
+        const HTML = `
+                        <div class="primary-background-on-hover">
+                            <span>${character.name}</span>
+                        </div>
+                     `;
 
         $("#characterList" + await ajustString(character.series)).append(HTML);
     }
