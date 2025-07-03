@@ -78,19 +78,13 @@ async function fillCharacterSectionWithData(character) {
     // --- * References * ---
     $("#characterReferences").find("div").remove();
 
-    let colSize = 3;
-    if(character.numberOfReferences < 3){
-        if(character.numberOfReferences === 2){
-            colSize = 6
-        }else{
-            colSize = 12
-        }
-    }
+    // let colSize = character.numberOfReferences < 4 ? 12 : 4;
+    let colSize = 12;
 
     for(let index = 1; index <= character.numberOfReferences; index++){
         const refereceHTML = `
                                 <div class="col-md-${colSize}">
-                                    <img src="img/personagens/${character.series}/${character.name}/${index}.png"/>
+                                    <img class="character-reference-image" src="img/personagens/${character.series}/${character.name}/${index}.png"/>
                                 </div>
                              `;
 

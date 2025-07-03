@@ -145,7 +145,7 @@
             padding-top: 20px !important;
             cursor: default !important;
 
-            height: 100vh !important;
+            min-height: 100vh !important;
         }
 
         .section.middle-section {
@@ -252,8 +252,33 @@
             object-fit: cover;
         }
 
+        .character-data {
+            margin-top: calc(var(--profile-image-half-size) + 5px) !important; 
+        }
+
         .character-name {
-            margin-top: calc(var(--profile-image-half-size) + 15px); 
+            color: var(--primary-color) !important;
+            font-size: 30px !important;
+            font-weight: 700 !important;
+        }
+
+        .character-series {
+            font-size: 17px !important;
+            font-style: italic !important;
+        }
+
+        .character-reference-image {
+            background-color: var(--primary-bg);
+
+            height: 200px;
+            width: 100%;
+
+            object-fit: cover;
+            display: block;
+
+            border-radius: var(--default-radius);
+
+            margin-bottom: 5px !important;
         }
 
         /* Character list */
@@ -419,15 +444,11 @@
                 <div class="col-md-12 character-background-image" id="characterBackgroundImage">
                     <div class="character-profile-image shine-effect-on-hover" id="characterProfileImage"></div>
                 </div>
-                <div class="col-md-12 character-name text-center">
-                    <span id="characterName"></span><br>
-                    <span id="characterSeries">Series</span><br>
+                <div class="col-md-12 character-data text-center">
+                    <span class="character-name" id="characterName"></span><br>
+                    <span class="character-series" id="characterSeries"></span>
                 </div>
-                <div class="col-md-12 text-center">
-                    <span>References</span>
-                </div>
-
-                <div class="row" id="characterReferences"></div>
+                <div class="row mt-15" id="characterReferences"></div>
             </div>
 
             <!-- Character list -->
