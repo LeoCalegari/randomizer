@@ -526,8 +526,8 @@
         $(document).ready(function() {
             init();
         })
-
-        // --- * Query selector * ---
+        
+        // ----- * Query selector * -----
 
         // Toggle filter
         document.querySelector(".toggle-settings").addEventListener("click", function(){
@@ -542,6 +542,32 @@
 
                 this.classList.remove("active");
             }
+        });  
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Characters on the side list
+            document.querySelectorAll(".character-on-list").forEach(element => {
+                
+                element.addEventListener("click", function(){
+                    // Haven't randomized
+                    if(!randomized){
+                        // Sets randomized to stop cicling gifs
+                        randomized = true;
+
+                        // Hides loading section
+                        document.getElementById("loadingSection").classList.add("display-none");
+
+                        // Shows character section
+                        document.getElementById("characterSection").classList.remove("display-none");
+                    }
+
+                    // Returns character from list
+                    let character = characterList.filter(character => character.name === this.innerText);
+
+                    // Fills out the character data
+                    fillCharacterSectionWithData(character[0]);
+                })
+            });
         });
     </script>
 </body>

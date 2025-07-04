@@ -54,11 +54,14 @@ async function randomize() {
     // Fills section with data
     await fillCharacterSectionWithData(randomizedCharacter);
 
-    // Hide loading section
-    document.getElementById("loadingSection").classList.add("display-none");
+    // Haven't randomized yet
+    if(randomized){
+        // Hide loading section
+        document.getElementById("loadingSection").classList.add("display-none");
 
-    // Show character section
-    document.getElementById("characterSection").classList.remove("display-none");
+        // Show character section
+        document.getElementById("characterSection").classList.remove("display-none");
+    }
 }
 
 async function fillCharacterSectionWithData(character) {
@@ -122,7 +125,7 @@ async function fillListOfCharacter() {
         const character = characterList[index];
 
         const HTML = `
-                        <div class="primary-background-on-hover">
+                        <div class="primary-background-on-hover character-on-list">
                             <span>${character.name}</span>
                         </div>
                      `;
