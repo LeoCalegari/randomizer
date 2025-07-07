@@ -7,6 +7,9 @@ async function init() {
     // Inserts the series in the filter select
     await fillSeriesFilter();
 
+    // Fills character autocomplete filter
+    await fillsCharacterAutoCompleteFilter();
+
     // Inserts the characters in the list
     await fillListOfCharacter();
 
@@ -104,6 +107,49 @@ async function fillSeriesFilter() {
 
     $("#filterSeries").select2({
         theme: 'bootstrap-5'
+    });
+}
+
+async function fillsCharacterAutoCompleteFilter() {
+    // ------ * Setup list * ------
+    let autocompleteCharacterList = [];
+    await characterList.forEach(character => {
+        let autocompleteData = new Object();
+        autocompleteData.series = character.series;
+
+        let autocompleteCharacter = new Object();
+        autocompleteCharacter.value = character.name;
+        autocompleteCharacter.data = autocompleteData;
+
+        autocompleteCharacterList.push(autocompleteCharacter);
+    });
+
+    // ------ * Setup input * ------
+    $("#filterCharacterAutocomplete").devbridgeAutocomplete({
+        lookup: autocompleteCharacterList,
+        minChars: 1,
+        onSelect: function (suggestion) {
+            // Haven't randomized
+            if(!randomized){
+                // Sets randomized to stop cicling gifs
+                randomized = true;
+
+                // Hides loading section
+                document.getElementById("loadingSection").classList.add("display-none");
+
+                // Shows character section
+                document.getElementById("characterSection").classList.remove("display-none");
+            }
+
+            // Returns character from list
+            let character = characterList.filter(character => character.name === suggestion.value);
+
+            // Fills out the character data
+            fillCharacterSectionWithData(character[0]);
+        },
+        showNoSuggestionNotice: true,
+        noSuggestionNotice: 'Não foi encontrado nenhum personagem...',
+        groupBy: 'series'
     });
 }
 
