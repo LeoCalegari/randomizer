@@ -23,30 +23,33 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
     
     <style>
-        /* -- * Variables * -- */
+        /* ---------- * Variables * ---------- */
         :root {
+            /* Colors */
             --primary-color: rgb(112, 0, 0);
-            --secondary-color: rgb(55, 0, 0);
+            --background-color: white;
+            --darker-background-color: 
 
-            --primary-bg: white;
-            --secondary-bg: rgb(232, 232, 232);
-
+            /* Borders & Radius */
             --border: 2px solid var(var(--primary-color)) !important;
+            --default-radius: 8px !important;
 
+            /* Backgrounds & Images */
             --background-image-height: 200px;
             --profile-image-size: 170px;
             --profile-image-half-size: calc(var(--profile-image-size) / 2);
 
-            --default-radius: 8px !important;
-
+            /* Opacity */
             --disabled-opacity: opacity(50%) !important;
 
+            /* Animations */
             --expand-animation: expand 0.7s 1 forwards !important; 
         }
 
-        /* -- * Elements * -- */
+        /* ---------- * Elements * ---------- */
         body {
-            background-color: var(--primary-bg);
+            /* background-color: var(--background-color); */
+            background-color: color-mix(in srgb, var(--background-color) 100%, black 10%);
         }
 
         li {
@@ -54,7 +57,7 @@
             list-style-type: "";
         }
 
-        /*  -- * Class * -- */
+        /* ---------- * Class * ---------- */
 
         /* General */
         .font-700 {
@@ -63,10 +66,6 @@
 
         .display-none {
             display: none !important;
-        }
-        
-        .secondary-bg {
-            background-color: var(--secondary-bg) !important;
         }
 
         .x-shadow {
@@ -128,15 +127,9 @@
             color: var(--primary-color) !important;
         }
 
-        .primary-background-on-hover:hover {
-            background-color: var(--primary-color) !important;
-            color: var(--primary-bg) !important;
-            font-weight: 600 !important;
-        }
-
         /* Navbar */
         .navbar {
-            background: var(--primary-bg) !important;
+            background: var(--background-color) !important;
             backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--primary-color);
         }
@@ -152,6 +145,8 @@
 
         /* Section */
         .section {
+            background-color: var(--background-color);
+
             padding-top: 20px !important;
             cursor: default !important;
 
@@ -221,7 +216,7 @@
             height: 30%;
             
             background: linear-gradient(to top, 
-                                        var(--secondary-bg) 0%,
+                                        var(--background-color) 0%,
                                         transparent 100%      
                                     );
             
@@ -230,7 +225,7 @@
         }
 
         .character-profile-image {
-            background-color: var(--primary-bg);
+            background-color: var(--background-color);
 
             /* Makes it absolute in relation to it's parent (.character-background-image) */
             position: absolute;
@@ -278,7 +273,7 @@
         }
 
         .character-reference-image {
-            background-color: var(--primary-bg);
+            background-color: var(--background-color);
 
             height: 200px;
             width: 100%;
@@ -293,18 +288,18 @@
 
         /* Character list */
         .character-autocomplete {
-            background-color: var(--primary-bg) !important;
+            background-color: var(--background-color) !important;
         }
 
         .autocomplete-suggestions {
-            background-color: var(--primary-bg) !important;
+            background-color: var(--background-color) !important;
         }
         .autocomplete-group {
             /* color: #fff !important; */
             margin-top: 10px !important;
             padding-left: 5px !important;
 
-            background-color: var(--primary-bg) !important;
+            background-color: var(--background-color) !important;
             color: var(--primary-color);
 
             cursor: default !important;
@@ -313,22 +308,22 @@
         .autocomplete-suggestions .autocomplete-suggestion {
             padding-left: 10px !important;
 
-            background-color: var(--primary-bg) !important;
+            background-color: var(--background-color) !important;
 
             cursor: default !important;
         }
 
         .autocomplete-suggestions .autocomplete-suggestion.autocomplete-selected {
-            background-color: var(--primary-bg) !important;
+            background-color: var(--background-color) !important;
         }
 
         .autocomplete-suggestions .autocomplete-suggestion strong {
-            background-color: var(--primary-bg) !important;
+            background-color: var(--background-color) !important;
         }
 
         .autocomplete-suggestions .autocomplete-group {
             font-weight: 900 !important;
-            background-color: var(--primary-bg) !important;
+            background-color: var(--background-color) !important;
         }
 
         .character-list {
@@ -412,9 +407,9 @@
             animation: shine 2s linear infinite; /* Name, duration, type and repetition */
         }
 
-        /* --- * Custom elements * --- */
+        /* ---------- * Custom elements * ---------- */
 
-        /* --- * Animations * --- */
+        /* ---------- * Animations * ---------- */
         @keyframes expand {
             0% {
                 transform: scale(1);
@@ -453,7 +448,7 @@
 
     <!-- Content -->
     <div class="container x-shadow">
-        <div class="row secondary-bg">
+        <div class="row">
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
