@@ -20,7 +20,7 @@ async function init() {
     await ajustButtonsAfterLoading();
 
     // Cicles the gifs after loading
-    // cicleGifs(0);
+    cicleGifs(0);
 }
 
 async function filterCharacterList() {
@@ -68,29 +68,27 @@ async function randomize() {
 }
 
 async function fillCharacterSectionWithData(character) {
-    // --- * Background and profile pictures * ---
+    // ---------- * Background and profile pictures * ----------
     $("#characterBackgroundImage").css("background-image", "url('img/obras/" + character.series + "/0.png')");
 
-    const profileImageHTML = `<img src="img/personagens/${character.series}/${character.name}/0.png"/>`;
+    const profileImageHTML = `<img src="img/personagens/${character.series}/${character.name}/0.png"/ onclick="expandImage(this)">`;
 
     $("#characterProfileImage").find("img").remove();
     $("#characterProfileImage").append(profileImageHTML);
 
 
-    // --- * Name and Series * ---
+    // ---------- * Name and Series * ----------
     document.getElementById("characterName").innerText = character.name;
     document.getElementById("characterSeries").innerText = character.series;
 
-    // --- * References * ---
+    // ---------- * References * ----------
     $("#characterReferences").find("div").remove();
 
-    // let colSize = character.numberOfReferences < 4 ? 12 : 4;
     let colSize = 12;
-
     for(let index = 1; index <= character.numberOfReferences; index++){
         const refereceHTML = `
                                 <div class="col-md-${colSize}">
-                                    <img class="character-reference-image" src="img/personagens/${character.series}/${character.name}/${index}.png"/>
+                                    <img class="character-reference-image" src="img/personagens/${character.series}/${character.name}/${index}.png" onclick="expandImage(this)"/>
                                 </div>
                              `;
 
@@ -186,6 +184,22 @@ function cicleGifs(ms){
         if(randomized === false) cicleGifs(5000);
     }, ms);
 }
+
+async function expandImage(image) {
+    document.getElementById("expandedImage").src = image.src;
+    document.getElementById("imageOverlay").classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+document.getElementById("imageOverlay").addEventListener("click", (event) => {
+    if (event.target === imageOverlay) {
+        document.getElementById("imageOverlay").classList.remove("active"); 
+        document.body.style.overflow = "";
+
+        expandedImage.src = "";
+    }
+});
 
 function returnRandomObjectFromList(list) {
     return list[Math.floor((Math.random() * list.length))];

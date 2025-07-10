@@ -17,9 +17,9 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Permitir expandir imagens
-    - Perfil
-    - Referências
+. Ajustar tamanho vertical das sections
+. Melhorar carregamento
+. Ajustar bug ao expandir imagens que tem vezes que é necessário clicar mais de uma vez
 . Baixar bootstrap e ícones para funcionar sem internet.
 . Criar inputs personalizados
     - Filtros
