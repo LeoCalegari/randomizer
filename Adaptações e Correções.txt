@@ -17,6 +17,9 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
+. Melhorar layout das imagens do personagem
+    - Expandir no hover
+    - Brilhar no hover
 . Ajustar tamanho vertical das sections
 . Melhorar carregamento
 . Ajustar bug ao expandir imagens que tem vezes que é necessário clicar mais de uma vez
