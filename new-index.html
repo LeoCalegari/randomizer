@@ -123,13 +123,17 @@
             margin-right: 5px !important;
         }
 
+        .mr-15 {
+            margin-right: 15px !important;
+        }
+
         .hover-primary-color:hover {
             color: var(--primary-color) !important;
         }
 
         /* Navbar */
         .navbar {
-            background: var(--background-color) !important;
+            background: var(--primary-color) !important;
             backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--primary-color);
         }
@@ -137,7 +141,7 @@
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
-            background: var(--primary-color);
+            background: var(--background-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -439,10 +443,16 @@
 </head>
 
 <body>
+    <!-- Expanded image -->
+    <div id="imageOverlay" class="overlay display-none">
+        <span class="close-btn hover-expand-md hover-purple" onclick="fecharImagem()">&times;</span>
+        <img id="expandedImage" src="">
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-dice"></i>Randomizer</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-dice mr-15"></i>Randomizer</a>
         </div>
     </nav>
 
