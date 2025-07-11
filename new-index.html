@@ -127,6 +127,10 @@
             margin-right: 15px !important;
         }
 
+        .min-h-100vh {
+            min-height: 100vh !important;
+        }
+
         .hover-primary-color:hover {
             color: var(--primary-color) !important;
         }
@@ -153,8 +157,7 @@
 
             padding-top: 20px !important;
             cursor: default !important;
-
-            min-height: 100vh !important;
+            /* min-height: 100vh !important; */
         }
 
         .section.middle-section {
@@ -491,7 +494,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-dice mr-15"></i>Randomizer</a>
         </div>
@@ -499,7 +502,7 @@
 
     <!-- Content -->
     <div class="container x-shadow">
-        <div class="row">
+        <div class="row min-h-100vh">
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
@@ -545,7 +548,7 @@
             <!-- Characters -->
             <div class="col-md-6 section middle-section display-none" id="characterSection">
                 <div class="col-md-12 character-background-image" id="characterBackgroundImage">
-                    <div class="character-profile-image shine-effect-on-hover" id="characterProfileImage"></div>
+                    <div class="character-profile-image" id="characterProfileImage"></div>
                 </div>
                 <div class="col-md-12 character-data text-center">
                     <span class="character-name" id="characterName"></span><br>
