@@ -20,7 +20,6 @@ NOVO MODELO
 . Melhorar layout das imagens do personagem
     - Expandir no hover
     - Brilhar no hover
-. Tentar fazer background do personagem cobrir a lateral toda
 . Tentar deixar altura da lista de personagens dinânica, seguindo o tamanho da tela
 . Ajustar hover na lista lateral
 . Melhorar carregamento

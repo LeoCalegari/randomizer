@@ -28,15 +28,14 @@
             /* Colors */
             --primary-color: rgb(112, 0, 0);
             --background-color: white;
-            --darker-background-color: 
 
             /* Borders & Radius */
-            --border: 2px solid var(var(--primary-color)) !important;
+            --default-border: 1px solid var(var(--primary-color)) !important;
             --default-radius: 8px !important;
 
             /* Backgrounds & Images */
             --background-image-height: 200px;
-            --profile-image-size: 170px;
+            --profile-image-size: 250px;
             --profile-image-half-size: calc(var(--profile-image-size) / 2);
 
             /* Opacity */
@@ -166,6 +165,9 @@
 
         .middle-section {
             position: relative;
+
+            padding-left: 0px !important;
+            padding-right: 0px !important;
         }
 
         /* Filters */
@@ -220,7 +222,7 @@
             left: 0;
             right: 0;
             
-            height: 30%;
+            height: 20%;
             
             background: linear-gradient(to top, 
                                         var(--background-color) 0%,
@@ -329,6 +331,7 @@
             object-fit: cover;
             display: block;
 
+            border: var(--default-border);
             border-radius: var(--default-radius);
 
             margin-bottom: 5px !important;
@@ -560,7 +563,7 @@
             <!-- Character list -->
             <div class="col-md-3 section character-list-section">
                 <div class="col-md-12">
-                    <input id="filterCharacterAutocomplete" class="form-control character-autocomplete" autocomplete="off" placeholder="Pesquisar pelo personagem..."/>
+                    <input id="filterCharacterAutocomplete" class="form-control character-autocomplete" autocomplete="off" placeholder="Search..."/>
                 </div>
                 <div class="col-md-12 character-list" id="characterList"></div>
             </div>
