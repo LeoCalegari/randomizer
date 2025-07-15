@@ -1,0 +1,283 @@
+/* Buttons */
+.button {
+    padding: 20px 0px !important;
+    border: none;
+    border-radius: var(--default-radius);
+    cursor: default !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    position: relative;
+    overflow: hidden; 
+    z-index: 1; 
+
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button.disabled {
+    filter: var(--disabled-opacity);
+
+    cursor: not-allowed !important;
+}
+
+.button-primary {
+    color: white !important;
+    background-color: var(--primary-color);
+}
+
+/* Navbar */
+.navbar {
+    background: var(--primary-color) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    background: var(--background-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Section */
+.section {
+    background-color: var(--background-color);
+
+    padding-top: 20px !important;
+    cursor: default !important;
+    /* min-height: 100vh !important; */
+}
+
+.section.middle-section {
+    padding-top: initial !important;
+}
+
+.middle-section {
+    position: relative;
+
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+/* Filters */
+.toggle-settings {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Loading */
+.loading {
+    text-align: center !important;
+    font-size: 30px !important;
+    color: var(--primary-color) !important;
+    padding-top: 25vh !important;
+}
+
+.loading-section {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition: background 0.3s linear;
+}
+
+/* Character images */
+.character-background-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Allows the profile image to be positioned inside */
+    position: relative;
+    height: var(--background-image-height);
+
+    /* This negative margin pull up the content bellow, creating space */
+    /* margin-bottom: calc(-1 * var(--profile-image-half-size)); */
+    
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    
+    /* Removes the flex properties since the profile image is positioned as absolute */
+    /* Makes sure that it behaves as a normal block */
+    display: block;
+}
+
+.character-background-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    height: 20%;
+    
+    background: linear-gradient(to top, 
+                                var(--background-color) 0%,
+                                transparent 100%      
+                            );
+    
+    z-index: 1;
+    pointer-events: none;
+}
+
+.character-profile-image {
+    background-color: var(--background-color);
+
+    /* Makes it absolute in relation to it's parent (.character-background-image) */
+    position: absolute;
+    bottom: calc(-1 * var(--profile-image-half-size));
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    width: var(--profile-image-size);
+    height: var(--profile-image-size);
+
+    overflow: hidden;
+    
+    border-radius: var(--default-radius);
+    border: 2px solid var(--primary-color);
+
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 1.0) !important; */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5) !important;
+
+    /* Flexbox here to centralize the image inside IMG of this DIV */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.character-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999 !important;
+    opacity: 0;
+    visibility: hidden;
+    /* transition: opacity 0.3s ease, visibility 0.3s ease; */
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.expanded-image {
+    height: 90% !important;
+    max-width: 90% !important;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transform: scale(0.8);
+    /* transition: transform 0.3s ease; */
+    background-color: white !important;
+}
+
+.overlay.active .expanded-image {
+    transform: scale(1);
+}
+
+.character-data {
+    margin-top: calc(var(--profile-image-half-size) + 5px) !important; 
+}
+
+.character-name {
+    color: var(--primary-color) !important;
+    font-size: 30px !important;
+    font-weight: 700 !important;
+}
+
+.character-series {
+    font-size: 17px !important;
+    font-style: italic !important;
+}
+
+.character-reference-image {
+    background-color: var(--background-color);
+
+    height: 200px;
+    width: 100%;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: var(--default-radius);
+    border: 2px solid var(--primary-color);
+
+    margin-bottom: 5px !important;
+}
+
+/* Character list */
+.character-autocomplete {
+    background-color: var(--background-color) !important;
+}
+
+.autocomplete-suggestions {
+    background-color: var(--background-color) !important;
+}
+.autocomplete-group {
+    /* color: #fff !important; */
+    margin-top: 10px !important;
+    padding-left: 5px !important;
+
+    background-color: var(--background-color) !important;
+    color: var(--primary-color);
+
+    cursor: default !important;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion {
+    padding-left: 10px !important;
+
+    background-color: var(--background-color) !important;
+
+    cursor: default !important;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion.autocomplete-selected {
+    background-color: var(--background-color) !important;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion strong {
+    background-color: var(--background-color) !important;
+}
+
+.autocomplete-suggestions .autocomplete-group {
+    font-weight: 900 !important;
+    background-color: var(--background-color) !important;
+}
+
+.character-list {
+    overflow: auto !important;
+    height: 85vh !important;
+
+    font-size: 15px !important;
+}
+
+.character-list-title {
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+}

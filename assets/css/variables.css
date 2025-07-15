@@ -1,0 +1,20 @@
+:root {
+    /* Colors */
+    --primary-color: rgb(112, 0, 0);
+    --background-color: white;
+
+    /* Borders & Radius */
+    --default-border: 1px solid var(var(--primary-color)) !important;
+    --default-radius: 8px !important;
+
+    /* Backgrounds & Images */
+    --background-image-height: 200px;
+    --profile-image-size: 250px;
+    --profile-image-half-size: calc(var(--profile-image-size) / 2);
+
+    /* Opacity */
+    --disabled-opacity: opacity(50%) !important;
+
+    /* Animations */
+    --expand-animation: expand 0.7s 1 forwards !important; 
+}

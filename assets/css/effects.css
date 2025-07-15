@@ -1,0 +1,53 @@
+/* Shine effects */
+.shine-effect-on-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    
+    width: 80%;
+    height: 100%;
+    
+    background: linear-gradient(to right,
+                                transparent 0%,
+                                rgba(255, 255, 255, 0.5) 50%, 
+                                transparent 100%);
+    
+    transform: skewX(-20deg); 
+    
+    /* transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;  */
+    transition: transform 0.5s ease-in-out;
+    opacity: 0; 
+    z-index: 2; 
+}
+
+.shine-effect-on-hover:hover::before {
+    transform: translateX(240%) skewX(-20deg); 
+    opacity: 1; 
+}
+
+.infinite-shine-effect {
+    position: relative;
+    overflow: hidden; 
+}
+
+.infinite-shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    
+    width: 80%; 
+    height: 100%;
+    
+    background: linear-gradient(to right,
+                                transparent 0%,
+                                rgba(255, 255, 255, 0.5) 50%,
+                                transparent 100%);
+    
+    transform: skewX(-20deg);
+    
+    z-index: 2;
+    
+    animation: shine 2s linear infinite; /* Name, duration, type and repetition */
+}

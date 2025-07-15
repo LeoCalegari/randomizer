@@ -1,0 +1,66 @@
+/* Font */
+.font-700 {
+    font-weight: 700 !important;
+}
+
+/* Display */
+.display-none {
+    display: none !important;
+}
+
+/* Shadow */
+.x-shadow {
+    box-shadow: 
+    -4px 0px 10px rgba(0, 0, 0, 0.2), 4px 0px 10px rgba(0, 0, 0, 0.2); 
+}
+
+/* Margin & Padding */
+.mt-15 {
+    margin-top: 15px !important;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.mb-10 {
+    margin-bottom: 10px !important;
+}
+
+.ml-5 {
+    margin-left: 5px !important;
+}
+
+.mr-5 {
+    margin-right: 5px !important;
+}
+
+.mr-15 {
+    margin-right: 15px !important;
+}
+
+.min-h-100vh {
+    min-height: 100vh !important;
+}
+
+/* Active */
+.active {
+    color: var(--primary-color) !important;
+}
+
+/* Spacer */
+.spacer {
+    background-color: var(--primary-color) !important;
+    height: 3px !important;
+    border-radius: 3px !important;
+    width: 100%;
+}
+
+/* Hover */
+.hover-primary-color:hover {
+    color: var(--primary-color) !important;
+}
