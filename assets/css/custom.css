@@ -281,3 +281,8 @@
     font-weight: 700 !important;
     font-size: 17px !important;
 }
+
+.character-on-list:hover {
+    background-color: var(--primary-color);
+    color: white !important;
+}
