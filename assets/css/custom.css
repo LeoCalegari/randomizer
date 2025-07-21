@@ -270,8 +270,8 @@
 }
 
 .character-list {
-    overflow: auto !important;
-    height: 85vh !important;
+    overflow-y: auto !important;
+    height: 82vh !important;
 
     font-size: 15px !important;
 }
