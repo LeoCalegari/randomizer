@@ -20,7 +20,7 @@ async function init() {
     await ajustButtonsAfterLoading();
 
     // Cicles the gifs after loading
-    cicleGifs(0);
+    // cicleGifs(0);
 }
 
 async function filterCharacterList() {
@@ -68,10 +68,12 @@ async function randomize() {
 }
 
 async function fillCharacterSectionWithData(character) {
-    // ---------- * Background and profile pictures * ----------
-    $("#characterBackgroundImage").css("background-image", "url('img/obras/" + character.series + "/0.png')");
+    const series = seriesList.filter(seriesTEMP => seriesTEMP.id == character.seriesID)[0];
 
-    const profileImageHTML = `<img src="img/personagens/${character.series}/${character.name}/0.png"/ onclick="expandImage(this)">`;
+    // ---------- * Background and profile pictures * ----------
+    $("#characterBackgroundImage").css("background-image", "url('img/obras/" + series.name + "/0.png')");
+    
+    const profileImageHTML = `<img src="img/personagens/${series.name}/${character.name}/0.png"/ onclick="expandImage(this)">`;
 
     $("#characterProfileImage").find("img").remove();
     $("#characterProfileImage").append(profileImageHTML);
@@ -79,7 +81,7 @@ async function fillCharacterSectionWithData(character) {
 
     // ---------- * Name and Series * ----------
     document.getElementById("characterName").innerText = character.name;
-    document.getElementById("characterSeries").innerText = character.series;
+    document.getElementById("characterSeries").innerText = series.name;
 
     // ---------- * References * ----------
     $("#characterReferences").find("div").remove();
@@ -88,7 +90,7 @@ async function fillCharacterSectionWithData(character) {
     for(let index = 1; index <= character.numberOfReferences; index++){
         const refereceHTML = `
                                 <div class="col-md-${colSize}">
-                                    <img class="character-reference-image" src="img/personagens/${character.series}/${character.name}/${index}.png" onclick="expandImage(this)"/>
+                                    <img class="character-reference-image" src="img/personagens/${series.name}/${character.name}/${index}.png" onclick="expandImage(this)"/>
                                 </div>
                              `;
 
@@ -98,7 +100,7 @@ async function fillCharacterSectionWithData(character) {
 
 async function fillSeriesFilter() {
     await seriesList.forEach(series => {
-        const seriesHTML = `<option value="${ajustString(series)}">${series}</option>`;
+        const seriesHTML = `<option value="${series.id}">${series.name}</option>`;
 
         $("#filterSeries").append(seriesHTML);
     });
@@ -157,8 +159,8 @@ async function fillListOfCharacter() {
         const series = seriesList[index];
 
         const HTML = `
-                        <span class="character-list-title">${series}</span>
-                        <div class="mb-10" id="characterList${await ajustString(series)}"></div>
+                        <span class="character-list-title">${series.name}</span>
+                        <div class="mb-10" id="characterList${series.id}"></div>
                      `;
         
         $("#characterList").append(HTML);
@@ -174,7 +176,7 @@ async function fillListOfCharacter() {
                         </div>
                      `;
 
-        $("#characterList" + await ajustString(character.series)).append(HTML);
+        $("#characterList" + character.seriesID).append(HTML);
     }
 }
 

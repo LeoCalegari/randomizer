@@ -6,47 +6,46 @@ var characterList = [];
 
 async function fillDatabase() {
     // --- * Series * ---
-    seriesList.push("Tower of God");
-    seriesList.push("Pokémon");
-    seriesList.push("Akame ga Kill");
-    seriesList.push("Darling in the FranXX");
-    seriesList.push("Dr. Stone");
-    seriesList.push("Dumbbell Nan Kilo Moteru");
-    seriesList.push("One-Punch Man");
-    seriesList.push("Jujutsu Kaisen");
-    seriesList.push("Kaguya-sama wa Kokurasetai");
-    seriesList.push("Kanojo, Okarishimasu");
-    seriesList.push("Kimetsu no Yaiba");
-    seriesList.push("Kobayashi-san Chi no Maid Dragon");
-    seriesList.push("Kono Subarashii Sekai ni Shukufuku wo");
-    seriesList.push("One Punch-Man");
-    seriesList.push("ReZero kara Hajimeru Isekai Seikatsu");
-    seriesList.push("Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai");
-    seriesList.push("Shingeki no Kyojin");
-    seriesList.push("Sono Bisque Doll wa Koi wo Suru");
-    seriesList.push("Tate no Yuusha no Nariagari");
-    seriesList.push("Cyberpunk Edgerunners");
-    seriesList.push("Ijiranaide, Nagatoro-san");
-    seriesList.push("Boku no Hero Academia");
-    seriesList.push("Chainsaw Man");
-    seriesList.push("One Piece");
-    seriesList.push("Dororo");
-    seriesList.push("Baldur's Gate 3");
-    seriesList.push("NieR Automata");
-    seriesList.push("Stellar Blade");
-    seriesList.push("League of Legends");
-    seriesList.push("Valorant");
-    seriesList.push("Overwatch");
-    seriesList.push("Final Fantasy");
-    seriesList.push("Stardew Valley");
-    seriesList.push("Resident Evil");
-    seriesList.push("Cyberpunk 2077");
-    seriesList.push("Street Fighter");
-    seriesList.push("Cross Code");
-    seriesList.push("Sousou no Frieren")
+    // {id: , name: }
+    seriesList.push({id: 1, name: "Tower of God"});
+    seriesList.push({id: 2, name: "Pokémon"});
+    seriesList.push({id: 3, name: "Akame ga Kill"});
+    seriesList.push({id: 4, name: "Darling in the FranXX"});
+    seriesList.push({id: 5, name: "Dr. Stone"});
+    seriesList.push({id: 6, name: "Dumbbell Nan Kilo Moteru"});
+    seriesList.push({id: 7, name: "Jujutsu Kaisen"});
+    seriesList.push({id: 8, name: "Kaguya-sama wa Kokurasetai"});
+    seriesList.push({id: 9, name: "Kanojo, Okarishimasu"});
+    seriesList.push({id: 10, name: "Kimetsu no Yaiba"});
+    seriesList.push({id: 11, name: "Kobayashi-san Chi no Maid Dragon"});
+    seriesList.push({id: 12, name: "Kono Subarashii Sekai ni Shukufuku wo"});
+    seriesList.push({id: 13, name: "One Punch-Man"});
+    seriesList.push({id: 14, name: "ReZero kara Hajimeru Isekai Seikatsu"});
+    seriesList.push({id: 15, name: "Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai"});
+    seriesList.push({id: 16, name: "Shingeki no Kyojin"});
+    seriesList.push({id: 17, name: "Sono Bisque Doll wa Koi wo Suru"});
+    seriesList.push({id: 18, name: "Tate no Yuusha no Nariagari"});
+    seriesList.push({id: 19, name: "Cyberpunk Edgerunners"});
+    seriesList.push({id: 20, name: "Ijiranaide, Nagatoro-san"});
+    seriesList.push({id: 21, name: "Boku no Hero Academia"});
+    seriesList.push({id: 22, name: "Chainsaw Man"});
+    seriesList.push({id: 23, name: "One Piece"});
+    seriesList.push({id: 24, name: "Dororo"});
+    seriesList.push({id: 25, name: "Baldur's Gate 3"});
+    seriesList.push({id: 26, name: "NieR Automata"});
+    seriesList.push({id: 27, name: "League of Legends"});
+    seriesList.push({id: 28, name: "Valorant"});
+    seriesList.push({id: 29, name: "Overwatch"});
+    seriesList.push({id: 30, name: "Final Fantasy"});
+    seriesList.push({id: 31, name: "Stardew Valley"});
+    seriesList.push({id: 32, name: "Resident Evil"});
+    seriesList.push({id: 33, name: "Cyberpunk 2077"});
+    seriesList.push({id: 34, name: "Street Fighter"});
+    seriesList.push({id: 35, name: "Cross Code"});
+    seriesList.push({id: 36, name: "Sousou no Frieren"});
 
     seriesList.sort(function(a, b) {
-        return a.localeCompare(b);
+        return a.name.localeCompare(b.name);
     });
 
     // --- * Characters * ---
@@ -65,10 +64,10 @@ async function fillDatabase() {
     
     tempCharacterList.push("Khun Ran, M, [], 4");
     tempCharacterList.push("Khun Aguero Agnis, M, [], 6");
-    tempCharacterList.push("Twenty-Fifth Baam, M, [\"Prologue\",\"Jyu Viole Grace\",\"Season 3\",\"Masters\"], 9");
+    tempCharacterList.push("Twenty-Fifth Baam, M, [], 9");
     tempCharacterList.push("White Hoaqin, M, [], 4");
 
-    await addToCharacterList(tempCharacterList, "Tower of God");
+    await addToCharacterList(tempCharacterList, 1);
 
     // Pokémon
     tempCharacterList = [];
@@ -135,7 +134,7 @@ async function fillDatabase() {
     tempCharacterList.push("Victor, M, [], 4");
     tempCharacterList.push("Ash, M, [], 7");
 
-    await addToCharacterList(tempCharacterList, "Pokémon");
+    await addToCharacterList(tempCharacterList, 2);
 
     // Akame ga Kill
     tempCharacterList = [];
@@ -143,14 +142,14 @@ async function fillDatabase() {
     tempCharacterList.push("Mine, F, [], 1");
     tempCharacterList.push("Esdeath, F, [], 2");
 
-    await addToCharacterList(tempCharacterList, "Akame ga Kill");
+    await addToCharacterList(tempCharacterList, 3);
 
     // Darling in the FranXX
     tempCharacterList = [];
     tempCharacterList.push("Zero Two, F, [], 2");
     tempCharacterList.push("001, F, [], 2");
 
-    await addToCharacterList(tempCharacterList, "Darling in the FranXX");
+    await addToCharacterList(tempCharacterList, 4);
     
     // Dr. Stone
     tempCharacterList = [];
@@ -162,7 +161,7 @@ async function fillDatabase() {
     tempCharacterList.push("Gen Asagiri, M, [], 3");
     tempCharacterList.push("Tsukasa Shishio, M, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Dr. Stone");
+    await addToCharacterList(tempCharacterList, 5);
 
     // Dumbbell Nan Kilo Moteru
     tempCharacterList = [];
@@ -171,7 +170,7 @@ async function fillDatabase() {
     tempCharacterList.push("Gina Boyd, F, [], 2");
     tempCharacterList.push("Uehara Ayaka, F, [], 2");
 
-    await addToCharacterList(tempCharacterList, "Dumbbell Nan Kilo Moteru");
+    await addToCharacterList(tempCharacterList, 6);
 
     // Jujutsu Kaisen
     tempCharacterList = [];
@@ -202,7 +201,7 @@ async function fillDatabase() {
     tempCharacterList.push("Ryoumei Sukuna, M, [], 7");
     tempCharacterList.push("Toji Fushiguro, M, [0], 3");
 
-    await addToCharacterList(tempCharacterList, "Jujutsu Kaisen");
+    await addToCharacterList(tempCharacterList, 7);
 
     // Kaguya-sama wa Kokurasetai
     tempCharacterList = [];
@@ -210,7 +209,7 @@ async function fillDatabase() {
     tempCharacterList.push("Chika Fujiwara, F, [], 1");
     tempCharacterList.push("Ai Hayasaka, F, [], 1");
     
-    await addToCharacterList(tempCharacterList, "Kaguya-sama wa Kokurasetai");
+    await addToCharacterList(tempCharacterList, 8);
 
     // Kanojo, Okarishimasu 
     tempCharacterList = [];
@@ -219,7 +218,7 @@ async function fillDatabase() {
     tempCharacterList.push("Sumi, F, [], 1");
     tempCharacterList.push("Mami Nanami, F, [], 1");
 
-    await addToCharacterList(tempCharacterList, "Kanojo, Okarishimasu");
+    await addToCharacterList(tempCharacterList, 9);
 
     // Kimetsu no Yaiba 
     tempCharacterList = [];
@@ -247,7 +246,7 @@ async function fillDatabase() {
     tempCharacterList.push("Kokushibo, M, [], 4");
     tempCharacterList.push("Akaza, M, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Kimetsu no Yaiba");
+    await addToCharacterList(tempCharacterList, 10);
 
     // Kobayashi-san Chi no Maid Dragon 
     tempCharacterList = [];
@@ -255,7 +254,7 @@ async function fillDatabase() {
     tempCharacterList.push("Tohru, F, [], 3");
     tempCharacterList.push("Elma, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Kobayashi-san Chi no Maid Dragon");
+    await addToCharacterList(tempCharacterList, 11);
 
     // Kono Subarashii Sekai ni Shukufuku wo
     tempCharacterList = [];
@@ -264,7 +263,7 @@ async function fillDatabase() {
     tempCharacterList.push("Darkness, F, [], 2");
     tempCharacterList.push("Yunyun, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Kono Subarashii Sekai ni Shukufuku wo");
+    await addToCharacterList(tempCharacterList, 12);
 
     // One-Punch Man
     tempCharacterList = [];
@@ -277,7 +276,7 @@ async function fillDatabase() {
     tempCharacterList.push("Genos, M, [], 4");
     tempCharacterList.push("Garou, M, [], 4");
 
-    await addToCharacterList(tempCharacterList, "One-Punch Man");
+    await addToCharacterList(tempCharacterList, 13);
     
     // ReZero kara Hajimeru Isekai Seikatsu 
     tempCharacterList = [];
@@ -286,7 +285,7 @@ async function fillDatabase() {
     tempCharacterList.push("Rem, F, [], 3");
     tempCharacterList.push("Echidna, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "ReZero kara Hajimeru Isekai Seikatsu");
+    await addToCharacterList(tempCharacterList, 14);
     
     // Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai
     tempCharacterList = [];
@@ -295,7 +294,7 @@ async function fillDatabase() {
     tempCharacterList.push("Tomoe Koga, F, [], 2");
     tempCharacterList.push("Nodoka Toyohama, F, [], 1");
 
-    await addToCharacterList(tempCharacterList, "Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai");
+    await addToCharacterList(tempCharacterList, 15);
     
     // Shingeki no Kyojin 
     tempCharacterList = [];
@@ -307,14 +306,14 @@ async function fillDatabase() {
 
     tempCharacterList.push("Levi Ackerman, M, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Shingeki no Kyojin");
+    await addToCharacterList(tempCharacterList, 16);
     
     // Sono Bisque Doll wa Koi wo Suru
     tempCharacterList = [];
     tempCharacterList.push("Marin Kitagawa, F, [], 2");
     tempCharacterList.push("Sajuna Inui, F, [], 1");
 
-    await addToCharacterList(tempCharacterList, "Sono Bisque Doll wa Koi wo Suru");
+    await addToCharacterList(tempCharacterList, 17);
     
     // Tate no Yuusha no Nariagari
     tempCharacterList = [];
@@ -324,14 +323,14 @@ async function fillDatabase() {
     tempCharacterList.push("Sadeena, F, [], 2");
     tempCharacterList.push("Shildina, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Tate no Yuusha no Nariagari");
+    await addToCharacterList(tempCharacterList, 18);
     
     // Cyberpunk Edgerunners 
     tempCharacterList = [];
     tempCharacterList.push("Lucyna Kushinada, F, [], 1");
     tempCharacterList.push("Rebecca, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Cyberpunk Edgerunners");
+    await addToCharacterList(tempCharacterList, 19);
     
     // Ijiranaide, Nagatoro-san
     tempCharacterList = [];
@@ -341,7 +340,7 @@ async function fillDatabase() {
     tempCharacterList.push("Sakura, F, [], 4");
     tempCharacterList.push("Sana Sunomiya, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Ijiranaide, Nagatoro-san");
+    await addToCharacterList(tempCharacterList, 20);
     
     // Boku no Hero Academia
     tempCharacterList = [];
@@ -378,7 +377,7 @@ async function fillDatabase() {
     tempCharacterList.push("Overhaul, M, [], 1");
     tempCharacterList.push("Hitoshi Shinso, M, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Boku no Hero Academia");
+    await addToCharacterList(tempCharacterList, 21);
     
     // Chainsaw Man
     tempCharacterList = [];
@@ -391,7 +390,7 @@ async function fillDatabase() {
 
     tempCharacterList.push("Aki Hayakawa, M, [], 2");
 
-    await addToCharacterList(tempCharacterList, "Chainsaw Man");
+    await addToCharacterList(tempCharacterList, 22);
     
     // One Piece
     tempCharacterList = [];
@@ -400,7 +399,7 @@ async function fillDatabase() {
     tempCharacterList.push("Boa Hancock, F, [], 6");
     tempCharacterList.push("Nami, F, [], 5");
 
-    await addToCharacterList(tempCharacterList, "One Piece");
+    await addToCharacterList(tempCharacterList, 23);
     
     // Dororo
     tempCharacterList = [];
@@ -410,7 +409,7 @@ async function fillDatabase() {
 
     tempCharacterList.push("Hyakkimaru, M, [], 4");
 
-    await addToCharacterList(tempCharacterList, "Dororo");
+    await addToCharacterList(tempCharacterList, 24);
     
     // Baldur's Gate 3
     tempCharacterList = [];
@@ -418,7 +417,7 @@ async function fillDatabase() {
     tempCharacterList.push("Minthara, F, [], 5");
     tempCharacterList.push("Mizora, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Baldur's Gate 3");
+    await addToCharacterList(tempCharacterList, 25);
     
     // NieR Automata
     tempCharacterList = [];
@@ -426,7 +425,7 @@ async function fillDatabase() {
     tempCharacterList.push("A2, F, [], 7");
     tempCharacterList.push("Commander White, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "NieR Automata");
+    await addToCharacterList(tempCharacterList, 26);
     
     // League of Legends
     tempCharacterList = [];
@@ -469,7 +468,7 @@ async function fillDatabase() {
     tempCharacterList.push("Yasuo, M, [], 15");
     tempCharacterList.push("Yone, M, [], 9");
 
-    await addToCharacterList(tempCharacterList, "League of Legends");
+    await addToCharacterList(tempCharacterList, 27);
 
     // Valorant
     tempCharacterList = [];
@@ -481,7 +480,7 @@ async function fillDatabase() {
     tempCharacterList.push("Fade, F, [], 3");
     tempCharacterList.push("DeadLock, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Valorant");
+    await addToCharacterList(tempCharacterList, 28);
     
     // Overwatch
     tempCharacterList = [];
@@ -491,13 +490,13 @@ async function fillDatabase() {
     tempCharacterList.push("Kiriko, F, [], 5");
     tempCharacterList.push("Widowmaker, F, [], 3");
 
-    await addToCharacterList(tempCharacterList, "Overwatch");
+    await addToCharacterList(tempCharacterList, 29);
     
     // Final Fantasy
     tempCharacterList = [];
     tempCharacterList.push("Tifa Lockhart, F, [], 9");
 
-    await addToCharacterList(tempCharacterList, "Final Fantasy");
+    await addToCharacterList(tempCharacterList, 30);
     
     // Stardew Valley
     tempCharacterList = [];
@@ -510,7 +509,7 @@ async function fillDatabase() {
     tempCharacterList.push("Robin, F, [], 3");
     tempCharacterList.push("Sandy, F, [], 1");
 
-    await addToCharacterList(tempCharacterList, "Stardew Valley");
+    await addToCharacterList(tempCharacterList, 31);
     
     // Resident Evil
     tempCharacterList = [];
@@ -523,13 +522,13 @@ async function fillDatabase() {
 
     tempCharacterList.push("Leon Kennedy, M, [], 12");
 
-    await addToCharacterList(tempCharacterList, "Resident Evil");
+    await addToCharacterList(tempCharacterList, 32);
     
     // Cyberpunk 2077
     tempCharacterList = [];
     tempCharacterList.push("Panam, F, [], 2");
 
-    await addToCharacterList(tempCharacterList, "Cyberpunk 2077");
+    await addToCharacterList(tempCharacterList, 33);
     
     // Street Fighter
     tempCharacterList = [];
@@ -537,7 +536,7 @@ async function fillDatabase() {
     tempCharacterList.push("Cammy, F, [], 7");
     tempCharacterList.push("Juri Han, F, [], 10");
 
-    await addToCharacterList(tempCharacterList, "Street Fighter");
+    await addToCharacterList(tempCharacterList, 34);
     
     // Cross Code
     tempCharacterList = [];
@@ -545,21 +544,21 @@ async function fillDatabase() {
     tempCharacterList.push("Emilienator, F, [], 2");
     tempCharacterList.push("Shizuka, F, [], 2");
 
-    await addToCharacterList(tempCharacterList, "Cross Code");
+    await addToCharacterList(tempCharacterList, 35);
 
     // Sousou no Frieren
     tempCharacterList = [];
     tempCharacterList.push("Frieren, F, [], 3");
     tempCharacterList.push("Fern, F, [], 4");
 
-    await addToCharacterList(tempCharacterList, "Sousou no Frieren");
+    await addToCharacterList(tempCharacterList, 36);
 
     characterList.sort(function(a, b) {
         return a.name.localeCompare(b.nome);
     });  
 }
 
-async function addToCharacterList(tempCharacterList, series) {
+async function addToCharacterList(tempCharacterList, seriesID) {
     tempCharacterList.forEach(function(tempCharacter) {
         let characterInfo = tempCharacter.split(", ");
         let name = characterInfo[0];
@@ -571,7 +570,7 @@ async function addToCharacterList(tempCharacterList, series) {
         character.name = name;
         character.gender = gender;
         character.skins = skins;
-        character.series = series;
+        character.seriesID = seriesID;
         character.numberOfReferences = numberOfReferences;
 
         characterList.push(character);
