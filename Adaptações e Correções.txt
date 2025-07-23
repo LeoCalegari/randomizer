@@ -17,7 +17,6 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Adicionar id na obra e no personagem
 . Adicionar uma funcionalidade para randomizar até mandar parar
 . Melhorar layout das imagens do personagem
     - Expandir no hover
