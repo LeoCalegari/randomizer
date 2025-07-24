@@ -18,6 +18,7 @@ Personagens para adicionar
 ---------------------------
 NOVO MODELO
 . Adicionar uma funcionalidade para randomizar até mandar parar
+. Melhorar botão para indicar que dá para clicar
 . Melhorar layout das imagens do personagem
     - Expandir no hover
     - Brilhar no hover

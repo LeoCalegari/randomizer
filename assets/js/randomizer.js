@@ -1,4 +1,5 @@
 var randomized = false;
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 async function init() {
     // Fills out the database
@@ -44,6 +45,38 @@ async function filterCharacterList() {
     }
 
     return tempCharacterList;
+}
+
+var stopRandomizing = false;
+async function toggleRandomizing() {
+    stopRandomizing = !stopRandomizing;
+}
+
+async function prepareRandomization() {
+    stopRandomizing = false;
+
+    const randomizeUntilStop = document.getElementById("randomizeUntilStop").checked;
+
+    if(randomizeUntilStop){
+        const randomizeBtn = document.getElementById("randomizeBtn");
+        const stopRandomizingBtn = document.getElementById("stopRandomizingBtn");
+
+        // Sets up stop button
+        randomizeBtn.classList.add("display-none");
+        stopRandomizingBtn.classList.remove("display-none");
+
+        while(!stopRandomizing){
+            await randomize();
+
+            await delay(2000);
+        }
+
+        // Sets up randomize button
+        randomizeBtn.classList.remove("display-none");
+        stopRandomizingBtn.classList.add("display-none");
+    }else{
+        randomize();
+    }
 }
 
 async function randomize() {

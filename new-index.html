@@ -47,13 +47,22 @@
             <!-- Filters -->
             <div class="col-md-3 section">
                 <div class="col-md-12 d-grid">
-                    <button class="button button-primary disabled infinite-shine-effect" onclick="randomize();" disabled>Randomize</button>
+                    <button id="randomizeBtn" class="button button-primary disabled infinite-shine-effect" onclick="prepareRandomization();" disabled>Randomize</button>
+                    <button id="stopRandomizingBtn" class="button button-primary disabled infinite-shine-effect display-none" onclick="toggleRandomizing();" disabled>Stop</button>
                 </div>
                 <div class="col-md-12 mt-15 toggle-settings hover-primary-color">
                     <span class="font-700"><i class="fas fa-cog mr-5"></i>Settings</span>
                 </div>
                 <div id="settings" class="display-none mt-10">
                     <div class="col-md-12 spacer infinite-shine-effect"></div>
+                    <div class="col-md-12 form-group">
+                        <div class="form-check">
+                            <input id="randomizeUntilStop" name="randomizeUntilStop" class="form-check-input" type="checkbox">
+                            <label class="form-check-label" for="randomizeUntilStop">
+                                Randomize until manually stopping
+                            </label>
+                        </div>
+                    </div>
                     <div class="col-md-12 form-group">
                         <label for="filterSeries">Series</label>
                         <select id="filterSeries" name="filterSeries" class="form-select" style="width: 100% !important;">
