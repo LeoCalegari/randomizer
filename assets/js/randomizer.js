@@ -48,8 +48,17 @@ async function filterCharacterList() {
 }
 
 var stopRandomizing = false;
+var randomizeBtn = document.getElementById("randomizeBtn");
+var stopRandomizingBtn = document.getElementById("stopRandomizingBtn");
+
 async function toggleRandomizing() {
     stopRandomizing = !stopRandomizing;
+
+    if(stopRandomizing){
+        // Sets up randomize button
+        randomizeBtn.classList.remove("display-none");
+        stopRandomizingBtn.classList.add("display-none");
+    }
 }
 
 async function prepareRandomization() {
@@ -58,10 +67,6 @@ async function prepareRandomization() {
     const randomizeUntilStop = document.getElementById("randomizeUntilStop").checked;
 
     if(randomizeUntilStop){
-        const randomizeBtn = document.getElementById("randomizeBtn");
-        const stopRandomizingBtn = document.getElementById("stopRandomizingBtn");
-
-        // Sets up stop button
         randomizeBtn.classList.add("display-none");
         stopRandomizingBtn.classList.remove("display-none");
 
@@ -70,10 +75,6 @@ async function prepareRandomization() {
 
             await delay(2000);
         }
-
-        // Sets up randomize button
-        randomizeBtn.classList.remove("display-none");
-        stopRandomizingBtn.classList.add("display-none");
     }else{
         randomize();
     }

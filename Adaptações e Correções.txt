@@ -17,8 +17,7 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Adicionar uma funcionalidade para randomizar até mandar parar
-. Melhorar botão para indicar que dá para clicar
+. Melhorar tudo que é clicável para passar a ideia que dá para clicar
 . Melhorar layout das imagens do personagem
     - Expandir no hover
     - Brilhar no hover
@@ -29,3 +28,6 @@ NOVO MODELO
     - Filtros
     - Busca manual
     - Checkboxes
+
+. Melhorar funcionamento da função para randomizar até parar
+    - Tem um bug se logo ao parar de randomizar randomizar de novo
