@@ -18,9 +18,6 @@ Personagens para adicionar
 ---------------------------
 NOVO MODELO
 . Melhorar tudo que é clicável para passar a ideia que dá para clicar
-. Melhorar layout das imagens do personagem
-    - Expandir no hover
-    - Brilhar no hover
 . Melhorar carregamento
 . Ajustar bug ao expandir imagens que tem vezes que é necessário clicar mais de uma vez
 . Baixar bootstrap e ícones para funcionar sem internet.
