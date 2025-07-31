@@ -1,6 +1,7 @@
 :root {
     /* Colors */
     --primary-color: rgb(112, 0, 0);
+    --primary-color-rgb: 112, 0, 0;
     --background-color: white;
 
     /* Borders & Radius */

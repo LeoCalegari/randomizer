@@ -124,7 +124,7 @@ async function fillCharacterSectionWithData(character) {
     for(let index = 1; index <= character.numberOfReferences; index++){
         const refereceHTML = `
                                 <div class="col-md-${colSize}">
-                                    <img class="character-reference-image primary-color-border-shadow-on-hover shine-effect-on-hover" src="img/personagens/${series.name}/${character.name}/${index}.png" onclick="expandImage(this)"/>
+                                    <img class="character-reference-image primary-color-border-shadow-on-hover" src="img/personagens/${series.name}/${character.name}/${index}.png" onclick="expandImage(this)"/>
                                 </div>
                              `;
 
@@ -250,7 +250,7 @@ async function ajustButtonsAfterLoading() {
 
     buttonList.forEach(button => {
         button.classList.add("primary-color-border-shadow-on-hover");
-        button.classList.add("shine-effect-on-hover");
+        // button.classList.add("shine-effect-on-hover");
 
         button.classList.remove("infinite-shine-effect");
         button.classList.remove("disabled");
