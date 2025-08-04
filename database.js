@@ -19,7 +19,7 @@ async function fillDatabase() {
     seriesList.push({id: 10, name: "Kimetsu no Yaiba"});
     seriesList.push({id: 11, name: "Kobayashi-san Chi no Maid Dragon"});
     seriesList.push({id: 12, name: "Kono Subarashii Sekai ni Shukufuku wo"});
-    seriesList.push({id: 13, name: "One Punch-Man"});
+    seriesList.push({id: 13, name: "One-Punch Man"});
     seriesList.push({id: 14, name: "ReZero kara Hajimeru Isekai Seikatsu"});
     seriesList.push({id: 15, name: "Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai"});
     seriesList.push({id: 16, name: "Shingeki no Kyojin"});
