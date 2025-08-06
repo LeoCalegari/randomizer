@@ -68,5 +68,4 @@
 .primary-color-border-shadow-on-hover:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
                 0 0 15px rgba(var(--primary-color-rgb), 0.7) !important;
-    border: 0px solid black !important;
 }

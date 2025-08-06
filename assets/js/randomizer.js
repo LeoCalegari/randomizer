@@ -120,7 +120,7 @@ async function fillCharacterSectionWithData(character) {
     // ---------- * References * ----------
     $("#characterReferences").find("div").remove();
 
-    let colSize = 12;
+    let colSize = 4;
     for(let index = 1; index <= character.numberOfReferences; index++){
         const refereceHTML = `
                                 <div class="col-md-${colSize}">

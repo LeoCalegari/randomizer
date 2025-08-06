@@ -12,14 +12,16 @@ Adaptações
 . Adicionar um local para deixar os links úteis de cada obra, a fim de pegar mais referências e preencher
 
 Personagens para adicionar
-.
+. Yunara - League Of Legends
+. Ver as skins novas para adicionar - League of legends
 
 
 ---------------------------
 NOVO MODELO
+. Baixar bootstrap e ícones para funcionar sem internet.
+. Programar para fechar imagem expandida no ESC
 . Melhorar carregamento
 . Ajustar bug ao expandir imagens que tem vezes que é necessário clicar mais de uma vez
-. Baixar bootstrap e ícones para funcionar sem internet.
 . Criar inputs personalizados
     - Filtros
     - Busca manual

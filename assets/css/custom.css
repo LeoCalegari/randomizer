@@ -215,16 +215,16 @@
 }
 
 .character-reference-image {
-    background-color: var(--background-color);
+    background-color: color-mix(in srgb, var(--background-color) 100%, var(--primary-color) 15%);
 
     height: 200px;
     width: 100%;
 
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 
     border-radius: var(--default-radius);
-    border: 2px solid var(--primary-color);
+    /* border: 2px solid var(--primary-color); */
 
     margin-bottom: 5px !important;
 }
