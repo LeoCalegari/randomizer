@@ -228,14 +228,23 @@ async function expandImage(image) {
     document.body.style.overflow = "hidden";
 }
 
-document.getElementById("imageOverlay").addEventListener("click", (event) => {
+const imageOverlay = document.getElementById("imageOverlay");
+imageOverlay.addEventListener("click", (event) => {
     if (event.target === imageOverlay) {
-        document.getElementById("imageOverlay").classList.remove("active"); 
-        document.body.style.overflow = "";
-
-        expandedImage.src = "";
+        closeExpandedImage();
     }
 });
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && imageOverlay.classList.contains("active")) {
+        closeExpandedImage();
+    }
+});
+
+function closeExpandedImage(){
+    document.getElementById("imageOverlay").classList.remove("active"); 
+    document.body.style.overflow = "";
+}
 
 function returnRandomObjectFromList(list) {
     return list[Math.floor((Math.random() * list.length))];
