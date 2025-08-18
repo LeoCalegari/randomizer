@@ -124,6 +124,10 @@
     pointer-events: none;
 }
 
+.character-background-image.loading {
+    background-color: color-mix(in srgb, var(--background-color) 100%, black 10%);
+}
+
 .character-profile-image {
     background-color: var(--background-color);
 
@@ -156,6 +160,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.character-profile-image.loading{
+    background-color: color-mix(in srgb, var(--background-color) 100%, black 15%);
 }
 
 .overlay {
@@ -227,6 +235,10 @@
     /* border: 2px solid var(--primary-color); */
 
     margin-bottom: 5px !important;
+}
+
+.character-reference-image.loading{
+    background-color: color-mix(in srgb, var(--background-color) 100%, black 15%);;
 }
 
 /* Character list */

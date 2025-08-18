@@ -1,6 +1,9 @@
 var randomized = false;
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
+const loadingSection = document.getElementById("loadingSection");
+const characterSection = document.getElementById("characterSection");
+
 async function init() {
     // Fills out the database
     await fillDatabase();
@@ -15,13 +18,13 @@ async function init() {
     await fillListOfCharacter();
 
     // Removes loading animation
-    $("#loadingElement").remove();
+    await loading(false);
 
     // Ajusts disabled buttons
     await ajustButtonsAfterLoading();
 
     // Cicles the gifs after loading
-    // cicleGifs(0);
+    cicleGifs(0);
 }
 
 async function filterCharacterList() {
@@ -81,6 +84,10 @@ async function prepareRandomization() {
 }
 
 async function randomize() {
+    characterSection.classList.add("display-none");
+
+    await loading(true);
+
     // Sets randomized to stop cicling gifs
     randomized = true;
 
@@ -91,14 +98,9 @@ async function randomize() {
     // Fills section with data
     await fillCharacterSectionWithData(randomizedCharacter);
 
-    // Haven't randomized yet
-    if(randomized){
-        // Hide loading section
-        document.getElementById("loadingSection").classList.add("display-none");
+    await loading(false);
 
-        // Show character section
-        document.getElementById("characterSection").classList.remove("display-none");
-    }
+    characterSection.classList.remove("display-none");
 }
 
 async function fillCharacterSectionWithData(character) {
@@ -169,7 +171,7 @@ async function fillsCharacterAutoCompleteFilter() {
                 randomized = true;
 
                 // Hides loading section
-                document.getElementById("loadingSection").classList.add("display-none");
+                loadingSection.classList.add("display-none");
 
                 // Shows character section
                 document.getElementById("characterSection").classList.remove("display-none");
@@ -215,10 +217,32 @@ async function fillListOfCharacter() {
 }
 
 function cicleGifs(ms){
+    loadingSection.classList.remove("display-none");
+
+    document.getElementById("loadingElement").classList.add("display-none");
+
     setTimeout(() => {
         if(randomized === false) document.getElementById("loadingSection").style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
         if(randomized === false) cicleGifs(5000);
     }, ms);
+}
+
+async function loading(loading) {
+    loadingSection.style.backgroundImage = "";
+
+    if(loading){
+        await ajustButtonsBeforeLoading();
+        
+        loadingSection.classList.remove("display-none");
+        document.getElementById("loadingElement").classList.remove("display-none");
+    }else{
+        await delay(500);
+
+        loadingSection.classList.add("display-none"); 
+        document.getElementById("loadingElement").classList.add("display-none");
+
+        await ajustButtonsAfterLoading();
+    }
 }
 
 async function expandImage(image) {
@@ -252,6 +276,19 @@ function returnRandomObjectFromList(list) {
 
 function returnRandomIndex(range){
     return Math.floor((Math.random() * range));
+}
+
+async function ajustButtonsBeforeLoading() {
+    const buttonList = document.querySelectorAll(".button");
+
+    buttonList.forEach(button => {
+        button.classList.remove("primary-color-border-shadow-on-hover");
+
+        button.classList.add("infinite-shine-effect");
+        button.classList.add("disabled");
+
+        button.disabled = false;
+    });
 }
 
 async function ajustButtonsAfterLoading() {
