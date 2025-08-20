@@ -236,7 +236,7 @@ async function loading(loading) {
         loadingSection.classList.remove("display-none");
         document.getElementById("loadingElement").classList.remove("display-none");
     }else{
-        await delay(500);
+        await delay(250);
 
         loadingSection.classList.add("display-none"); 
         document.getElementById("loadingElement").classList.add("display-none");
