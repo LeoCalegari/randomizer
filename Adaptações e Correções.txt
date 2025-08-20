@@ -14,16 +14,17 @@ Adaptações
 Personagens para adicionar
 . Yunara - League Of Legends
 . Ver as skins novas para adicionar - League of legends
+. Boku no Hero Vigilantes
 
 
 ---------------------------
 NOVO MODELO
 . Melhorar carregamento
-    . Colocar loading também ao clicar nos personagens do lado
     . É possível clicar no botão randomizar mesmo bloqueado
 . Melhorar elementos clicáveis
     . Deixar animado o brilhozinho, tipo o que é no botão de randomizar
 . Colocar document.getElementById() em variáveis
+. Animação para expansão de imagem
 . Ajustar bug ao expandir imagens que tem vezes que é necessário clicar mais de uma vez
 . Criar inputs personalizados
     - Filtros
