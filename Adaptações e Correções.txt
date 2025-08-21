@@ -20,6 +20,7 @@ Personagens para adicionar
 ---------------------------
 NOVO MODELO
 . Melhorar elementos clicáveis
+    . Trocar cursor
     . Deixar animado o brilhozinho, tipo o que é no botão de randomizar
 . Colocar document.getElementById() em variáveis
 . Animação para expansão de imagem
