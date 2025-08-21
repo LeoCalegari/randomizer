@@ -84,23 +84,25 @@ async function prepareRandomization() {
 }
 
 async function randomize() {
-    characterSection.classList.add("display-none");
+    if(!randomizeBtn.disabled){
+        characterSection.classList.add("display-none");
 
-    await loading(true);
+        await loading(true);
 
-    // Sets randomized to stop cicling gifs
-    randomized = true;
+        // Sets randomized to stop cicling gifs
+        randomized = true;
 
-    // Returns random character
-    let tempCharacterList = await filterCharacterList();
-    let randomizedCharacter = await returnRandomObjectFromList(tempCharacterList);
+        // Returns random character
+        let tempCharacterList = await filterCharacterList();
+        let randomizedCharacter = await returnRandomObjectFromList(tempCharacterList);
 
-    // Fills section with data
-    await fillCharacterSectionWithData(randomizedCharacter);
+        // Fills section with data
+        await fillCharacterSectionWithData(randomizedCharacter);
 
-    await loading(false);
+        await loading(false);
 
-    characterSection.classList.remove("display-none");
+        characterSection.classList.remove("display-none");
+    }   
 }
 
 async function fillCharacterSectionWithData(character) {

@@ -19,8 +19,6 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Melhorar carregamento
-    . É possível clicar no botão randomizar mesmo bloqueado
 . Melhorar elementos clicáveis
     . Deixar animado o brilhozinho, tipo o que é no botão de randomizar
 . Colocar document.getElementById() em variáveis
