@@ -128,7 +128,7 @@ async function fillCharacterSectionWithData(character) {
     for(let index = 1; index <= character.numberOfReferences; index++){
         const refereceHTML = `
                                 <div class="col-md-${colSize}">
-                                    <img class="character-reference-image primary-color-border-shadow-on-hover" src="img/personagens/${series.name}/${character.name}/${index}.png" onclick="expandImage(this)"/>
+                                    <img class="character-reference-image primary-glow-on-hover" src="img/personagens/${series.name}/${character.name}/${index}.png" onclick="expandImage(this)"/>
                                 </div>
                              `;
 
@@ -209,7 +209,7 @@ async function fillListOfCharacter() {
         const character = characterList[index];
 
         const HTML = `
-                        <div class="primary-background-on-hover character-on-list primary-color-border-shadow-on-hover">
+                        <div class="primary-background-on-hover character-on-list primary-glow-on-hover">
                             <span>${character.name}</span>
                         </div>
                      `;
@@ -284,7 +284,7 @@ async function ajustButtonsBeforeLoading() {
     const buttonList = document.querySelectorAll(".button");
 
     buttonList.forEach(button => {
-        button.classList.remove("primary-color-border-shadow-on-hover");
+        button.classList.remove("primary-glow-on-hover");
 
         button.classList.add("infinite-shine-effect");
         button.classList.add("disabled");
@@ -297,7 +297,7 @@ async function ajustButtonsAfterLoading() {
     const buttonList = document.querySelectorAll(".button");
 
     buttonList.forEach(button => {
-        button.classList.add("primary-color-border-shadow-on-hover");
+        button.classList.add("primary-glow-on-hover");
         // button.classList.add("shine-effect-on-hover");
 
         button.classList.remove("infinite-shine-effect");
