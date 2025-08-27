@@ -101,6 +101,8 @@ async function randomize() {
 
         await loading(false);
 
+        $(characterSection).fadeIn("300");
+
         characterSection.classList.remove("display-none");
     }   
 }
@@ -219,6 +221,8 @@ async function fillListOfCharacter() {
 }
 
 function cicleGifs(ms){
+    $(loadingSection).fadeIn("300");
+    
     loadingSection.classList.remove("display-none");
 
     document.getElementById("loadingElement").classList.add("display-none");
@@ -234,6 +238,8 @@ async function loading(loading) {
 
     if(loading){
         await ajustButtonsBeforeLoading();
+
+        $(loadingSection).fadeIn(300);
         
         loadingSection.classList.remove("display-none");
         document.getElementById("loadingElement").classList.remove("display-none");
