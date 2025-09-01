@@ -6,7 +6,6 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Animação para expansão de imagem
 . Animação ao clicar nas settings
 . Criar inputs personalizados
     - Filtros
