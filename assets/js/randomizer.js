@@ -1,8 +1,28 @@
 var randomized = false;
+var stopRandomizing = false;
+
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
+// Elements
 const loadingSection = document.getElementById("loadingSection");
+const loadingElement = document.getElementById("loadingElement");
 const characterSection = document.getElementById("characterSection");
+
+const randomizeBtn = document.getElementById("randomizeBtn");
+const stopRandomizingBtn = document.getElementById("stopRandomizingBtn");
+
+const characterName = document.getElementById("characterName");
+const characterSeries = document.getElementById("characterSeries");
+
+const expandedImage = document.getElementById("expandedImage");
+const imageOverlay = document.getElementById("imageOverlay");
+
+// Filters & Config
+const checkboxRandomizeUntilStop = document.getElementById("randomizeUntilStop");
+const filterMale = document.getElementById("filterMale");
+const filterFemale = document.getElementById("filterFemale");
+
+
 
 async function init() {
     // Fills out the database
@@ -38,8 +58,8 @@ async function filterCharacterList() {
     }
 
     // ----- * Gender * -----
-    let male = document.getElementById("filterMale").checked;
-    let female = document.getElementById("filterFemale").checked;
+    let male = filterMale.checked;
+    let female = filterFemale.checked;
 
     if(male && !female){
         tempCharacterList = tempCharacterList.filter(character => character.gender === "M");
@@ -49,10 +69,6 @@ async function filterCharacterList() {
 
     return tempCharacterList;
 }
-
-var stopRandomizing = false;
-var randomizeBtn = document.getElementById("randomizeBtn");
-var stopRandomizingBtn = document.getElementById("stopRandomizingBtn");
 
 async function toggleRandomizing() {
     stopRandomizing = !stopRandomizing;
@@ -67,7 +83,7 @@ async function toggleRandomizing() {
 async function prepareRandomization() {
     stopRandomizing = false;
 
-    const randomizeUntilStop = document.getElementById("randomizeUntilStop").checked;
+    const randomizeUntilStop = checkboxRandomizeUntilStop.checked;
 
     if(randomizeUntilStop){
         randomizeBtn.classList.add("display-none");
@@ -120,8 +136,8 @@ async function fillCharacterSectionWithData(character) {
 
 
     // ---------- * Name and Series * ----------
-    document.getElementById("characterName").innerText = character.name;
-    document.getElementById("characterSeries").innerText = series.name;
+    characterName.innerText = character.name;
+    characterSeries.innerText = series.name;
 
     // ---------- * References * ----------
     $("#characterReferences").find("div").remove();
@@ -178,7 +194,7 @@ async function fillsCharacterAutoCompleteFilter() {
                 loadingSection.classList.add("display-none");
 
                 // Shows character section
-                document.getElementById("characterSection").classList.remove("display-none");
+                characterSection.classList.remove("display-none");
             }
 
             // Returns character from list
@@ -225,10 +241,10 @@ function cicleGifs(ms){
     
     loadingSection.classList.remove("display-none");
 
-    document.getElementById("loadingElement").classList.add("display-none");
+    loadingElement.classList.add("display-none");
 
     setTimeout(() => {
-        if(randomized === false) document.getElementById("loadingSection").style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
+        if(randomized === false) loadingSection.style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
         if(randomized === false) cicleGifs(5000);
     }, ms);
 }
@@ -242,25 +258,25 @@ async function loading(loading) {
         $(loadingSection).fadeIn(300);
         
         loadingSection.classList.remove("display-none");
-        document.getElementById("loadingElement").classList.remove("display-none");
+        loadingElement.classList.remove("display-none");
     }else{
         await delay(250);
 
         loadingSection.classList.add("display-none"); 
-        document.getElementById("loadingElement").classList.add("display-none");
+        loadingElement.classList.add("display-none");
 
         await ajustButtonsAfterLoading();
     }
 }
 
 async function expandImage(image) {
-    document.getElementById("expandedImage").src = image.src;
-    document.getElementById("imageOverlay").classList.add("active");
+    expandedImage.src = image.src;
+    imageOverlay.classList.add("active");
 
     document.body.style.overflow = "hidden";
 }
 
-const imageOverlay = document.getElementById("imageOverlay");
+
 imageOverlay.addEventListener("click", (event) => {
     if (event.target === imageOverlay) {
         closeExpandedImage();
@@ -274,7 +290,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 function closeExpandedImage(){
-    document.getElementById("imageOverlay").classList.remove("active"); 
+    imageOverlay.classList.remove("active"); 
     document.body.style.overflow = "";
 }
 
@@ -304,7 +320,6 @@ async function ajustButtonsAfterLoading() {
 
     buttonList.forEach(button => {
         button.classList.add("primary-glow-on-hover");
-        // button.classList.add("shine-effect-on-hover");
 
         button.classList.remove("infinite-shine-effect");
         button.classList.remove("disabled");
