@@ -6,7 +6,7 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Animação ao clicar nas settings
+. Melhorar layout das settings
 . Criar inputs personalizados
     - Filtros
     - Busca manual

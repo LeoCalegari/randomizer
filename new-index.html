@@ -187,6 +187,8 @@
             const settings = document.getElementById("settings");
 
             if(settings.classList.contains("display-none")){
+                $(settings).fadeIn(300);
+
                 settings.classList.remove("display-none");
 
                 this.classList.add("active");
