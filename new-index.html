@@ -55,32 +55,44 @@
                 </div>
                 <div id="settings" class="display-none mt-10">
                     <div class="col-md-12 spacer infinite-shine-effect"></div>
-                    <div class="col-md-12 form-group">
-                        <div class="form-check">
-                            <input id="randomizeUntilStop" name="randomizeUntilStop" class="form-check-input" type="checkbox">
-                            <label class="form-check-label" for="randomizeUntilStop">
-                                Randomize<strong class="ml-5">∞</strong>
-                            </label>
+                    <div class="form-row mt-10">
+                        <div class="col-md-12 form-group">
+                            <div class="form-check">
+                                <input id="randomizeUntilStop" name="randomizeUntilStop" class="form-check-input" type="checkbox">
+                                <label class="form-check-label" for="randomizeUntilStop">
+                                    Randomize<strong class="ml-5">∞</strong>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-12 form-group">
-                        <label for="filterSeries">Series</label>
-                        <select id="filterSeries" name="filterSeries" class="form-select" style="width: 100% !important;">
-                            <option value="0">All</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-12"><hr></div>
                     </div>
-                    <div class="col-md-12 form-group">
-                        <div class="form-check">
-                            <input id="filterMale" name="filterMale" class="form-check-input" type="checkbox">
-                            <label class="form-check-label" for="filterMale">
-                                M
-                            </label>
+                    <div class="form-row">
+                        <div class="col-md-12 form-group">
+                            <label for="filterSeries">Series</label>
+                            <select id="filterSeries" name="filterSeries" class="form-select" style="width: 100% !important;">
+                                <option value="0">All</option>
+                            </select>
                         </div>
-                         <div class="form-check">
-                            <input id="filterFemale" name="filterFemale" class="form-check-input" type="checkbox" checked>
-                            <label class="form-check-label" for="filterFemale">
-                                F
-                            </label>
+                    </div>
+                    <div class="form-row mt-10">
+                        <label>Genders</label>
+                        <div class="col-md-6 col-xs-6 form-group">
+                            <div class="form-check">
+                                <input id="filterMale" name="filterMale" class="form-check-input" type="checkbox">
+                                <label class="form-check-label" for="filterMale">
+                                    M
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 form-group">
+                            <div class="form-check">
+                                <input id="filterFemale" name="filterFemale" class="form-check-input" type="checkbox" checked>
+                                <label class="form-check-label" for="filterFemale">
+                                    F
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
