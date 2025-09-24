@@ -3,10 +3,10 @@ Personagens para adicionar
 . Ver as skins novas para adicionar - League of legends
 . Boku no Hero Vigilantes
 . Aerith
+. Dungeon Meshi
 
 ---------------------------
 NOVO MODELO
-. Melhorar layout das settings
 . Criar inputs personalizados
     - Filtros
     - Busca manual
