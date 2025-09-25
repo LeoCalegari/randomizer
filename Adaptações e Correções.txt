@@ -15,3 +15,7 @@ NOVO MODELO
 
 . Melhorar funcionamento da função para randomizar até parar
     - Tem um bug se logo ao parar de randomizar randomizar de novo
+
+
+// Documentação - Choices JS
+https://github.com/Choices-js/Choices?tab=readme-ov-file#installation

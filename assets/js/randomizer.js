@@ -161,9 +161,11 @@ async function fillSeriesFilter() {
         $("#filterSeries").append(seriesHTML);
     });
 
-    $("#filterSeries").select2({
-        theme: 'bootstrap-5'
-    });
+    await setupSelectInput("filterSeries");
+
+    // $("#filterSeries").select2({
+    //     theme: 'bootstrap-5'
+    // });
 }
 
 async function fillsCharacterAutoCompleteFilter() {
@@ -244,7 +246,7 @@ function cicleGifs(ms){
     loadingElement.classList.add("display-none");
 
     setTimeout(() => {
-        if(randomized === false) loadingSection.style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
+        // if(randomized === false) loadingSection.style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
         if(randomized === false) cicleGifs(5000);
     }, ms);
 }
@@ -333,4 +335,105 @@ async function ajustString(string) {
     string = string.replaceAll("'", "");
 
     return string;
+}
+
+async function setupSelectInput(elementID) {
+    const element = document.getElementById(elementID);
+
+    new Choices(element, {
+        silent: false,
+        items: [],
+        choices: [],
+        renderChoiceLimit: 5,
+        maxItemCount: -1,
+        closeDropdownOnSelect: "auto",
+        singleModeForMultiSelect: false,
+        addChoices: false,
+        addItems: true,
+        addItemFilter: (value) => !!value && value !== "",
+        removeItems: true,
+        removeItemButton: false,
+        removeItemButtonAlignLeft: false,
+        editItems: false,
+        allowHTML: false,
+        allowHtmlUserInput: false,
+        duplicateItemsAllowed: true,
+        delimiter: ',',
+        paste: true,
+        searchEnabled: true,
+        searchChoices: true,
+        searchFloor: 1,
+        searchResultLimit: 4,
+        searchFields: ["label", "value"],
+        position: "auto",
+        resetScrollPosition: true,
+        shouldSort: true,
+        shouldSortItems: false,
+        sorter: () => {},
+        shadowRoot: null,
+        placeholder: true,
+        placeholderValue: null,
+        searchPlaceholderValue: null,
+        prependValue: null,
+        appendValue: null,
+        renderSelectedChoices: "auto",
+        loadingText: "Loading...",
+        noResultsText: "No results found",
+        noChoicesText: "Empty",
+        itemSelectText: "",
+        uniqueItemText: "Only unique values can be added",
+        customAddItemText: "Only values matching specific conditions can be added",
+        addItemText: (value, rawValue) => {
+            return `Press Enter to add <b>"${value}"</b>`;
+        },
+        removeItemIconText: () => `Remove item`,
+        removeItemLabelText: (value, rawValue) => `Remove item: ${value}`,
+        maxItemText: (maxItemCount) => {
+        return `Only ${maxItemCount} values can be added`;
+        },
+        valueComparer: (value1, value2) => {
+            return value1 === value2;
+        },
+        classNames: {
+            containerOuter: ['choices'],
+            containerInner: ['choices__inner'],
+            input: ['choices__input'],
+            inputCloned: ['choices__input--cloned'],
+            list: ['choices__list'],
+            listItems: ['choices__list--multiple'],
+            listSingle: ['choices__list--single'],
+            listDropdown: ['choices__list--dropdown'],
+            item: ['choices__item'],
+            itemSelectable: ['choices__item--selectable'],
+            itemDisabled: ['choices__item--disabled'],
+            itemChoice: ['choices__item--choice'],
+            description: ['choices__description'],
+            placeholder: ['choices__placeholder'],
+            group: ['choices__group'],
+            groupHeading: ['choices__heading'],
+            button: ['choices__button'],
+            activeState: ['is-active'],
+            focusState: ['is-focused'],
+            openState: ['is-open'],
+            disabledState: ['is-disabled'],
+            highlightedState: ['is-highlighted'],
+            selectedState: ['is-selected'],
+            flippedState: ['is-flipped'],
+            loadingState: ['is-loading'],
+            invalidState: ['is-invalid'],
+            notice: ['choices__notice'],
+            addChoice: ['choices__item--selectable', 'add-choice'],
+            noResults: ['has-no-results'],
+            noChoices: ['has-no-choices'],
+        },
+        // Choices uses the great Fuse library for searching. You
+        // can find more options here: https://fusejs.io/api/options.html
+        fuseOptions: {
+            includeScore: true
+        },
+        labelId: "",
+        callbackOnInit: null,
+        callbackOnCreateTemplates: null,
+        appendGroupInSearch: false,
+    });
 }
