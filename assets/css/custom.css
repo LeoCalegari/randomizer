@@ -295,30 +295,3 @@
     background-color: var(--primary-color);
     color: white !important;
 }
-
-/* Choices JS */
-.choices__inner {
-    border-radius: var(--default-radius) !important;
-}
-
-.choices__input {
-    background-color: color-mix(in srgb, var(--background-color) 100%, var(--primary-color) 15%) !important;
-}
-
-.choices.is-open .choices__inner {
-    border-radius: var(--default-radius) var(--default-radius) 0px 0px !important;
-    
-    background-color: var(--primary-color);
-    color: white !important;
-
-    font-weight: bold;
-}
-
-.is-highlighted {   
-    background-color: var(--primary-color) !important;
-    color: white;
-}
-
-.choices__list--dropdown{
-    border-radius: 0px 0px var(--default-radius) var(--default-radius) !important;
-}

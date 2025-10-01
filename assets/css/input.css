@@ -1,0 +1,64 @@
+/* Checkbox */
+.checkbox-container input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    margin: 0;
+}
+
+.checkbox-container label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-container label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid color-mix(in srgb, var(--background-color) 100%, var(--primary-color) 25%) !important;
+    border-radius: var(--default-radius);
+    margin-right: 5px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked + label::before {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    content: "-";              
+    color: white;              
+    font-size: 14px;           
+    font-weight: bold;
+    display: flex;             
+    align-items: center;       
+    justify-content: center; 
+}
+
+/* Choices JS */
+.choices__inner {
+    border-radius: var(--default-radius) !important;
+}
+
+.choices__input {
+    background-color: color-mix(in srgb, var(--background-color) 100%, var(--primary-color) 5%) !important;
+}
+
+.choices.is-open .choices__inner {
+    border-radius: var(--default-radius) var(--default-radius) 0px 0px !important;
+    
+    background-color: var(--primary-color);
+    color: white !important;
+
+    font-weight: bold;
+}
+
+.is-highlighted {   
+    background-color: var(--primary-color) !important;
+    color: white;
+}
+
+.choices__list--dropdown{
+    border-radius: 0px 0px var(--default-radius) var(--default-radius) !important;
+}

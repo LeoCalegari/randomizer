@@ -51,8 +51,8 @@
                     <div class="col-md-12 spacer infinite-shine-effect"></div>
                     <div class="form-row mt-10">
                         <div class="col-md-12 form-group">
-                            <div class="form-check">
-                                <input id="randomizeUntilStop" name="randomizeUntilStop" class="form-check-input" type="checkbox">
+                            <div class="checkbox-container">
+                                <input id="randomizeUntilStop" name="randomizeUntilStop" type="checkbox">
                                 <label class="form-check-label" for="randomizeUntilStop">
                                     Randomize<strong class="ml-5">∞</strong>
                                 </label>
@@ -73,19 +73,17 @@
                     <div class="form-row mt-10">
                         <label>Genders</label>
                         <div class="col-md-6 col-xs-6 form-group">
-                            <div class="form-check">
-                                <input id="filterMale" name="filterMale" class="form-check-input" type="checkbox">
-                                <label class="form-check-label" for="filterMale">
-                                    M
+                            <div class="checkbox-container">
+                                <input id="filterFemale" name="filterFemale" type="checkbox" checked>
+                                <label class="form-check-label" for="filterFemale">
+                                    F
                                 </label>
                             </div>
                         </div>
                         <div class="col-md-6 col-xs-6 form-group">
-                            <div class="form-check">
-                                <input id="filterFemale" name="filterFemale" class="form-check-input" type="checkbox" checked>
-                                <label class="form-check-label" for="filterFemale">
-                                    F
-                                </label>
+                            <div class="checkbox-container">
+                                <input id="filterMale" name="filterMale" type="checkbox">
+                                <label for="filterMale">M</label>
                             </div>
                         </div>
                     </div>
