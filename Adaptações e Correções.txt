@@ -7,12 +7,6 @@ Personagens para adicionar
 
 ---------------------------
 NOVO MODELO
-. Criar inputs personalizados
-    - Filtros
-    - Busca manual
-    - Checkboxes
-. Baixar select2 para funcionar sem  net caso necessário
-
 . Melhorar funcionamento da função para randomizar até parar
     - Tem um bug se logo ao parar de randomizar randomizar de novo
 
