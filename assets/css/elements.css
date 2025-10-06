@@ -1,5 +1,5 @@
 body {
-    background-color: color-mix(in srgb, var(--background-color) 100%, black 10%);
+    background-color: color-mix(in srgb, var(--background-color) 100%, black 75%);
 }
 
 li {
