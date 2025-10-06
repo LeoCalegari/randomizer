@@ -128,8 +128,10 @@
 
             <!-- Character list -->
             <div class="col-md-3 section character-list-section">
-                <div class="col-md-12">
-                    <input id="filterCharacterAutocomplete" class="form-control character-autocomplete" autocomplete="off" placeholder="Search..."/>
+                <div class="col-md-12 mb-10">
+                    <select id="filterCharacter" name="filterCharacter" style="width: 100% !important;">
+                        <option value="0">Search...</option>
+                    </select>
                 </div>
                 <div class="col-md-12 character-list" id="characterList"></div>
             </div>
@@ -211,7 +213,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Characters on the side list
             document.querySelectorAll(".character-on-list").forEach(element => {
-                
                 element.addEventListener("click", function(){
                     // Haven't randomized
                     if(!randomized){

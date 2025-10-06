@@ -21,7 +21,7 @@ const imageOverlay = document.getElementById("imageOverlay");
 const checkboxRandomizeUntilStop = document.getElementById("randomizeUntilStop");
 const filterMale = document.getElementById("filterMale");
 const filterFemale = document.getElementById("filterFemale");
-
+const filterCharacter = document.getElementById("filterCharacter");
 
 
 async function init() {
@@ -169,46 +169,14 @@ async function fillSeriesFilter() {
 }
 
 async function fillsCharacterAutoCompleteFilter() {
-    // ------ * Setup list * ------
-    let autocompleteCharacterList = [];
     await characterList.forEach(character => {
-        let autocompleteData = new Object();
-        autocompleteData.series = character.series;
+        const series = seriesList.find(series => series.id == character.seriesID);
+        const characterHTML = `<option value="${character.name}">${character.name} - (${series.name})</option>`;
 
-        let autocompleteCharacter = new Object();
-        autocompleteCharacter.value = character.name;
-        autocompleteCharacter.data = autocompleteData;
-
-        autocompleteCharacterList.push(autocompleteCharacter);
+        $("#filterCharacter").append(characterHTML);
     });
 
-    // ------ * Setup input * ------
-    $("#filterCharacterAutocomplete").devbridgeAutocomplete({
-        lookup: autocompleteCharacterList,
-        minChars: 1,
-        onSelect: function (suggestion) {
-            // Haven't randomized
-            if(!randomized){
-                // Sets randomized to stop cicling gifs
-                randomized = true;
-
-                // Hides loading section
-                loadingSection.classList.add("display-none");
-
-                // Shows character section
-                characterSection.classList.remove("display-none");
-            }
-
-            // Returns character from list
-            let character = characterList.filter(character => character.name === suggestion.value);
-
-            // Fills out the character data
-            fillCharacterSectionWithData(character[0]);
-        },
-        showNoSuggestionNotice: true,
-        noSuggestionNotice: 'Não foi encontrado nenhum personagem...',
-        groupBy: 'series'
-    });
+    await setupSelectInput("filterCharacter");
 }
 
 async function fillListOfCharacter() {
@@ -289,6 +257,24 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && imageOverlay.classList.contains("active")) {
         closeExpandedImage();
     }
+});
+
+filterCharacter.addEventListener("change", () => {
+    // Haven't randomized
+    if(!randomized){
+        // Sets randomized to stop cicling gifs
+        randomized = true;
+
+        // Hides loading section
+        loadingSection.classList.add("display-none");
+
+        // Shows character section
+        characterSection.classList.remove("display-none");
+    }
+
+    const character = characterList.find(characterTemp => characterTemp.name == filterCharacter.value);
+    
+    fillCharacterSectionWithData(character);
 });
 
 function closeExpandedImage(){
