@@ -19,10 +19,10 @@ const imageOverlay = document.getElementById("imageOverlay");
 
 // Filters & Config
 const checkboxRandomizeUntilStop = document.getElementById("randomizeUntilStop");
+const filterSeries = document.getElementById("filterSeries");
 const filterMale = document.getElementById("filterMale");
 const filterFemale = document.getElementById("filterFemale");
 const filterCharacter = document.getElementById("filterCharacter");
-
 
 async function init() {
     // Fills out the database
@@ -51,10 +51,10 @@ async function filterCharacterList() {
     let tempCharacterList = characterList;
 
     // ----- * Series * -----
-    let series = $('#filterSeries').find(':selected')[0].innerText;
+    const series = Number(filterSeries.value);
 
-    if(series !== "All"){
-        tempCharacterList = tempCharacterList.filter(character => character.series === series);
+    if(series !== 0){
+        tempCharacterList = tempCharacterList.filter(character => character.seriesID === series);
     }
 
     // ----- * Gender * -----
