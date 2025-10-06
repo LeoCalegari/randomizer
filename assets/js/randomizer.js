@@ -214,7 +214,7 @@ function cicleGifs(ms){
     loadingElement.classList.add("display-none");
 
     setTimeout(() => {
-        // if(randomized === false) loadingSection.style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
+        if(randomized === false) loadingSection.style.backgroundImage = "URL('gif/init" + returnRandomIndex(23) + ".gif')";
         if(randomized === false) cicleGifs(5000);
     }, ms);
 }
