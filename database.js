@@ -496,6 +496,7 @@ async function fillDatabase() {
     // Final Fantasy
     tempCharacterList = [];
     tempCharacterList.push("Tifa Lockhart, F, [], 9");
+    tempCharacterList.push("Aerith Gainsborough, F, [], 9");
 
     await addToCharacterList(tempCharacterList, 30);
     
