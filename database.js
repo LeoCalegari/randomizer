@@ -457,6 +457,7 @@ async function fillDatabase() {
     tempCharacterList.push("Sona, F, [], 15");
     tempCharacterList.push("Xayah, F, [], 12");
     tempCharacterList.push("Zeri, F, [], 6");
+    tempCharacterList.push("Yunara, F, [], 8");
 
     tempCharacterList.push("Aphelios, M, [], 6");
     tempCharacterList.push("Ezreal, M, [], 9");
