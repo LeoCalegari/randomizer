@@ -497,6 +497,7 @@ async function fillDatabase() {
     tempCharacterList = [];
     tempCharacterList.push("Tifa Lockhart, F, [], 9");
     tempCharacterList.push("Aerith Gainsborough, F, [], 9");
+    tempCharacterList.push("Cissnei, F, [], 4");
 
     await addToCharacterList(tempCharacterList, 30);
     
