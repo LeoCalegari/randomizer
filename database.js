@@ -44,6 +44,7 @@ async function fillDatabase() {
     seriesList.push({id: 35, name: "Cross Code"});
     seriesList.push({id: 36, name: "Sousou no Frieren"});
     seriesList.push({id: 37, name: "Vigilantes Boku no Hero Academia"});
+    seriesList.push({id: 38, name: "Dungeon Meshi"});
 
     seriesList.sort(function(a, b) {
         return a.name.localeCompare(b.name);
@@ -557,7 +558,7 @@ async function fillDatabase() {
 
     await addToCharacterList(tempCharacterList, 36);
     
-    // Vigilantes: Boku no Hero Academia https://myheroacademia.fandom.com/wiki/Category:Vigilantes_Characters
+    // Vigilantes Boku no Hero Academia
     tempCharacterList = [];
     tempCharacterList.push("Bee☆Pop, F, [], 3");
     tempCharacterList.push("Kazuho Haneyama, F, [], 8");
@@ -566,6 +567,19 @@ async function fillDatabase() {
     tempCharacterList.push("Koichi Haimawari, F, [], 3");
 
     await addToCharacterList(tempCharacterList, 37);
+
+    // Dungeon Meshi https://delicious-in-dungeon.fandom.com/wiki/Category:Characters
+    tempCharacterList = [];
+    tempCharacterList.push("Falin Touden, F, [], 4");
+    tempCharacterList.push("Marcille Donato, F, [], 5");
+    tempCharacterList.push("Izutsumi, F, [], 2");
+    tempCharacterList.push("Cithis, F, [], 1");
+    tempCharacterList.push("Maizuru, F, [], 2");
+    tempCharacterList.push("Rin, F, [], 2");
+
+    tempCharacterList.push("Mithrun, F, [], 3");
+
+    await addToCharacterList(tempCharacterList, 38);
 
     characterList.sort(function(a, b) {
         return a.name.localeCompare(b.nome);
