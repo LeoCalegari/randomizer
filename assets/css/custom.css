@@ -145,7 +145,7 @@
     overflow: hidden;
     
     border-radius: var(--default-radius);
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--background-color);
 
     /* Flexbox here to centralize the image inside IMG of this DIV */
     display: flex; 
@@ -157,6 +157,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    border-radius: var(--default-radius);
 }
 
 .character-profile-image.loading{
