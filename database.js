@@ -43,6 +43,7 @@ async function fillDatabase() {
     seriesList.push({id: 34, name: "Street Fighter"});
     seriesList.push({id: 35, name: "Cross Code"});
     seriesList.push({id: 36, name: "Sousou no Frieren"});
+    seriesList.push({id: 37, name: "Vigilantes Boku no Hero Academia"});
 
     seriesList.sort(function(a, b) {
         return a.name.localeCompare(b.name);
@@ -555,6 +556,16 @@ async function fillDatabase() {
     tempCharacterList.push("Fern, F, [], 4");
 
     await addToCharacterList(tempCharacterList, 36);
+    
+    // Vigilantes: Boku no Hero Academia https://myheroacademia.fandom.com/wiki/Category:Vigilantes_Characters
+    tempCharacterList = [];
+    tempCharacterList.push("Bee☆Pop, F, [], 3");
+    tempCharacterList.push("Kazuho Haneyama, F, [], 8");
+    tempCharacterList.push("Makoto Tsukauchi, F, [], 3");
+
+    tempCharacterList.push("Koichi Haimawari, F, [], 3");
+
+    await addToCharacterList(tempCharacterList, 37);
 
     characterList.sort(function(a, b) {
         return a.name.localeCompare(b.nome);
