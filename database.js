@@ -121,6 +121,7 @@ async function fillDatabase() {
     tempCharacterList.push("Bea, F, [], 3");
     tempCharacterList.push("Juliana, F, [], 4");
     tempCharacterList.push("Nemona, F, [], 3");
+    tempCharacterList.push("Emma, F, [], 5");
 
     tempCharacterList.push("Red, M, [], 8");
     tempCharacterList.push("Blue, M, [], 7");
