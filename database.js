@@ -500,6 +500,10 @@ async function fillDatabase() {
     tempCharacterList.push("Tifa Lockhart, F, [], 9");
     tempCharacterList.push("Aerith Gainsborough, F, [], 9");
     tempCharacterList.push("Cissnei, F, [], 4");
+    tempCharacterList.push("Yuffie Kisaragi, F, [], 5");
+    
+    tempCharacterList.push("Cloud Strife, F, [], 4");
+    tempCharacterList.push("Sephiroth, F, [], 2");
 
     await addToCharacterList(tempCharacterList, 30);
     
