@@ -503,8 +503,8 @@ async function fillDatabase() {
     tempCharacterList.push("Cissnei, F, [], 4");
     tempCharacterList.push("Yuffie Kisaragi, F, [], 5");
     
-    tempCharacterList.push("Cloud Strife, F, [], 4");
-    tempCharacterList.push("Sephiroth, F, [], 2");
+    tempCharacterList.push("Cloud Strife, M, [], 4");
+    tempCharacterList.push("Sephiroth, M, [], 2");
 
     await addToCharacterList(tempCharacterList, 30);
     
@@ -569,7 +569,7 @@ async function fillDatabase() {
     tempCharacterList.push("Kazuho Haneyama, F, [], 8");
     tempCharacterList.push("Makoto Tsukauchi, F, [], 3");
 
-    tempCharacterList.push("Koichi Haimawari, F, [], 3");
+    tempCharacterList.push("Koichi Haimawari, M, [], 3");
 
     await addToCharacterList(tempCharacterList, 37);
 
@@ -582,7 +582,7 @@ async function fillDatabase() {
     tempCharacterList.push("Maizuru, F, [], 2");
     tempCharacterList.push("Rin, F, [], 2");
 
-    tempCharacterList.push("Mithrun, F, [], 3");
+    tempCharacterList.push("Mithrun, M, [], 3");
 
     await addToCharacterList(tempCharacterList, 38);
 
