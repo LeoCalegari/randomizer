@@ -499,7 +499,7 @@ async function fillDatabase() {
     // Final Fantasy
     tempCharacterList = [];
     tempCharacterList.push("Tifa Lockhart, F, [], 9");
-    tempCharacterList.push("Aerith Gainsborough, F, [], 9");
+    tempCharacterList.push("Aerith Gainsborough, F, [], 14");
     tempCharacterList.push("Cissnei, F, [], 4");
     tempCharacterList.push("Yuffie Kisaragi, F, [], 5");
     
