@@ -434,22 +434,22 @@ async function fillDatabase() {
     tempCharacterList = [];
     tempCharacterList.push("Ahri, F, [], 27");
     tempCharacterList.push("Akali, F, [], 21");
-    tempCharacterList.push("Ashe, F, [], 24");
+    tempCharacterList.push("Ashe, F, [], 27");
     tempCharacterList.push("Briar, F, [], 3");
     tempCharacterList.push("Caitlyn, F, [], 17");
     tempCharacterList.push("Diana, F, [], 12");
     tempCharacterList.push("Fiora, F, [], 12");
     tempCharacterList.push("Gwen, F, [], 6");
-    tempCharacterList.push("Irelia, F, [], 25");
+    tempCharacterList.push("Irelia, F, [], 28");
     tempCharacterList.push("Kai sa, F, [], 12");
     tempCharacterList.push("Karma, F, [], 18");
     tempCharacterList.push("Katarina, F, [], 24");
     tempCharacterList.push("LeBlanc, F, [], 15");
     tempCharacterList.push("Leona, F, [], 15");
-    tempCharacterList.push("Lux, F, [], 15");
+    tempCharacterList.push("Lux, F, [], 18");
     tempCharacterList.push("Miss Fortune, F, [], 33");
-    tempCharacterList.push("Morgana, F, [], 23");
-    tempCharacterList.push("Nidalee, F, [], 12");
+    tempCharacterList.push("Morgana, F, [], 26");
+    tempCharacterList.push("Nidalee, F, [], 15");
     tempCharacterList.push("Nilah, F, [], 6");
     tempCharacterList.push("Qiyana, F, [], 12");
     tempCharacterList.push("Quinn, F, [], 6");
@@ -615,6 +615,7 @@ async function addToCharacterList(tempCharacterList, seriesID) {
         League of Legends
             https://www.leagueoflegends.com/en-us/champions/ - Splash arts
             https://modelviewer.lol/champions - Modelos em 3D
+            https://wiki.leagueoflegends.com/en-us/List_of_champion_skins
 
         Valorant
             https://valorant.fandom.com/wiki/Reyna - Wiki
